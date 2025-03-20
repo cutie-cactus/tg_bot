@@ -30,10 +30,38 @@ user_service = userService.UserService(connector, user_repository)
 
 MAIN_KEYBOARD = ReplyKeyboardMarkup([["Get", "Add"], ["Info", "Choose", "Delete"]], resize_keyboard=True)
 BACK_KEYBOARD = ReplyKeyboardMarkup([["Back"]], resize_keyboard=True, one_time_keyboard=True)
-CHOOSE_KEYBOARD = ReplyKeyboardMarkup([["Get"], ["Info", "Delete event"], ["Add", "Delete notice"], ["Back"]],
+CHOOSE_KEYBOARD = ReplyKeyboardMarkup([["Get", "Fix"], ["Info", "Delete event"], ["Add", "Delete notice"], ["Back"]],
                                       resize_keyboard=True)
 CANCEL_KEYBOARD = ReplyKeyboardMarkup([["Cancel"]], resize_keyboard=True, one_time_keyboard=True)
 FIX_KEYBOARD = ReplyKeyboardMarkup([["Cancel", "Next"]], resize_keyboard=True, one_time_keyboard=True)
+
+INFO_CHOOSE_TEXT = (
+    "🔔 *Добро пожаловать!* 🔔\n\n"
+    "Этот бот помогает вам управлять вашими событиями и уведомлениями.\n"
+    "Сейчас вы находитель в меню события.\n\n"
+    "*Доступные команды:*\n"
+    "*Get* – получить информацию о событии и его напоминаниях\n"
+    "*Fix* – изменить выбранное событие\n"
+    "*Info* – информация о боте\n"
+    "*Delete event* – удалить выбранное событие\n"
+    "*Add* – добавить новое напоминание у события\n"
+    "*Delete notice* – удалить напоминание у события\n"
+    "*Back* – вернуться в главное меню\n\n"
+    "Если у вас есть вопросы, напишите в поддержку: *@Sksjdjcj*"
+)
+
+INFO_MAIN_TEXT = (
+    "🔔 *Добро пожаловать!* 🔔\n\n"
+    "Этот бот помогает вам управлять вашими событиями и уведомлениями.\n"
+    "Сейчас вы находитель в главном меню.\n\n"
+    "*Доступные команды:*\n"
+    "*Get* – получить список ваших событий\n"
+    "*Add* – добавить новое событие\n"
+    "*Info* – информация о боте\n"
+    "*Choose* – выбрать конкретное событие, для дальнейшей работы с ним\n"
+    "*Delete* – удалить все ваши события\n\n"
+    "Если у вас есть вопросы, напишите в поддержку: *@Sksjdjcj*"
+)
 
 
 def is_valid_date(date_str: str) -> bool:
@@ -155,7 +183,7 @@ async def handle_actions(update: Update, context: CallbackContext) -> None:
             await add_data(update, context)
             return
         elif text == "Info":
-            await get_info(update, context)
+            await get_info_main(update, context)
             return
         elif text == "Delete":
             await update.message.reply_text(f"Было выбрано: '{text}'", reply_markup=CANCEL_KEYBOARD)
@@ -171,8 +199,12 @@ async def handle_actions(update: Update, context: CallbackContext) -> None:
         if text == "Get":
             await get_all_notice(update, context)
             return
+        elif text == "Fix":
+            await update.message.reply_text(f"Было выбрано: '{text}'", reply_markup=CANCEL_KEYBOARD)
+            await fix_event(update, context)
+            return
         elif text == "Info":
-            await get_info(update, context)
+            await get_info_choose(update, context)
             return
         elif text == "Delete event":
             await update.message.reply_text(f"Было выбрано: '{text}'", reply_markup=CANCEL_KEYBOARD)
@@ -226,13 +258,11 @@ async def add_data(update: Update, context: CallbackContext) -> None:
                                     reply_markup=CANCEL_KEYBOARD)
 
 
-async def get_all_event(update: Update, context: CallbackContext) -> None:
-    context.user_data["menu"] = context.user_data.get("menu", "main")
-    events = event_service.get_all(str(update.message.from_user.id))
+def prepare_list_event(user_id: int):
+    events = event_service.get_all(str(user_id))
 
     if not events:
-        await update.message.reply_text("У вас нет событий.", reply_markup=MAIN_KEYBOARD)
-        return
+        return []
 
     events_text = "Список ваших событий:\n\n"
 
@@ -244,22 +274,82 @@ async def get_all_event(update: Update, context: CallbackContext) -> None:
                         f"Название: {event.name}\n"
                         f"Описание: {event.description}\n"
                         f"```\n")
+    return events_text
+
+
+def prepare_one_event(event_id: int, user_id: int):
+    selected_event = event_service.get(event_id,
+                                       str(user_id))
+
+    notice_text = (f"```Событие\n"
+                   f"Дата: {selected_event.date}\n"
+                   f"Время: {str(selected_event.time)[:5]}\n"
+                   f"Уведомлений: {10 - selected_event.notice_count}\n"
+                   f"Название: {selected_event.name}\n"
+                   f"Описание: {selected_event.description}\n"
+                   f"```\n")
+
+    return notice_text
+
+
+def prepare_list_notice(event_id: int, user_id: int):
+    selected_event = event_service.get(event_id,
+                                       str(user_id))
+
+    notices = notice_service.get_all(selected_event.event_id)
+
+    notice_text = (f"```Событие\n"
+                   f"Дата: {selected_event.date}\n"
+                   f"Время: {str(selected_event.time)[:5]}\n"
+                   f"Уведомлений: {10 - selected_event.notice_count}\n"
+                   f"Название: {selected_event.name}\n"
+                   f"Описание: {selected_event.description}\n"
+                   f"```\n")
+
+    flag = True
+    if notices:
+        notice_text += "Список уведомлений:\n\n"
+
+        for i, notice in enumerate(notices, start=1):
+            notice_text += (f"```Уведомление_#{i}\n"
+                            f"Дата: {notice.date}\n"
+                            f"Время: {str(notice.time)[:5]}\n"
+                            f"```\n")
+    else:
+        flag = False
+        notice_text += "У вас нет уведомлений для данного события."
+
+    return notice_text, flag
+
+
+async def get_all_event(update: Update, context: CallbackContext) -> None:
+    context.user_data["menu"] = context.user_data.get("menu", "main")
+    events_text = prepare_list_event(update.message.from_user.id)
+
+    if not events_text:
+        await update.message.reply_text("У вас нет событий.", reply_markup=MAIN_KEYBOARD)
+        return
 
     await update.message.reply_text(events_text, reply_markup=MAIN_KEYBOARD, parse_mode='Markdown')
 
 
-async def get_info(update: Update, context: CallbackContext) -> None:
-    previous_menu = context.user_data.get("menu", "main")
+async def get_info_main(update: Update, context: CallbackContext) -> None:
+    await update.message.reply_text(INFO_MAIN_TEXT, reply_markup=MAIN_KEYBOARD, parse_mode='Markdown')
 
-    text_info = (f"*Информация*\n"
-                 f"я бот долбаеб")
 
-    await update.message.reply_text(text_info, reply_markup=get_menu(previous_menu), parse_mode='Markdown')
-
+async def get_info_choose(update: Update, context: CallbackContext) -> None:
+    await update.message.reply_text(INFO_CHOOSE_TEXT, reply_markup=CHOOSE_KEYBOARD, parse_mode='Markdown')
 
 async def choose_event(update: Update, context: CallbackContext) -> None:
-    """Начало процесса добавления данных (запрос даты)."""
     context.user_data["menu"] = context.user_data.get("menu", "main")
+    events_text = prepare_list_event(update.message.from_user.id)
+
+    if not events_text:
+        await update.message.reply_text("У вас нет событий.", reply_markup=MAIN_KEYBOARD)
+        return
+
+    await update.message.reply_text(events_text, reply_markup=MAIN_KEYBOARD, parse_mode='Markdown')
+
     context.user_data["state"] = "waiting_for_event"
     await update.message.reply_text("Введите номер событие или нажмите 'Отмена':",
                                     reply_markup=CANCEL_KEYBOARD)
@@ -268,36 +358,22 @@ async def choose_event(update: Update, context: CallbackContext) -> None:
 async def get_all_notice(update: Update, context: CallbackContext) -> None:
     context.user_data["menu"] = context.user_data.get("menu", "choose")
 
-    selected_event = event_service.get(context.user_data.get("selected_event").event_id,
-                                       str(update.message.from_user.id))
+    notice_text, _ = prepare_list_notice(context.user_data.get("selected_event").event_id,
+                                         update.message.from_user.id)
 
-    notices = notice_service.get_all(selected_event.event_id)
-
-    if not notices:
-        await update.message.reply_text("У вас нет уведомлений для данного события.", reply_markup=CHOOSE_KEYBOARD)
-        return
-
-    events_text = (f"```Событие\n"
-                   f"Дата: {selected_event.date}\n"
-                   f"Время: {str(selected_event.time)[:5]}\n"
-                   f"Уведомлений: {10 - selected_event.notice_count}\n"
-                   f"Название: {selected_event.name}\n"
-                   f"Описание: {selected_event.description}\n"
-                   f"```\n")
-
-    events_text += "Список уведомлений:\n\n"
-
-    for i, notice in enumerate(notices, start=1):
-        events_text += (f"```Уведомление_#{i}\n"
-                        f"Дата: {notice.date}\n"
-                        f"Время: {str(notice.time)[:5]}\n"
-                        f"```\n")
-
-    await update.message.reply_text(events_text, reply_markup=CHOOSE_KEYBOARD, parse_mode='Markdown')
+    await update.message.reply_text(notice_text, reply_markup=CHOOSE_KEYBOARD, parse_mode='Markdown')
 
 
 async def delete_all_data(update: Update, context: CallbackContext) -> None:
     context.user_data["menu"] = context.user_data.get("menu", "main")  # Запоминаем, из какого меню вызвано
+    events_text = prepare_list_event(update.message.from_user.id)
+
+    if not events_text:
+        await update.message.reply_text("У вас нет событий.", reply_markup=MAIN_KEYBOARD)
+        return
+
+    await update.message.reply_text(events_text, reply_markup=MAIN_KEYBOARD, parse_mode='Markdown')
+
     context.user_data["state"] = "waiting_for_delete_all"
     await update.message.reply_text("Вы уверены что хотите удалить все события? Да/Нет",
                                     reply_markup=CANCEL_KEYBOARD)
@@ -305,6 +381,17 @@ async def delete_all_data(update: Update, context: CallbackContext) -> None:
 
 async def delete_event(update: Update, context: CallbackContext) -> None:
     context.user_data["menu"] = context.user_data.get("menu", "choose")
+
+    event_text = prepare_one_event(context.user_data.get("selected_event").event_id,
+                                   update.message.from_user.id)
+
+    if not event_text:
+        context.user_data["menu"] = 'main'
+        await update.message.reply_text("У вас данного события.", reply_markup=MAIN_KEYBOARD)
+        return
+
+    await update.message.reply_text(event_text, reply_markup=CHOOSE_KEYBOARD, parse_mode='Markdown')
+
     context.user_data["state"] = "waiting_for_delete_event"
     await update.message.reply_text("Вы уверены что хотите удалить данное события? Да/Нет",
                                     reply_markup=CANCEL_KEYBOARD)
@@ -312,6 +399,15 @@ async def delete_event(update: Update, context: CallbackContext) -> None:
 
 async def delete_notice(update: Update, context: CallbackContext) -> None:
     context.user_data["menu"] = context.user_data.get("menu", "choose")
+
+    notice_text, flag = prepare_list_notice(context.user_data.get("selected_event").event_id,
+                                            update.message.from_user.id)
+
+    await update.message.reply_text(notice_text, reply_markup=CHOOSE_KEYBOARD, parse_mode='Markdown')
+
+    if not flag:
+        return
+
     context.user_data["state"] = "waiting_for_delete_notice_number"
     await update.message.reply_text("Введите номер напоминания для удаления",
                                     reply_markup=CANCEL_KEYBOARD)
@@ -326,6 +422,17 @@ async def add_notice(update: Update, context: CallbackContext) -> None:
 
 async def fix_event(update: Update, context: CallbackContext) -> None:
     context.user_data["menu"] = context.user_data.get("menu", "choose")
+
+    event_text = prepare_one_event(context.user_data.get("selected_event").event_id,
+                                   update.message.from_user.id)
+
+    if not event_text:
+        context.user_data["menu"] = 'main'
+        await update.message.reply_text("У вас данного события.", reply_markup=MAIN_KEYBOARD)
+        return
+
+    await update.message.reply_text(event_text, reply_markup=CHOOSE_KEYBOARD, parse_mode='Markdown')
+
     context.user_data["state"] = "waiting_for_fix_date"
     await update.message.reply_text("Введите новую дату события (в формате YYYY-MM-DD) или нажмите 'Отмена':",
                                     reply_markup=FIX_KEYBOARD)
@@ -410,23 +517,19 @@ async def handle_user_input(update: Update, context: CallbackContext) -> None:
                                             reply_markup=CANCEL_KEYBOARD)
 
     elif state == "waiting_for_delete_all":
+        context.user_data["state"] = "back"
         if text.lower() == 'да':
-            context.user_data["state"] = "back"
             try:
                 event_service.delete_all(str(update.message.from_user.id))
                 await update.message.reply_text("Успешно удалилось.", reply_markup=MAIN_KEYBOARD)
             except Exception as e:
                 await update.message.reply_text(f"{e}", reply_markup=MAIN_KEYBOARD)
-        elif text.lower() == 'нет':
-            await update.message.reply_text("Вы решили не удалять.", reply_markup=MAIN_KEYBOARD)
         else:
-            context.user_data["state"] = "waiting_for_delete_all"
-            await update.message.reply_text("Введите Да/Нет или нажмите 'Назад':", reply_markup=CANCEL_KEYBOARD)
+            await update.message.reply_text("Вы решили не удалять.", reply_markup=MAIN_KEYBOARD)
 
     elif state == "waiting_for_delete_event":
+        context.user_data.pop("state", None)
         if text.lower() == 'да':
-            # context.user_data["state"] = "back"
-            context.user_data.pop("state", None)
 
             try:
                 event_service.delete(str(update.message.from_user.id), context.user_data.get("selected_event").event_id)
@@ -435,11 +538,8 @@ async def handle_user_input(update: Update, context: CallbackContext) -> None:
                 await update.message.reply_text("Успешно удалилось.", reply_markup=MAIN_KEYBOARD)
             except Exception as e:
                 await update.message.reply_text(f"{e}", reply_markup=CHOOSE_KEYBOARD)
-        elif text.lower() == 'нет':
-            await update.message.reply_text("Вы решили не удалять.", reply_markup=CHOOSE_KEYBOARD)
         else:
-            context.user_data["state"] = "waiting_for_delete_event"
-            await update.message.reply_text("Введите Да/Нет или нажмите 'Назад':", reply_markup=CANCEL_KEYBOARD)
+            await update.message.reply_text("Вы решили не удалять.", reply_markup=CHOOSE_KEYBOARD)
 
     elif state == "waiting_for_delete_notice_number":
         notices = notice_service.get_all(context.user_data.get("selected_event").event_id)
@@ -462,21 +562,19 @@ async def handle_user_input(update: Update, context: CallbackContext) -> None:
                                             reply_markup=CANCEL_KEYBOARD)
 
     elif state == "waiting_for_delete_notice":
+        context.user_data.pop("state", None)
+        context.user_data["menu"] = "choose"
+        context.user_data.pop("selected_notice", None)
+
         if text.lower() == 'да':
             try:
                 notice_service.delete(context.user_data.get("selected_notice").notice_id,
                                       context.user_data.get("selected_event").event_id)
-                context.user_data.pop("selected_notice", None)
-                context.user_data.pop("state", None)
-                context.user_data["menu"] = "choose"
                 await update.message.reply_text("Успешно удалилось.", reply_markup=CHOOSE_KEYBOARD)
             except Exception as e:
                 await update.message.reply_text(f"{e}", reply_markup=CHOOSE_KEYBOARD)
-        elif text.lower() == 'нет':
-            await update.message.reply_text("Вы решили не удалять.", reply_markup=CHOOSE_KEYBOARD)
         else:
-            context.user_data["state"] = "waiting_for_delete_notice"
-            await update.message.reply_text("Введите Да/Нет или нажмите 'Назад':", reply_markup=CANCEL_KEYBOARD)
+            await update.message.reply_text("Вы решили не удалять.", reply_markup=CHOOSE_KEYBOARD)
 
     elif state == "waiting_for_event":
         events = event_service.get_all(str(update.message.from_user.id))
@@ -523,14 +621,27 @@ async def handle_user_input(update: Update, context: CallbackContext) -> None:
                                                    context.user_data['time'],
                                                    "%H:%M").time()
                                                ))
-                print(notice_id)
                 notice = notice_service.get(notice_id)
-                print(notice)
-                print('start create reminder')
 
                 notice_time = datetime.combine(notice.date, notice.time)
 
                 delay = (notice_time - datetime.now()).total_seconds()
+
+                def time_until_event(event: eventModel.Event, notice: noticeModel.Notice) -> dict:
+                    event_datetime = datetime.combine(event.date, event.time)
+                    notice_datetime = datetime.combine(notice.date, notice.time)
+
+                    delta = event_datetime - notice_datetime
+
+                    days = delta.days
+                    hours, remainder = divmod(delta.seconds, 3600)
+                    minutes, _ = divmod(remainder, 60)
+
+                    return {
+                        "дни": days,
+                        "часы": hours,
+                        "минуты": minutes
+                    }
 
                 async def send_reminder(context: CallbackContext):
                     notice_reminder = context.job.data
@@ -540,30 +651,20 @@ async def handle_user_input(update: Update, context: CallbackContext) -> None:
 
                     if notice_service.check_exist(notice.notice_id):
                         remind = (f"🔔 Напоминание!\n"
-                                f"```Событие:\n"
-                                f"Название: {event.name}\n"
-                                f"Описание: {event.description}\n"
-                                f"Дата: {event.date}\n"
-                                f"Время: {str(event.time)[:5]}\n"
-                                f"```\n\n"
-                                f"Наступит через *{time_until_event(event, notice)}*")
+                                  f"```Событие:\n"
+                                  f"Название: {event.name}\n"
+                                  f"Описание: {event.description}\n"
+                                  f"Дата: {event.date}\n"
+                                  f"Время: {str(event.time)[:5]}\n"
+                                  f"```\n\n"
+                                  f"Наступит через *{time_until_event(event, notice)}*")
                         await context.bot.send_message(chat_id=update.effective_chat.id, text=remind,
                                                        parse_mode='Markdown')
                         notice_service.delete(notice.notice_id, event.event_id)
 
-                    # await context.bot.send_message(
-                    #     chat_id=update.effective_chat.id,
-                    #     text="Это ваше напоминание!",
-                    #     reply_markup=CHOOSE_KEYBOARD
-                    # )
-
-                # Добавляем задачу в очередь с задержкой
                 context.job_queue.run_once(send_reminder, delay, data=(notice))  # data=(notice_id,
-                #     context.user_data.get("selected_event").event_id))
 
                 await update.message.reply_text("Напоминание успешно добавлено", reply_markup=CHOOSE_KEYBOARD)
-                # await add_reminder(context, str(update.message.from_user.id),
-                #                    context.user_data.get("selected_event"), notice)
             except Exception as e:
                 await update.message.reply_text(f"Ошибка: {e}", reply_markup=CHOOSE_KEYBOARD)
         else:
@@ -619,18 +720,3 @@ async def handle_user_input(update: Update, context: CallbackContext) -> None:
         await update.message.reply_text(f"Неизвестная команда", reply_markup=get_menu(previous_menu))
 
 
-def time_until_event(event: eventModel.Event, notice: noticeModel.Notice) -> dict:
-    event_datetime = datetime.combine(event.date, event.time)
-    notice_datetime = datetime.combine(notice.date, notice.time)
-
-    delta = event_datetime - notice_datetime
-
-    days = delta.days
-    hours, remainder = divmod(delta.seconds, 3600)
-    minutes, _ = divmod(remainder, 60)
-
-    return {
-        "дни": days,
-        "часы": hours,
-        "минуты": minutes
-    }
