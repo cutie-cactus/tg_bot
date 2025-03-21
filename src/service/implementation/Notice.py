@@ -1,7 +1,9 @@
 import repository.connector.PGConnector as Connector
 import service.interface.NoticeI as noticeService
 import repository.interface.NoticeI as noticeStorage
+
 import logger.Logger as Logger
+
 import hashlib
 
 import dto.notice as noticeDTO
@@ -14,6 +16,10 @@ class NoticeService(noticeService.NoticeServiceI):
         self.connector = connector
         self.notice_storage = notice_storage
         self.logger = logger
+
+    @staticmethod
+    def hash_id(string: str) -> str:
+        return hashlib.sha256(string.encode('utf-8')).hexdigest()
 
     @staticmethod
     def hash_id(string: str) -> str:
@@ -33,6 +39,7 @@ class NoticeService(noticeService.NoticeServiceI):
             self.logger.error(f"Ошибка при добавлении напоминания: {e}, "
                                 f"add_notice_request: {add_notice_request}")
             raise e
+
 
     def get(self, notice_id: int) -> noticeModel.Notice:
         try:

@@ -1,7 +1,9 @@
 import repository.connector.PGConnector as Connector
 import service.interface.EventI as eventService
 import repository.interface.EventI as eventStorage
+
 import logger.Logger as Logger
+
 import hashlib
 
 import dto.event as eventDTO
@@ -14,6 +16,10 @@ class EventService(eventService.EventServiceI):
         self.connector = connector
         self.event_storage = event_storage
         self.logger = logger
+
+    @staticmethod
+    def hash_id(string: str) -> str:
+        return hashlib.sha256(string.encode('utf-8')).hexdigest()
 
     @staticmethod
     def hash_id(string: str) -> str:
@@ -112,3 +118,4 @@ class EventService(eventService.EventServiceI):
         except Exception as e:
             self.logger.error(f"Ошибка при получении события: {e}, user_id: {user_id}, event_id: {event_id}")
             raise e
+

@@ -1,7 +1,9 @@
 import repository.interface.User as userRepository
 import service.interface.UserI as userService
 import repository.connector.PGConnector as Connector
+
 import logger.Logger as Logger
+
 import hashlib
 
 
@@ -11,6 +13,10 @@ class UserService(userService.UserServiceI):
         self.connector = connector
         self.user_storage = user_storage
         self.logger = logger
+
+    @staticmethod
+    def hash_id(string: str) -> str:
+        return hashlib.sha256(string.encode('utf-8')).hexdigest()
 
     @staticmethod
     def hash_id(string: str) -> str:
@@ -41,10 +47,10 @@ class UserService(userService.UserServiceI):
             self.logger.warning(f"Ошибка при изменении часового пояса: {e}, user_id: {tg_id}")
             raise e
 
+
     def get_event_count(self, tg_id: str, chat_id: str) -> int:
         hash_tg_id = self.hash_id(tg_id)
         hash_chat_id = self.hash_id(chat_id)
-
         try:
             result = self.user_storage.get_event_count(hash_tg_id, hash_chat_id)
             self.logger.info(f"Успешно получено кол-во событий: user_id: {tg_id}")
@@ -69,4 +75,5 @@ class UserService(userService.UserServiceI):
         except Exception as e:
             self.logger.error(f"Ошибка при получении часового пояса: {e}, user_id: {tg_id}")
             raise e
+
 
