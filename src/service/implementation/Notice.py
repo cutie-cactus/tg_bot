@@ -1,6 +1,7 @@
 import repository.connector.PGConnector as Connector
 import service.interface.NoticeI as noticeService
 import repository.interface.NoticeI as noticeStorage
+import hashlib
 
 import dto.notice as noticeDTO
 import model.notice as noticeModel
@@ -11,7 +12,12 @@ class NoticeService(noticeService.NoticeServiceI):
         self.connector = connector
         self.notice_storage = notice_storage
 
+    @staticmethod
+    def hash_id(string: str) -> str:
+        return hashlib.sha256(string.encode('utf-8')).hexdigest()
+
     def add(self, add_notice_request: noticeDTO.AddNoticeRequest) -> int:
+        add_notice_request.user_id = self.hash_id(add_notice_request.user_id)
         return self.notice_storage.add(add_notice_request)
 
     def get(self, notice_id: int) -> noticeModel.Notice:
