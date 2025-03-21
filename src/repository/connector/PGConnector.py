@@ -2,16 +2,20 @@ import psycopg2
 from psycopg2.extras import DictCursor
 from typing import Any, List, Optional
 # from src.logger.Logger import Logger
-from repository.connector.config_bd import *
 from exception.Exception import *
+from dotenv import load_dotenv
+import os
+
 
 class PostgresDBConnector:
     def __init__(self):
-        self.database = database
-        self.user = user
-        self.password = password
-        self.host = host
-        self.port = port
+        load_dotenv(dotenv_path="config/config.env")
+
+        self.database = os.getenv("database")
+        self.user = os.getenv("user")
+        self.password = os.getenv("password")
+        self.host = os.getenv("host")
+        self.port = os.getenv("port")
         self.connection = None
 
     def connect(self):
@@ -24,19 +28,15 @@ class PostgresDBConnector:
                     host=self.host,
                     port=self.port
                 )
-                # self.logger.info("Успешное подключение к базе данных")
             except psycopg2.Error as e:
-                # self.logger.error(f"Ошибка подключения к базе данных: {e}")
                 raise ConnectionDBException()
             except Exception as e:
-                # self.logger.critical(f"Неизвестная ошибка: {e}")
                 raise e
 
     def close(self):
         if self.connection:
             self.connection.close()
             self.connection = None
-            # self.logger.info("Соединение с базой данных закрыто")
 
     def execute_query(self, query: str, params: Optional[List[Any]] = None, fetch: bool = False):
         if not self.connection:
