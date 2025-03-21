@@ -2,6 +2,8 @@ import dto.event as eventDTO
 import model.event as eventModel
 import repository.interface.EventI as eventRepository
 import repository.connector.PGConnector as Connector
+from exception.Exception import *
+from datetime import date, time, datetime
 
 
 class EventRepository(eventRepository.EventRepositoryI):
@@ -11,6 +13,12 @@ class EventRepository(eventRepository.EventRepositoryI):
             self.connector.connect()
 
     def add(self, add_event_request: eventDTO.AddEventRequest) -> int:
+        now = datetime.now()
+        event_datetime = datetime.combine(add_event_request.date, add_event_request.time)
+
+        if event_datetime < now:
+            raise AddEventTimeException()
+
         query_check_balance = "SELECT Event_count FROM tg_event.User WHERE TgID = %s AND Event_count > 0;"
         query_insert_event = """
                 INSERT INTO tg_event.Event (UserID, Date, Time, Name, Description)
@@ -23,21 +31,16 @@ class EventRepository(eventRepository.EventRepositoryI):
         try:
             with self.connector.connection as conn:
                 with conn.cursor() as cursor:
-                    # Проверка доступных событий
                     cursor.execute(query_check_balance, (add_event_request.user_id,))
                     user_event_count = cursor.fetchone()
                     if not user_event_count:
-                        raise ValueError("Нет доступных событий для добавления.")
+                        raise AddEventException()
 
-                    user_event_count = user_event_count[0]
-
-                    # Если есть доступные события, обновляем баланс
                     cursor.execute(query_update_balance, (add_event_request.user_id,))
                     updated_event_count = cursor.fetchone()
                     if updated_event_count[0] <= 0:
-                        raise ValueError("Не удалось обновить баланс событий.")
+                        raise UpdateBalanceEventException()
 
-                    # Вставляем событие
                     cursor.execute(query_insert_event, (
                         add_event_request.user_id,
                         add_event_request.date,
@@ -46,17 +49,40 @@ class EventRepository(eventRepository.EventRepositoryI):
                         add_event_request.description
                     ))
 
-                    event_id = cursor.fetchone()[0]  # Получаем вставленный EventID
-                    conn.commit()  # Завершаем транзакцию
+                    event_id = cursor.fetchone()[0]
+                    conn.commit()
 
                     return event_id
 
         except Exception as e:
-            # Откатываем транзакцию в случае ошибки
             conn.rollback()
             raise e
 
     def change(self, change_event_request: eventDTO.ChangeEventRequest):
+        select_query = """
+                SELECT Date, Time FROM tg_event.Event
+                WHERE EventID = %s AND UserID = %s
+            """
+        current_event_data = self.connector.execute_query(select_query,
+                                                          [change_event_request.event_id, change_event_request.user_id],
+                                                          fetch=True)
+        print([change_event_request.event_id, change_event_request.user_id])
+        if not current_event_data:
+            raise NoEventException()
+
+        current_date, current_time = current_event_data[0]  # Получаем текущую дату и время события
+
+        if change_event_request.date or change_event_request.time:
+            change_date = change_event_request.date if change_event_request.date else current_date
+            change_time = change_event_request.time if change_event_request.time else current_time
+            current_datetime = f"{change_date} {change_time}"
+
+            event_datetime_obj = datetime.strptime(current_datetime, "%Y-%m-%d %H:%M:%S")
+            current_datetime_obj = datetime.now()
+
+            if event_datetime_obj <= current_datetime_obj:
+                raise NotCorrectFixTimeEventException()
+
         fields = []
         params = []
 
@@ -82,8 +108,24 @@ class EventRepository(eventRepository.EventRepositoryI):
                     WHERE EventID = %s AND UserID = %s
                 """
         params.extend([change_event_request.event_id, change_event_request.user_id])
+        result = self.connector.execute_query(query, params)
 
-        return self.connector.execute_query(query, params)
+        if change_event_request.date or change_event_request.time:
+            # Запрос на удаление уведомлений с датой позже, чем обновленное событие
+            delete_query = """
+                    DELETE FROM tg_event.Notice
+                    WHERE EventID = %s AND (
+                        (Date > %s) OR 
+                        (Date = %s AND Time > %s)
+                    )
+                """
+            # Добавляем параметры для даты и времени события
+            self.connector.execute_query(delete_query,
+                                         [change_event_request.event_id, change_event_request.date,
+                                          change_event_request.date,
+                                          change_event_request.time])
+
+        return result
 
     def delete(self, user_id: str, event_id: int):
         """Удаляет одно событие и увеличивает Event_count на 1."""

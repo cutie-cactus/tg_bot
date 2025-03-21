@@ -1,5 +1,0 @@
-host = 'localhost'
-port = '5432'
-database = 'tg_event'
-user = 'postgres'
-password = 'herogem2003'

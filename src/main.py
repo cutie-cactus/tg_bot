@@ -1,10 +1,13 @@
 from handlers import *
-
-TOKEN = "8115091162:AAFjgA3BJDCyzrsgKFc0RPRj8M4vfdwp1QY"
+from dotenv import load_dotenv
+import os
 
 
 def main():
-    app = Application.builder().token(TOKEN).build()
+    load_dotenv(dotenv_path="config/config.env")
+    token = os.getenv("TELEGRAM_BOT_TOKEN")
+
+    app = Application.builder().token(token).build()
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.Regex("^Старт$"), show_main_menu))

@@ -7,11 +7,14 @@ class UserServiceI(ABC):
         pass
 
     @abstractmethod
-    def change_time_zone(self, tg_id: str, chat_id: str, time_zone: int):
+    def change_time_zone(self, tg_id: str, time_zone: int):
         pass
 
     @abstractmethod
     def get_event_count(self, tg_id: str, chat_id: str) -> int:
         pass
 
+    @abstractmethod
+    def get_time_zone(self, tg_id: str) -> int:
+        pass
 

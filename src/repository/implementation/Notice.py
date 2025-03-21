@@ -3,6 +3,7 @@ import model.notice as noticeModel
 import repository.interface.NoticeI as noticeRepository
 import repository.connector.PGConnector as Connector
 from datetime import datetime, timedelta
+from exception.Exception import *
 
 
 class NoticeRepository(noticeRepository.NoticeRepositoryI):
@@ -35,21 +36,20 @@ class NoticeRepository(noticeRepository.NoticeRepositoryI):
                     cursor.execute(query_check_notice_balance, (add_notice_request.event_id,))
                     event_data = cursor.fetchone()
                     if not event_data:
-                        raise ValueError("Нет доступных уведомлений для добавления.")
+                        raise AddNoticeException()
 
                     event_notice_count, event_date, event_time = event_data
                     event_datetime = datetime.strptime(f"{event_date} {event_time}", "%Y-%m-%d %H:%M:%S")
                     notice_datetime = datetime.strptime(f"{add_notice_request.date} {add_notice_request.time}",
                                                         "%Y-%m-%d %H:%M:%S")
 
-                    minutes = 10
-                    if notice_datetime + timedelta(minutes=minutes) >= event_datetime:
-                        raise ValueError("Время уведомления должно быть минимум на 10 минут позже события.")
+                    if notice_datetime > event_datetime:
+                        raise AddNoticeTimeException()
 
                     cursor.execute(query_update_notice_balance, (add_notice_request.event_id,))
                     updated_notice_count = cursor.fetchone()
                     if updated_notice_count[0] <= 0:
-                        raise ValueError("Не удалось обновить баланс уведомлений.")
+                        raise UpdateBalanceNoticeException()
 
                     cursor.execute(query_insert_notice, (
                         add_notice_request.event_id,
@@ -105,5 +105,5 @@ class NoticeRepository(noticeRepository.NoticeRepositoryI):
                     cursor.execute(query, (notice_id,))
                     result = cursor.fetchone()
                     return result is not None
-        except Exception as e:
+        except Exception:
             return False
