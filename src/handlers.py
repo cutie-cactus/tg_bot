@@ -30,8 +30,10 @@ user_service = userService.UserService(connector, user_repository)
 
 MAIN_KEYBOARD = ReplyKeyboardMarkup([["Get", "Add"], ["Info", "Choose", "Delete"]], resize_keyboard=True)
 BACK_KEYBOARD = ReplyKeyboardMarkup([["Back"]], resize_keyboard=True, one_time_keyboard=True)
-CHOOSE_KEYBOARD = ReplyKeyboardMarkup([["Get"], ["Info", "Delete event"], ["Add", "Delete notice"], ["Back"]],
+CHOOSE_KEYBOARD = ReplyKeyboardMarkup([["Get", "Fix"], ["Info", "Delete event"], ["Add", "Delete notice"], ["Back"]],
                                       resize_keyboard=True)
+
+                                      
 CANCEL_KEYBOARD = ReplyKeyboardMarkup([["Cancel"]], resize_keyboard=True, one_time_keyboard=True)
 FIX_KEYBOARD = ReplyKeyboardMarkup([["Cancel", "Next"]], resize_keyboard=True, one_time_keyboard=True)
 
