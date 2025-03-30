@@ -1,0 +1,16 @@
+name: Run Python Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: self-hosted  # или ubuntu-latest для GitHub-hosted runner
+
+    steps:
+      - uses: actions/checkout@v4  # Клонирует репозиторий
+
+      - name: Install and test
+        run: |
+          cd src
+          pip install pytest
+          pytest test\test1.py
