@@ -13,11 +13,12 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check build
         run: |
+          cd src
           if python3 main.py --version; then
             echo "Build successful: main.py works!"
           else
             echo "Build failed!"
-            exit 1
+            exit 1s
           fi
 
   test:
