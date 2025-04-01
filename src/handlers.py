@@ -362,7 +362,7 @@ def prepare_list_notice(event_id: int, user_id: int):
                                          update.message.from_user.id)
 
 
-    await update.message.reply_text(notice_text, reply_markup=CHOOSE_KEYBOARD, parse_mode='Markdown')
+    # await update.message.reply_text(notice_text, reply_markup=CHOOSE_KEYBOARD, parse_mode='Markdown')
 
     notice_text = (f"```Событие\n"
                    f"Дата: {selected_event.date}\n"
