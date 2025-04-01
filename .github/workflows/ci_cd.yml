@@ -1,16 +1,62 @@
-name: Run Python Tests
+name: Python CI/CD Pipeline
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
 
 jobs:
-  test:
-    runs-on: self-hosted  # или ubuntu-latest для GitHub-hosted runner
-
+  build:
+    runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v4  # Клонирует репозиторий
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          if python main.py --version; then
+            echo "Build successful: main.py works!"
+          else
+            echo "Build failed!"
+            exit 1
+          fi
 
-      - name: Install and test
+  test:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tests
         run: |
           cd src
           pip install pytest
           pytest test\test1.py
+
+  deploy:
+    needs: [build, test]
+    runs-on: self-hosted
+    if: |
+      (github.event_name == 'workflow_dispatch') &&
+      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to VM1
+        env:
+          CI_GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
+        run: |
+          ssh andru@192.168.2.100 "
+          mkdir -p /home/andru/app
+          cd /home/andru/app
+
+          if [ ! -d .git ]; then
+            git clone https://$CI_GITHUB_TOKEN@github.com/cutie-cactus/tg_bot.git .
+          else
+            git pull origin main
+          fi
+
+          pkill -f 'python3 main.py' || true 
+          nohup python3 /home/andru/app/src/main.py > /dev/null 2>&1 &
+          "
