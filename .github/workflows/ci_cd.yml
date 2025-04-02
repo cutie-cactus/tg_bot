@@ -35,6 +35,7 @@ jobs:
     needs: [build, test]
     runs-on: self-hosted
     if: |
+      # (github.event_name == 'workflow_dispatch') &&
       (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/deploy')
     steps:
       - uses: actions/checkout@v4
@@ -42,16 +43,19 @@ jobs:
         env:
           CI_GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
         run: |
-          ssh andru@192.168.2.100 "
+          ssh -o StrictHostKeyChecking=no andru@192.168.2.100 << 'EOF'
+          set -e  # Выход при ошибке
           mkdir -p /home/andru/app
           cd /home/andru/app
-
+          
           if [ ! -d .git ]; then
             git clone https://$CI_GITHUB_TOKEN@github.com/cutie-cactus/tg_bot.git .
           else
             git pull origin main
           fi
-
-          pkill -f 'python3 main.py' || true 
-          nohup python3 /home/andru/app/src/main.py > /dev/null 2>&1 &
-          "
+          
+          # Более надёжный способ управления процессом
+          pgrep -f 'python3 main.py' && pkill -f 'python3 main.py'
+          nohup python3 /home/andru/app/src/main.py > /home/andru/app/bot.log 2>&1 &
+          sleep 3  # Даём процессу время запуститься
+          EOF
