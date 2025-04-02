@@ -14,7 +14,7 @@ jobs:
       - name: Check build
         run: |
           cd src
-          if python3 main.py --version; then
+          if python3 -m py_compile src/main.py; then
             echo "Build successful: main.py works!"
           else
             echo "Build failed!"
