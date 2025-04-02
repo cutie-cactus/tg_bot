@@ -29,7 +29,6 @@ jobs:
       - name: Run tests
         run: |
           cd src
-          pip install pytest
           pytest test\test1.py
 
   deploy:
