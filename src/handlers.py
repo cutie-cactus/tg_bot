@@ -19,6 +19,14 @@ from telegram.ext import Application, CommandHandler, MessageHandler, CallbackCo
 from datetime import datetime, timedelta
 import re
 
+from unittest.mock import MagicMock
+
+# Создаём mock-заглушку
+mock_connector = MagicMock()
+
+# Передаём вместо реального connector
+event_repository = eventStorage.EventRepository(mock_connector)
+
 connector = Connector.PostgresDBConnector()
 logger = Logger.Logger()
 
