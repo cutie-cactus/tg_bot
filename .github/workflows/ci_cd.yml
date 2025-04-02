@@ -35,15 +35,15 @@ jobs:
     needs: [build, test]
     runs-on: self-hosted
     if: |
-      (github.event_name == 'workflow_dispatch') &&
-      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/deploy')
     steps:
       - uses: actions/checkout@v4
       - name: Deploy to VM1
         env:
           CI_GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
         run: |
-          ssh andru@192.168.2.100 "
+          ssh -o StrictHostKeyChecking=no andru@192.168.2.100 << 'EOF'
+          set -e
           mkdir -p /home/andru/app
           cd /home/andru/app
 
@@ -52,7 +52,10 @@ jobs:
           else
             git pull origin main
           fi
+          
+          pgrep -f 'python3 main.py' && pkill -f 'python3 main.py'
+          nohup python3 /home/andru/app/src/main.py > /home/andru/app/bot.log 2>&1 &
+          sleep 3
+          EOF
 
-          pkill -f 'python3 main.py' || true 
-          nohup python3 /home/andru/app/src/main.py > /dev/null 2>&1 &
-          "
+      # (github.event_name == 'workflow_dispatch') &&
