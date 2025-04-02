@@ -29,9 +29,11 @@ class PostgresDBConnector:
                     port=self.port
                 )
             except psycopg2.Error as e:
-                raise ConnectionDBException()
+                # raise ConnectionDBException()
+                pass
             except Exception as e:
-                raise e
+                # raise e
+                pass
 
     def close(self):
         if self.connection:
@@ -51,4 +53,6 @@ class PostgresDBConnector:
         except psycopg2.Error as e:
             # self.logger.error(f"Ошибка выполнения запроса: {e}")
             self.connection.rollback()
-            raise NotCorrectRequestException()
+            # raise NotCorrectRequestException()
+            pass
+
