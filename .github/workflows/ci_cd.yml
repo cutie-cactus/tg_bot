@@ -29,7 +29,7 @@ jobs:
       - name: Run tests
         run: |
           cd src
-          pytest test\test1.py
+          pytest test/test1.py
 
   deploy:
     needs: [build, test]
