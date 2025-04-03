@@ -1,0 +1,91 @@
+\doxysection{Notice\+I.\+Notice\+ServiceI Class Reference}
+\hypertarget{class_notice_i_1_1_notice_service_i}{}\label{class_notice_i_1_1_notice_service_i}\index{NoticeI.NoticeServiceI@{NoticeI.NoticeServiceI}}
+Inheritance diagram for Notice\+I.\+Notice\+ServiceI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_notice_i_1_1_notice_service_i}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_notice_i_1_1_notice_service_i_add28ebff32f2dc7af53e498681b39ece}{add}} (self, notice\+DTO.\+Add\+Notice\+Request add\+\_\+notice\+\_\+request)
+\item 
+notice\+Model.\+Notice \mbox{\hyperlink{class_notice_i_1_1_notice_service_i_ab1e10603a70c3e85f3f77964c1d95cbe}{get}} (self, int notice\+\_\+id)
+\item 
+list\mbox{[}notice\+Model.\+Notice\mbox{]} \mbox{\hyperlink{class_notice_i_1_1_notice_service_i_a508f3fe3501500cd844313d7a0aff725}{get\+\_\+all}} (self, int event\+\_\+id)
+\item 
+\mbox{\hyperlink{class_notice_i_1_1_notice_service_i_ad574da0feceaf55e2108611a39b61a10}{delete}} (self, int notice\+\_\+id, int event\+\_\+id)
+\item 
+bool \mbox{\hyperlink{class_notice_i_1_1_notice_service_i_aed5c121dfa54eaae88775df2c72b2a5a}{check\+\_\+exist}} (self, int notice\+\_\+id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}@interface
+@brief Абстрактный интерфейс сервиса для работы с уведомлениями
+@details Определяет базовые методы для управления уведомлениями (создание, получение, удаление, проверка существования)
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_notice_i_1_1_notice_service_i_add28ebff32f2dc7af53e498681b39ece}\index{NoticeI.NoticeServiceI@{NoticeI.NoticeServiceI}!add@{add}}
+\index{add@{add}!NoticeI.NoticeServiceI@{NoticeI.NoticeServiceI}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{class_notice_i_1_1_notice_service_i_add28ebff32f2dc7af53e498681b39ece} 
+ int Notice\+I.\+Notice\+Service\+I.\+add (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{notice\+DTO.\+Add\+Notice\+Request}]{add\+\_\+notice\+\_\+request}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Создать новое уведомление
+@param add_notice_request[in] - DTO объект с данными для создания уведомления
+@return ID созданного уведомления
+@throws InvalidEventException если привязанное событие не существует
+\end{DoxyVerb}
+ \Hypertarget{class_notice_i_1_1_notice_service_i_aed5c121dfa54eaae88775df2c72b2a5a}\index{NoticeI.NoticeServiceI@{NoticeI.NoticeServiceI}!check\_exist@{check\_exist}}
+\index{check\_exist@{check\_exist}!NoticeI.NoticeServiceI@{NoticeI.NoticeServiceI}}
+\doxysubsubsection{\texorpdfstring{check\_exist()}{check\_exist()}}
+{\footnotesize\ttfamily \label{class_notice_i_1_1_notice_service_i_aed5c121dfa54eaae88775df2c72b2a5a} 
+ bool Notice\+I.\+Notice\+Service\+I.\+check\+\_\+exist (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{notice\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Проверить существование уведомления
+@param notice_id[in] - ID проверяемого уведомления
+@return True если существует, False в противном случае
+\end{DoxyVerb}
+ \Hypertarget{class_notice_i_1_1_notice_service_i_ad574da0feceaf55e2108611a39b61a10}\index{NoticeI.NoticeServiceI@{NoticeI.NoticeServiceI}!delete@{delete}}
+\index{delete@{delete}!NoticeI.NoticeServiceI@{NoticeI.NoticeServiceI}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily \label{class_notice_i_1_1_notice_service_i_ad574da0feceaf55e2108611a39b61a10} 
+Notice\+I.\+Notice\+Service\+I.\+delete (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{notice\+\_\+id}{, }\item[{int}]{event\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Удалить уведомление
+@param notice_id[in] - ID удаляемого уведомления
+@param event_id[in] - ID связанного события
+@throws NoticeNotFoundException если уведомление не найдено
+@throws PermissionDeniedException если уведомление не принадлежит событию
+\end{DoxyVerb}
+ \Hypertarget{class_notice_i_1_1_notice_service_i_ab1e10603a70c3e85f3f77964c1d95cbe}\index{NoticeI.NoticeServiceI@{NoticeI.NoticeServiceI}!get@{get}}
+\index{get@{get}!NoticeI.NoticeServiceI@{NoticeI.NoticeServiceI}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \label{class_notice_i_1_1_notice_service_i_ab1e10603a70c3e85f3f77964c1d95cbe} 
+ notice\+Model.\+Notice Notice\+I.\+Notice\+Service\+I.\+get (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{notice\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получить уведомление по ID
+@param notice_id[in] - ID запрашиваемого уведомления
+@return Объект Notice
+@throws NoticeNotFoundException если уведомление не найдено
+\end{DoxyVerb}
+ \Hypertarget{class_notice_i_1_1_notice_service_i_a508f3fe3501500cd844313d7a0aff725}\index{NoticeI.NoticeServiceI@{NoticeI.NoticeServiceI}!get\_all@{get\_all}}
+\index{get\_all@{get\_all}!NoticeI.NoticeServiceI@{NoticeI.NoticeServiceI}}
+\doxysubsubsection{\texorpdfstring{get\_all()}{get\_all()}}
+{\footnotesize\ttfamily \label{class_notice_i_1_1_notice_service_i_a508f3fe3501500cd844313d7a0aff725} 
+ list\mbox{[}notice\+Model.\+Notice\mbox{]} Notice\+I.\+Notice\+Service\+I.\+get\+\_\+all (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{event\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получить все уведомления события
+@param event_id[in] - ID целевого события
+@return Список объектов Notice или пустой список
+@throws EventNotFoundException если событие не существует
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/service/interface/\mbox{\hyperlink{service_2interface_2_notice_i_8py}{Notice\+I.\+py}}\end{DoxyCompactItemize}

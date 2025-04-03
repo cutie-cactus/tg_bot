@@ -1,0 +1,146 @@
+\doxysection{Stage\+I.\+Stage\+ServiceI Class Reference}
+\hypertarget{class_stage_i_1_1_stage_service_i}{}\label{class_stage_i_1_1_stage_service_i}\index{StageI.StageServiceI@{StageI.StageServiceI}}
+Inheritance diagram for Stage\+I.\+Stage\+ServiceI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_stage_i_1_1_stage_service_i}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_stage_i_1_1_stage_service_i_a01ef171613b0da4796ef08d4c56da742}{add}} (self, str user\+\_\+id)
+\item 
+\mbox{\hyperlink{class_stage_i_1_1_stage_service_i_a7ec42339ef972268aab0a2f9441bde4c}{change\+\_\+window}} (self, str user\+\_\+id, Window\+Type window)
+\item 
+\mbox{\hyperlink{class_stage_i_1_1_stage_service_i_ad9485e75e0b76df94c2deeea2285df15}{change\+\_\+stage}} (self, str user\+\_\+id, Stage\+Type stage)
+\item 
+\mbox{\hyperlink{class_stage_i_1_1_stage_service_i_afb9ce244b37a9905b3a8328c4cebb21a}{change\+\_\+event}} (self, str user\+\_\+id, int event\+\_\+id)
+\item 
+\mbox{\hyperlink{class_stage_i_1_1_stage_service_i_a7583e45af155a97f2e9a8b295eb6b279}{change\+\_\+notice}} (self, str user\+\_\+id, int notice\+\_\+id)
+\item 
+Stage\+Type \mbox{\hyperlink{class_stage_i_1_1_stage_service_i_acc573b624e9486490c498b7936ba0205}{get\+\_\+stage}} (self, str user\+\_\+id)
+\item 
+Window\+Type \mbox{\hyperlink{class_stage_i_1_1_stage_service_i_ab0640eaea7a7cd9cacca15cd940743f6}{get\+\_\+window}} (self, str user\+\_\+id)
+\item 
+int \mbox{\hyperlink{class_stage_i_1_1_stage_service_i_a800155ea1a9328cd8d3fc09699a0c957}{get\+\_\+event}} (self, str user\+\_\+id)
+\item 
+int \mbox{\hyperlink{class_stage_i_1_1_stage_service_i_a36161accaf3c5f67813d670db8fd62dc}{get\+\_\+notice}} (self, str user\+\_\+id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}@interface
+@brief Абстрактный интерфейс сервиса для управления состоянием пользователя
+@details Обеспечивает методы для работы с этапами взаимодействия, окнами и привязкой к событиям/уведомлениям
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_stage_i_1_1_stage_service_i_a01ef171613b0da4796ef08d4c56da742}\index{StageI.StageServiceI@{StageI.StageServiceI}!add@{add}}
+\index{add@{add}!StageI.StageServiceI@{StageI.StageServiceI}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_service_i_a01ef171613b0da4796ef08d4c56da742} 
+Stage\+I.\+Stage\+Service\+I.\+add (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Создать новую запись состояния для пользователя
+@param user_id[in] - Идентификатор пользователя
+@throws UserNotFoundException если пользователь не существует
+\end{DoxyVerb}
+ \Hypertarget{class_stage_i_1_1_stage_service_i_afb9ce244b37a9905b3a8328c4cebb21a}\index{StageI.StageServiceI@{StageI.StageServiceI}!change\_event@{change\_event}}
+\index{change\_event@{change\_event}!StageI.StageServiceI@{StageI.StageServiceI}}
+\doxysubsubsection{\texorpdfstring{change\_event()}{change\_event()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_service_i_afb9ce244b37a9905b3a8328c4cebb21a} 
+Stage\+I.\+Stage\+Service\+I.\+change\+\_\+event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{int}]{event\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Обновить привязанное событие
+@param user_id[in] - Идентификатор пользователя
+@param event_id[in] - ID связанного события
+@throws EventNotFoundException если событие не существует
+@throws PermissionDeniedException если нет прав на привязку
+\end{DoxyVerb}
+ \Hypertarget{class_stage_i_1_1_stage_service_i_a7583e45af155a97f2e9a8b295eb6b279}\index{StageI.StageServiceI@{StageI.StageServiceI}!change\_notice@{change\_notice}}
+\index{change\_notice@{change\_notice}!StageI.StageServiceI@{StageI.StageServiceI}}
+\doxysubsubsection{\texorpdfstring{change\_notice()}{change\_notice()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_service_i_a7583e45af155a97f2e9a8b295eb6b279} 
+Stage\+I.\+Stage\+Service\+I.\+change\+\_\+notice (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{int}]{notice\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Обновить привязанное уведомление
+@param user_id[in] - Идентификатор пользователя
+@param notice_id[in] - ID связанного уведомления
+@throws NoticeNotFoundException если уведомление не существует
+@throws PermissionDeniedException если нет прав на привязку
+\end{DoxyVerb}
+ \Hypertarget{class_stage_i_1_1_stage_service_i_ad9485e75e0b76df94c2deeea2285df15}\index{StageI.StageServiceI@{StageI.StageServiceI}!change\_stage@{change\_stage}}
+\index{change\_stage@{change\_stage}!StageI.StageServiceI@{StageI.StageServiceI}}
+\doxysubsubsection{\texorpdfstring{change\_stage()}{change\_stage()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_service_i_ad9485e75e0b76df94c2deeea2285df15} 
+Stage\+I.\+Stage\+Service\+I.\+change\+\_\+stage (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{Stage\+Type}]{stage}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Изменить этап взаимодействия
+@param user_id[in] - Идентификатор пользователя
+@param stage[in] - Новый этап взаимодействия
+@throws UserNotFoundException если пользователь не найден
+@throws InvalidTypeException если передан некорректный тип этапа
+\end{DoxyVerb}
+ \Hypertarget{class_stage_i_1_1_stage_service_i_a7ec42339ef972268aab0a2f9441bde4c}\index{StageI.StageServiceI@{StageI.StageServiceI}!change\_window@{change\_window}}
+\index{change\_window@{change\_window}!StageI.StageServiceI@{StageI.StageServiceI}}
+\doxysubsubsection{\texorpdfstring{change\_window()}{change\_window()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_service_i_a7ec42339ef972268aab0a2f9441bde4c} 
+Stage\+I.\+Stage\+Service\+I.\+change\+\_\+window (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{Window\+Type}]{window}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Изменить тип активного окна
+@param user_id[in] - Идентификатор пользователя
+@param window[in] - Новый тип окна
+@throws UserNotFoundException если пользователь не найден
+@throws InvalidTypeException если передан некорректный тип окна
+\end{DoxyVerb}
+ \Hypertarget{class_stage_i_1_1_stage_service_i_a800155ea1a9328cd8d3fc09699a0c957}\index{StageI.StageServiceI@{StageI.StageServiceI}!get\_event@{get\_event}}
+\index{get\_event@{get\_event}!StageI.StageServiceI@{StageI.StageServiceI}}
+\doxysubsubsection{\texorpdfstring{get\_event()}{get\_event()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_service_i_a800155ea1a9328cd8d3fc09699a0c957} 
+ int Stage\+I.\+Stage\+Service\+I.\+get\+\_\+event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получить ID привязанного события
+@param user_id[in] - Идентификатор пользователя
+@return ID события или 0 если нет привязки
+@throws UserNotFoundException если пользователь не найден
+\end{DoxyVerb}
+ \Hypertarget{class_stage_i_1_1_stage_service_i_a36161accaf3c5f67813d670db8fd62dc}\index{StageI.StageServiceI@{StageI.StageServiceI}!get\_notice@{get\_notice}}
+\index{get\_notice@{get\_notice}!StageI.StageServiceI@{StageI.StageServiceI}}
+\doxysubsubsection{\texorpdfstring{get\_notice()}{get\_notice()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_service_i_a36161accaf3c5f67813d670db8fd62dc} 
+ int Stage\+I.\+Stage\+Service\+I.\+get\+\_\+notice (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получить ID привязанного уведомления
+@param user_id[in] - Идентификатор пользователя
+@return ID уведомления или 0 если нет привязки
+@throws UserNotFoundException если пользователь не найден
+\end{DoxyVerb}
+ \Hypertarget{class_stage_i_1_1_stage_service_i_acc573b624e9486490c498b7936ba0205}\index{StageI.StageServiceI@{StageI.StageServiceI}!get\_stage@{get\_stage}}
+\index{get\_stage@{get\_stage}!StageI.StageServiceI@{StageI.StageServiceI}}
+\doxysubsubsection{\texorpdfstring{get\_stage()}{get\_stage()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_service_i_acc573b624e9486490c498b7936ba0205} 
+ Stage\+Type Stage\+I.\+Stage\+Service\+I.\+get\+\_\+stage (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получить текущий этап взаимодействия
+@param user_id[in] - Идентификатор пользователя
+@return Текущий StageType пользователя
+@throws UserNotFoundException если пользователь не найден
+\end{DoxyVerb}
+ \Hypertarget{class_stage_i_1_1_stage_service_i_ab0640eaea7a7cd9cacca15cd940743f6}\index{StageI.StageServiceI@{StageI.StageServiceI}!get\_window@{get\_window}}
+\index{get\_window@{get\_window}!StageI.StageServiceI@{StageI.StageServiceI}}
+\doxysubsubsection{\texorpdfstring{get\_window()}{get\_window()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_service_i_ab0640eaea7a7cd9cacca15cd940743f6} 
+ Window\+Type Stage\+I.\+Stage\+Service\+I.\+get\+\_\+window (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получить текущее активное окно
+@param user_id[in] - Идентификатор пользователя
+@return Текущий WindowType пользователя
+@throws UserNotFoundException если пользователь не найден
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/service/interface/\mbox{\hyperlink{service_2interface_2_stage_i_8py}{Stage\+I.\+py}}\end{DoxyCompactItemize}

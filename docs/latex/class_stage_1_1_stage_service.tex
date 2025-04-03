@@ -1,0 +1,236 @@
+\doxysection{Stage.\+Stage\+Service Class Reference}
+\hypertarget{class_stage_1_1_stage_service}{}\label{class_stage_1_1_stage_service}\index{Stage.StageService@{Stage.StageService}}
+Inheritance diagram for Stage.\+Stage\+Service\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_stage_1_1_stage_service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_stage_1_1_stage_service_ac4f9701bef872729e0c9d772d7afd0f6}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, Connector.\+Postgres\+DBConnector \mbox{\hyperlink{class_stage_1_1_stage_service_af7e7a6d8aae045e85429941a252ed5b3}{connector}}, stage\+Storage.\+Stage\+RepositoryI \mbox{\hyperlink{class_stage_1_1_stage_service_a92503ce7b4ab12fcab5d111871bffae9}{stage\+\_\+storage}}, \mbox{\hyperlink{class_logger_1_1_logger}{Logger.\+Logger}} \mbox{\hyperlink{class_stage_1_1_stage_service_a87ab60993c31ea4e9ee00a60cdd0de5e}{logger}})
+\item 
+\mbox{\hyperlink{class_stage_1_1_stage_service_a0fff6c635ddb01aedddc1344a50d2e27}{add}} (self, str user\+\_\+id)
+\item 
+\mbox{\hyperlink{class_stage_1_1_stage_service_a3d173d530265f47aa32558dee28f2055}{change\+\_\+window}} (self, str user\+\_\+id, Window\+Type window)
+\item 
+\mbox{\hyperlink{class_stage_1_1_stage_service_a71ea3dd8a2f7ed9c1ead71f6615a9922}{change\+\_\+stage}} (self, str user\+\_\+id, Stage\+Type stage)
+\item 
+\mbox{\hyperlink{class_stage_1_1_stage_service_a4b611eebb590433126ac4d724e97816b}{change\+\_\+event}} (self, str user\+\_\+id, int event\+\_\+id)
+\item 
+\mbox{\hyperlink{class_stage_1_1_stage_service_a2123257006ba41d88c7abe373663ed58}{change\+\_\+notice}} (self, str user\+\_\+id, int notice\+\_\+id)
+\item 
+Stage\+Type \mbox{\hyperlink{class_stage_1_1_stage_service_a269686abe7f35cc06f58b8aa44fc3426}{get\+\_\+stage}} (self, str user\+\_\+id)
+\item 
+Window\+Type \mbox{\hyperlink{class_stage_1_1_stage_service_a34152839a8f4cb544856427ccefed025}{get\+\_\+window}} (self, str user\+\_\+id)
+\item 
+int \mbox{\hyperlink{class_stage_1_1_stage_service_a938d52c12d68762567dcde89575481e1}{get\+\_\+event}} (self, str user\+\_\+id)
+\item 
+int \mbox{\hyperlink{class_stage_1_1_stage_service_ae3d04dfc2335ecafc4f2a56b9823c410}{get\+\_\+notice}} (self, str user\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{class_stage_1_1_stage_service_a40f6daad0bf835ce67e75ac0715e39d1}{hash\+\_\+id}} (str string)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_stage_1_1_stage_service_af7e7a6d8aae045e85429941a252ed5b3}{connector}} = connector
+\item 
+\mbox{\hyperlink{class_stage_1_1_stage_service_a92503ce7b4ab12fcab5d111871bffae9}{stage\+\_\+storage}} = stage\+\_\+storage
+\item 
+\mbox{\hyperlink{class_stage_1_1_stage_service_a87ab60993c31ea4e9ee00a60cdd0de5e}{logger}} = logger
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}@brief Сервис управления состоянием пользователя
+
+Обрабатывает текущий контекст взаимодействия пользователя с системой:
+- Тип активного окна интерфейса
+- Этап workflow
+- Привязанные сущности (события и напоминания)
+@ingroup StageService
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_stage_1_1_stage_service_ac4f9701bef872729e0c9d772d7afd0f6}\index{Stage.StageService@{Stage.StageService}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Stage.StageService@{Stage.StageService}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_service_ac4f9701bef872729e0c9d772d7afd0f6} 
+Stage.\+Stage\+Service.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{Connector.\+Postgres\+DBConnector}]{connector}{, }\item[{stage\+Storage.\+Stage\+RepositoryI}]{stage\+\_\+storage}{, }\item[{\mbox{\hyperlink{class_logger_1_1_logger}{Logger.\+Logger}}}]{logger}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Инициализация сервиса состояний
+
+@param connector: Коннектор к PostgreSQL базе данных
+@param stage_storage: Репозиторий для работы с хранилищем состояний
+@param logger: Логгер для записи операций
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_stage_1_1_stage_service_a0fff6c635ddb01aedddc1344a50d2e27}\index{Stage.StageService@{Stage.StageService}!add@{add}}
+\index{add@{add}!Stage.StageService@{Stage.StageService}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_service_a0fff6c635ddb01aedddc1344a50d2e27} 
+Stage.\+Stage\+Service.\+add (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Создание начального состояния пользователя
+
+Инициализирует состояние с параметрами:
+- WindowType.MAIN_KEYBOARD
+- StageType.NONE
+
+@param user_id: Идентификатор пользователя в Telegram
+@return Результат операции
+@throws ValueError При некорректном user_id
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_stage_1_1_stage_service_a4b611eebb590433126ac4d724e97816b}\index{Stage.StageService@{Stage.StageService}!change\_event@{change\_event}}
+\index{change\_event@{change\_event}!Stage.StageService@{Stage.StageService}}
+\doxysubsubsection{\texorpdfstring{change\_event()}{change\_event()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_service_a4b611eebb590433126ac4d724e97816b} 
+Stage.\+Stage\+Service.\+change\+\_\+event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{int}]{event\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Привязка текущего события
+
+@param user_id: Идентификатор пользователя в Telegram
+@param event_id: ID связываемого события
+@return Результат операции
+@throws ValueError При некорректных параметрах
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_stage_1_1_stage_service_a2123257006ba41d88c7abe373663ed58}\index{Stage.StageService@{Stage.StageService}!change\_notice@{change\_notice}}
+\index{change\_notice@{change\_notice}!Stage.StageService@{Stage.StageService}}
+\doxysubsubsection{\texorpdfstring{change\_notice()}{change\_notice()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_service_a2123257006ba41d88c7abe373663ed58} 
+Stage.\+Stage\+Service.\+change\+\_\+notice (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{int}]{notice\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Привязка текущего напоминания
+
+@param user_id: Идентификатор пользователя в Telegram
+@param notice_id: ID связываемого напоминания
+@return Результат операции
+@throws ValueError При некорректных параметрах
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_stage_1_1_stage_service_a71ea3dd8a2f7ed9c1ead71f6615a9922}\index{Stage.StageService@{Stage.StageService}!change\_stage@{change\_stage}}
+\index{change\_stage@{change\_stage}!Stage.StageService@{Stage.StageService}}
+\doxysubsubsection{\texorpdfstring{change\_stage()}{change\_stage()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_service_a71ea3dd8a2f7ed9c1ead71f6615a9922} 
+Stage.\+Stage\+Service.\+change\+\_\+stage (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{Stage\+Type}]{stage}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Изменение этапа workflow
+
+@param user_id: Идентификатор пользователя в Telegram
+@param stage: Новый этап из перечисления StageType
+@return Результат операции
+@throws ValueError При некорректных параметрах
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_stage_1_1_stage_service_a3d173d530265f47aa32558dee28f2055}\index{Stage.StageService@{Stage.StageService}!change\_window@{change\_window}}
+\index{change\_window@{change\_window}!Stage.StageService@{Stage.StageService}}
+\doxysubsubsection{\texorpdfstring{change\_window()}{change\_window()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_service_a3d173d530265f47aa32558dee28f2055} 
+Stage.\+Stage\+Service.\+change\+\_\+window (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{Window\+Type}]{window}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Изменение типа активного окна
+
+@param user_id: Идентификатор пользователя в Telegram
+@param window: Новый тип окна из перечисления WindowType
+@return Результат операции
+@throws ValueError При некорректных параметрах
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_stage_1_1_stage_service_a938d52c12d68762567dcde89575481e1}\index{Stage.StageService@{Stage.StageService}!get\_event@{get\_event}}
+\index{get\_event@{get\_event}!Stage.StageService@{Stage.StageService}}
+\doxysubsubsection{\texorpdfstring{get\_event()}{get\_event()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_service_a938d52c12d68762567dcde89575481e1} 
+ int Stage.\+Stage\+Service.\+get\+\_\+event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получение привязанного события
+
+@param user_id: Идентификатор пользователя в Telegram
+@return ID привязанного события или -1 если отсутствует
+@throws ValueError При некорректном user_id
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_stage_1_1_stage_service_ae3d04dfc2335ecafc4f2a56b9823c410}\index{Stage.StageService@{Stage.StageService}!get\_notice@{get\_notice}}
+\index{get\_notice@{get\_notice}!Stage.StageService@{Stage.StageService}}
+\doxysubsubsection{\texorpdfstring{get\_notice()}{get\_notice()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_service_ae3d04dfc2335ecafc4f2a56b9823c410} 
+ int Stage.\+Stage\+Service.\+get\+\_\+notice (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получение привязанного напоминания
+
+@param user_id: Идентификатор пользователя в Telegram
+@return ID привязанного напоминания или -1 если отсутствует
+@throws ValueError При некорректном user_id
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_stage_1_1_stage_service_a269686abe7f35cc06f58b8aa44fc3426}\index{Stage.StageService@{Stage.StageService}!get\_stage@{get\_stage}}
+\index{get\_stage@{get\_stage}!Stage.StageService@{Stage.StageService}}
+\doxysubsubsection{\texorpdfstring{get\_stage()}{get\_stage()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_service_a269686abe7f35cc06f58b8aa44fc3426} 
+ Stage\+Type Stage.\+Stage\+Service.\+get\+\_\+stage (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получение текущего этапа workflow
+
+@param user_id: Идентификатор пользователя в Telegram
+@return Текущий этап из перечисления StageType
+@throws ValueError При некорректном user_id
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_stage_1_1_stage_service_a34152839a8f4cb544856427ccefed025}\index{Stage.StageService@{Stage.StageService}!get\_window@{get\_window}}
+\index{get\_window@{get\_window}!Stage.StageService@{Stage.StageService}}
+\doxysubsubsection{\texorpdfstring{get\_window()}{get\_window()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_service_a34152839a8f4cb544856427ccefed025} 
+ Window\+Type Stage.\+Stage\+Service.\+get\+\_\+window (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получение текущего окна интерфейса
+
+@param user_id: Идентификатор пользователя в Telegram
+@return Текущий тип окна из перечисления WindowType
+@throws ValueError При некорректном user_id
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_stage_1_1_stage_service_a40f6daad0bf835ce67e75ac0715e39d1}\index{Stage.StageService@{Stage.StageService}!hash\_id@{hash\_id}}
+\index{hash\_id@{hash\_id}!Stage.StageService@{Stage.StageService}}
+\doxysubsubsection{\texorpdfstring{hash\_id()}{hash\_id()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_service_a40f6daad0bf835ce67e75ac0715e39d1} 
+ str Stage.\+Stage\+Service.\+hash\+\_\+id (\begin{DoxyParamCaption}\item[{str}]{string}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}@brief Генерация анонимизированного идентификатора
+
+@param string: Оригинальный user_id из Telegram
+@return SHA-256 хеш в виде hex-строки
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_stage_1_1_stage_service_af7e7a6d8aae045e85429941a252ed5b3}\index{Stage.StageService@{Stage.StageService}!connector@{connector}}
+\index{connector@{connector}!Stage.StageService@{Stage.StageService}}
+\doxysubsubsection{\texorpdfstring{connector}{connector}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_service_af7e7a6d8aae045e85429941a252ed5b3} 
+Stage.\+Stage\+Service.\+connector = connector}
+
+\Hypertarget{class_stage_1_1_stage_service_a87ab60993c31ea4e9ee00a60cdd0de5e}\index{Stage.StageService@{Stage.StageService}!logger@{logger}}
+\index{logger@{logger}!Stage.StageService@{Stage.StageService}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_service_a87ab60993c31ea4e9ee00a60cdd0de5e} 
+Stage.\+Stage\+Service.\+logger = logger}
+
+\Hypertarget{class_stage_1_1_stage_service_a92503ce7b4ab12fcab5d111871bffae9}\index{Stage.StageService@{Stage.StageService}!stage\_storage@{stage\_storage}}
+\index{stage\_storage@{stage\_storage}!Stage.StageService@{Stage.StageService}}
+\doxysubsubsection{\texorpdfstring{stage\_storage}{stage\_storage}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_service_a92503ce7b4ab12fcab5d111871bffae9} 
+Stage.\+Stage\+Service.\+stage\+\_\+storage = stage\+\_\+storage}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/service/implementation/\mbox{\hyperlink{service_2implementation_2stage_8py}{Stage.\+py}}\end{DoxyCompactItemize}

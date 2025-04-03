@@ -1,0 +1,144 @@
+\doxysection{Event\+I.\+Event\+RepositoryI Class Reference}
+\hypertarget{class_event_i_1_1_event_repository_i}{}\label{class_event_i_1_1_event_repository_i}\index{EventI.EventRepositoryI@{EventI.EventRepositoryI}}
+
+
+Абстрактный интерфейс репозитория событий  
+
+
+Inheritance diagram for Event\+I.\+Event\+RepositoryI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_event_i_1_1_event_repository_i}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_event_i_1_1_event_repository_i_a592e2dfa13c3319d230cacbd2a7512f6}{add}} (self, event\+DTO.\+Add\+Event\+Request add\+\_\+event\+\_\+request)
+\begin{DoxyCompactList}\small\item\em Абстрактный метод добавления нового события \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_event_i_1_1_event_repository_i_a0d169445b6847a30b6fa7b5db202ac6e}{change}} (self, event\+DTO.\+Change\+Event\+Request change\+\_\+event\+\_\+request)
+\begin{DoxyCompactList}\small\item\em Абстрактный метод изменения существующего события \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_event_i_1_1_event_repository_i_ae8041427fcbaf5f8563b26b25db9d9ec}{delete}} (self, str user\+\_\+id, int event\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Абстрактный метод удаления события \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_event_i_1_1_event_repository_i_a12a2c12aaad12106517549acf6f417c5}{delete\+\_\+all}} (self, str user\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Абстрактный метод удаления всех событий пользователя \end{DoxyCompactList}\item 
+list\mbox{[}event\+Model.\+Event\mbox{]} \mbox{\hyperlink{class_event_i_1_1_event_repository_i_ac720947218a63f364d136242baf9cd64}{get\+\_\+all}} (self, str user\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Абстрактный метод получения всех событий пользователя \end{DoxyCompactList}\item 
+event\+Model.\+Event \mbox{\hyperlink{class_event_i_1_1_event_repository_i_ae459390432f6b0a9ce8777d9db99eded}{get}} (self, int event\+\_\+id, str user\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Абстрактный метод получения конкретного события \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Абстрактный интерфейс репозитория событий 
+
+Определяет контракт для всех реализаций репозиториев событий. Обеспечивает единый интерфейс для работы с событиями независимо от реализации хранилища. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_event_i_1_1_event_repository_i_a592e2dfa13c3319d230cacbd2a7512f6}\index{EventI.EventRepositoryI@{EventI.EventRepositoryI}!add@{add}}
+\index{add@{add}!EventI.EventRepositoryI@{EventI.EventRepositoryI}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{class_event_i_1_1_event_repository_i_a592e2dfa13c3319d230cacbd2a7512f6} 
+ int Event\+I.\+Event\+Repository\+I.\+add (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{event\+DTO.\+Add\+Event\+Request}]{add\+\_\+event\+\_\+request}{}\end{DoxyParamCaption})}
+
+
+
+Абстрактный метод добавления нового события 
+
+
+\begin{DoxyParams}{Parameters}
+{\em add\+\_\+event\+\_\+request} & DTO с данными для создания события @type add\+\_\+event\+\_\+request\+: event\+DTO.\+Add\+Event\+Request\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ID созданного события @rtype\+: int 
+\end{DoxyReturn}
+\Hypertarget{class_event_i_1_1_event_repository_i_a0d169445b6847a30b6fa7b5db202ac6e}\index{EventI.EventRepositoryI@{EventI.EventRepositoryI}!change@{change}}
+\index{change@{change}!EventI.EventRepositoryI@{EventI.EventRepositoryI}}
+\doxysubsubsection{\texorpdfstring{change()}{change()}}
+{\footnotesize\ttfamily \label{class_event_i_1_1_event_repository_i_a0d169445b6847a30b6fa7b5db202ac6e} 
+Event\+I.\+Event\+Repository\+I.\+change (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{event\+DTO.\+Change\+Event\+Request}]{change\+\_\+event\+\_\+request}{}\end{DoxyParamCaption})}
+
+
+
+Абстрактный метод изменения существующего события 
+
+
+\begin{DoxyParams}{Parameters}
+{\em change\+\_\+event\+\_\+request} & DTO с данными для изменения события @type change\+\_\+event\+\_\+request\+: event\+DTO.\+Change\+Event\+Request \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_event_i_1_1_event_repository_i_ae8041427fcbaf5f8563b26b25db9d9ec}\index{EventI.EventRepositoryI@{EventI.EventRepositoryI}!delete@{delete}}
+\index{delete@{delete}!EventI.EventRepositoryI@{EventI.EventRepositoryI}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily \label{class_event_i_1_1_event_repository_i_ae8041427fcbaf5f8563b26b25db9d9ec} 
+Event\+I.\+Event\+Repository\+I.\+delete (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{int}]{event\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Абстрактный метод удаления события 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+\_\+id} & Идентификатор пользователя @type user\+\_\+id\+: str \\
+\hline
+{\em event\+\_\+id} & Идентификатор события @type event\+\_\+id\+: int \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_event_i_1_1_event_repository_i_a12a2c12aaad12106517549acf6f417c5}\index{EventI.EventRepositoryI@{EventI.EventRepositoryI}!delete\_all@{delete\_all}}
+\index{delete\_all@{delete\_all}!EventI.EventRepositoryI@{EventI.EventRepositoryI}}
+\doxysubsubsection{\texorpdfstring{delete\_all()}{delete\_all()}}
+{\footnotesize\ttfamily \label{class_event_i_1_1_event_repository_i_a12a2c12aaad12106517549acf6f417c5} 
+Event\+I.\+Event\+Repository\+I.\+delete\+\_\+all (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Абстрактный метод удаления всех событий пользователя 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+\_\+id} & Идентификатор пользователя @type user\+\_\+id\+: str \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_event_i_1_1_event_repository_i_ae459390432f6b0a9ce8777d9db99eded}\index{EventI.EventRepositoryI@{EventI.EventRepositoryI}!get@{get}}
+\index{get@{get}!EventI.EventRepositoryI@{EventI.EventRepositoryI}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \label{class_event_i_1_1_event_repository_i_ae459390432f6b0a9ce8777d9db99eded} 
+ event\+Model.\+Event Event\+I.\+Event\+Repository\+I.\+get (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{event\+\_\+id}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Абстрактный метод получения конкретного события 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event\+\_\+id} & Идентификатор события @type event\+\_\+id\+: int \\
+\hline
+{\em user\+\_\+id} & Идентификатор пользователя @type user\+\_\+id\+: str\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Найденное событие или None @rtype\+: event\+Model.\+Event \texorpdfstring{$\vert$}{|} None 
+\end{DoxyReturn}
+\Hypertarget{class_event_i_1_1_event_repository_i_ac720947218a63f364d136242baf9cd64}\index{EventI.EventRepositoryI@{EventI.EventRepositoryI}!get\_all@{get\_all}}
+\index{get\_all@{get\_all}!EventI.EventRepositoryI@{EventI.EventRepositoryI}}
+\doxysubsubsection{\texorpdfstring{get\_all()}{get\_all()}}
+{\footnotesize\ttfamily \label{class_event_i_1_1_event_repository_i_ac720947218a63f364d136242baf9cd64} 
+ list\mbox{[}event\+Model.\+Event\mbox{]} Event\+I.\+Event\+Repository\+I.\+get\+\_\+all (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Абстрактный метод получения всех событий пользователя 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+\_\+id} & Идентификатор пользователя @type user\+\_\+id\+: str\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Список событий пользователя @rtype\+: list\mbox{[}event\+Model.\+Event\mbox{]} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/repository/interface/\mbox{\hyperlink{repository_2interface_2_event_i_8py}{Event\+I.\+py}}\end{DoxyCompactItemize}

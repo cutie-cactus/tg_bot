@@ -1,3 +1,8 @@
+"""!
+@file EventRepository.py
+@brief Реализация репозитория для работы с событиями
+"""
+
 import dto.event as eventDTO
 import model.event as eventModel
 import repository.interface.EventI as eventRepository
@@ -7,12 +12,38 @@ from datetime import date, time, datetime
 
 
 class EventRepository(eventRepository.EventRepositoryI):
+    """!
+    @brief Репозиторий для работы с событиями в PostgreSQL
+
+    @details Реализует CRUD-операции для событий с проверкой бизнес-логики
+    @var connector: Подключение к базе данных
+    @type connector: Connector.PostgresDBConnector
+    """
     def __init__(self, connector: Connector.PostgresDBConnector):
+        """!
+        @brief Инициализирует репозиторий
+
+        @param connector: Коннектор к PostgreSQL
+        @type connector: Connector.PostgresDBConnector
+        """
         self.connector = connector
         if not self.connector.connection:
             self.connector.connect()
 
     def add(self, add_event_request: eventDTO.AddEventRequest) -> int:
+        """!
+        @brief Добавляет новое событие
+
+        @param add_event_request: DTO с данными для создания события
+        @type add_event_request: eventDTO.AddEventRequest
+
+        @return ID созданного события
+        @rtype: int
+
+        @throws AddEventTimeException Если время события в прошлом
+        @throws AddEventException Если нет доступных слотов для событий
+        @throws UpdateBalanceEventException Если не удалось обновить баланс
+        """
         now = datetime.now()
         event_datetime = datetime.combine(add_event_request.date, add_event_request.time)
 
@@ -59,6 +90,18 @@ class EventRepository(eventRepository.EventRepositoryI):
             raise e
 
     def change(self, change_event_request: eventDTO.ChangeEventRequest):
+        """!
+        @brief Изменяет существующее событие
+
+        @param change_event_request: DTO с данными для изменения
+        @type change_event_request: eventDTO.ChangeEventRequest
+
+        @return Результат выполнения операции
+        @rtype: bool
+
+        @throws NoEventException Если событие не найдено
+        @throws NotCorrectFixTimeEventException Если новое время в прошлом
+        """
         select_query = """
                 SELECT Date, Time FROM tg_event.Event
                 WHERE EventID = %s AND UserID = %s
@@ -128,8 +171,16 @@ class EventRepository(eventRepository.EventRepositoryI):
         return result
 
     def delete(self, user_id: str, event_id: int):
-        """Удаляет одно событие и увеличивает Event_count на 1."""
-        # Начало транзакции
+        """!
+        @brief Удаляет одно событие
+
+        @param user_id: ID пользователя
+        @type user_id: str
+        @param event_id: ID события
+        @type event_id: int
+
+        @details Увеличивает счетчик доступных событий на 1
+        """
         query = """
             BEGIN;
 
@@ -146,8 +197,17 @@ class EventRepository(eventRepository.EventRepositoryI):
         self.connector.execute_query(query, [event_id, user_id, user_id])
 
     def delete_all(self, user_id: str):
-        """Удаляет все события пользователя и увеличивает Event_count на количество удаленных событий."""
-        # Сначала получаем количество событий пользователя, чтобы прибавить это число к Event_count
+        """!
+        @brief Удаляет все события пользователя
+
+        @param user_id: ID пользователя
+        @type user_id: str
+
+        @return Результат выполнения операции
+        @rtype: bool
+
+        @throws ValueError Если нет событий для удаления
+        """
         count_query = 'SELECT COUNT(*) FROM tg_event.Event WHERE UserID = %s'
         event_count = self.connector.execute_query(count_query, [user_id], fetch=True)[0][0]
 
@@ -171,11 +231,31 @@ class EventRepository(eventRepository.EventRepositoryI):
             raise ValueError("Нет событий для удаления.")
 
     def get_all(self, user_id: str) -> list[eventModel.Event]:
+        """!
+        @brief Получает все события пользователя
+
+        @param user_id: ID пользователя
+        @type user_id: str
+
+        @return Список событий
+        @rtype: list[eventModel.Event]
+        """
         query = 'SELECT * FROM tg_event.Event WHERE UserID = %s'
         result = self.connector.execute_query(query, [user_id], fetch=True)
         return [eventModel.Event(*row) for row in result] if result else []
 
     def get(self, event_id: int, user_id: str) -> eventModel.Event:
+        """!
+        @brief Получает конкретное событие
+
+        @param event_id: ID события
+        @type event_id: int
+        @param user_id: ID пользователя
+        @type user_id: str
+
+        @return Найденное событие или None
+        @rtype: eventModel.Event | None
+        """
         query = """
                     SELECT *
                     FROM tg_event.Event

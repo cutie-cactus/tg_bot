@@ -1,0 +1,260 @@
+\doxysection{Stage.\+Stage\+Repository Class Reference}
+\hypertarget{class_stage_1_1_stage_repository}{}\label{class_stage_1_1_stage_repository}\index{Stage.StageRepository@{Stage.StageRepository}}
+
+
+Репозиторий для управления состояниями пользователя в Telegram-\/боте  
+
+
+Inheritance diagram for Stage.\+Stage\+Repository\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_stage_1_1_stage_repository}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_stage_1_1_stage_repository_a1e2e7622d230a2c9e91c9e05124062d0}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, Connector.\+Postgres\+DBConnector \mbox{\hyperlink{class_stage_1_1_stage_repository_ae9ef80eb3bdfddf42d6e7ad0827a93b3}{connector}})
+\begin{DoxyCompactList}\small\item\em Инициализирует репозиторий состояний \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_stage_1_1_stage_repository_a81eba055020a96a5e6578aff77c31579}{add}} (self, str user\+\_\+id, Window\+Type window, Stage\+Type stage)
+\begin{DoxyCompactList}\small\item\em Добавляет или обновляет состояние пользователя \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_stage_1_1_stage_repository_a2d1dfb638b1f748fd72fe93de63f44da}{change\+\_\+window}} (self, str user\+\_\+id, Window\+Type window)
+\begin{DoxyCompactList}\small\item\em Изменяет текущее окно пользователя \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_stage_1_1_stage_repository_a4c340418ccaea0514c5704aa81da8d4b}{change\+\_\+stage}} (self, str user\+\_\+id, Stage\+Type stage)
+\begin{DoxyCompactList}\small\item\em Изменяет текущую стадию диалога \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_stage_1_1_stage_repository_af7458ad7fc8017b00ff66a1240c9f965}{change\+\_\+event}} (self, str user\+\_\+id, int event\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Устанавливает активное событие для пользователя \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_stage_1_1_stage_repository_a33bbbd3ca1678254e9c1a2cef0ddb3dd}{change\+\_\+notice}} (self, str user\+\_\+id, int notice\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Устанавливает активное напоминание для пользователя \end{DoxyCompactList}\item 
+Stage\+Type \mbox{\hyperlink{class_stage_1_1_stage_repository_a12d11ac6c8102f0191b196c076540936}{get\+\_\+stage}} (self, str user\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Получает текущую стадию диалога пользователя \end{DoxyCompactList}\item 
+Window\+Type \mbox{\hyperlink{class_stage_1_1_stage_repository_a1a64020add676a3376bf071d3a16c9e7}{get\+\_\+window}} (self, str user\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Получает текущее окно пользователя \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_stage_1_1_stage_repository_a28a1569c97696eb844923803517f7030}{get\+\_\+event}} (self, str user\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Получает ID активного события пользователя \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_stage_1_1_stage_repository_a73b58ce724ba90307c2baf249bf1336c}{get\+\_\+notice}} (self, str user\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Получает ID активного напоминания пользователя \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_stage_1_1_stage_repository_ae9ef80eb3bdfddf42d6e7ad0827a93b3}{connector}} = connector
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Репозиторий для управления состояниями пользователя в Telegram-\/боте 
+
+Обеспечивает сохранение и восстановление\+:
+\begin{DoxyItemize}
+\item Текущего окна (Window\+Type)
+\item Стадии диалога (Stage\+Type)
+\item Идентификаторов активных событий и напоминаний 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_stage_1_1_stage_repository_a1e2e7622d230a2c9e91c9e05124062d0}\index{Stage.StageRepository@{Stage.StageRepository}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Stage.StageRepository@{Stage.StageRepository}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_repository_a1e2e7622d230a2c9e91c9e05124062d0} 
+Stage.\+Stage\+Repository.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{Connector.\+Postgres\+DBConnector}]{connector}{}\end{DoxyParamCaption})}
+
+
+
+Инициализирует репозиторий состояний 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connector} & Коннектор к Postgre\+SQL @type connector\+: Connector.\+Postgres\+DBConnector \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_stage_1_1_stage_repository_a81eba055020a96a5e6578aff77c31579}\index{Stage.StageRepository@{Stage.StageRepository}!add@{add}}
+\index{add@{add}!Stage.StageRepository@{Stage.StageRepository}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_repository_a81eba055020a96a5e6578aff77c31579} 
+Stage.\+Stage\+Repository.\+add (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{Window\+Type}]{window}{, }\item[{Stage\+Type}]{stage}{}\end{DoxyParamCaption})}
+
+
+
+Добавляет или обновляет состояние пользователя 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+\_\+id} & Идентификатор пользователя Telegram @type user\+\_\+id\+: str \\
+\hline
+{\em window} & Тип активного окна @type window\+: Window\+Type \\
+\hline
+{\em stage} & Текущая стадия диалога @type stage\+: Stage\+Type\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Результат выполнения запроса 
+\end{DoxyReturn}
+\Hypertarget{class_stage_1_1_stage_repository_af7458ad7fc8017b00ff66a1240c9f965}\index{Stage.StageRepository@{Stage.StageRepository}!change\_event@{change\_event}}
+\index{change\_event@{change\_event}!Stage.StageRepository@{Stage.StageRepository}}
+\doxysubsubsection{\texorpdfstring{change\_event()}{change\_event()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_repository_af7458ad7fc8017b00ff66a1240c9f965} 
+Stage.\+Stage\+Repository.\+change\+\_\+event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{int}]{event\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Устанавливает активное событие для пользователя 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+\_\+id} & Идентификатор пользователя Telegram @type user\+\_\+id\+: str \\
+\hline
+{\em event\+\_\+id} & Идентификатор события @type event\+\_\+id\+: int\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Результат выполнения запроса 
+\end{DoxyReturn}
+\Hypertarget{class_stage_1_1_stage_repository_a33bbbd3ca1678254e9c1a2cef0ddb3dd}\index{Stage.StageRepository@{Stage.StageRepository}!change\_notice@{change\_notice}}
+\index{change\_notice@{change\_notice}!Stage.StageRepository@{Stage.StageRepository}}
+\doxysubsubsection{\texorpdfstring{change\_notice()}{change\_notice()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_repository_a33bbbd3ca1678254e9c1a2cef0ddb3dd} 
+Stage.\+Stage\+Repository.\+change\+\_\+notice (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{int}]{notice\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Устанавливает активное напоминание для пользователя 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+\_\+id} & Идентификатор пользователя Telegram @type user\+\_\+id\+: str \\
+\hline
+{\em notice\+\_\+id} & Идентификатор напоминания @type notice\+\_\+id\+: int\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Результат выполнения запроса 
+\end{DoxyReturn}
+\Hypertarget{class_stage_1_1_stage_repository_a4c340418ccaea0514c5704aa81da8d4b}\index{Stage.StageRepository@{Stage.StageRepository}!change\_stage@{change\_stage}}
+\index{change\_stage@{change\_stage}!Stage.StageRepository@{Stage.StageRepository}}
+\doxysubsubsection{\texorpdfstring{change\_stage()}{change\_stage()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_repository_a4c340418ccaea0514c5704aa81da8d4b} 
+Stage.\+Stage\+Repository.\+change\+\_\+stage (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{Stage\+Type}]{stage}{}\end{DoxyParamCaption})}
+
+
+
+Изменяет текущую стадию диалога 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+\_\+id} & Идентификатор пользователя Telegram @type user\+\_\+id\+: str \\
+\hline
+{\em stage} & Новая стадия диалога @type stage\+: Stage\+Type\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Результат выполнения запроса 
+\end{DoxyReturn}
+\Hypertarget{class_stage_1_1_stage_repository_a2d1dfb638b1f748fd72fe93de63f44da}\index{Stage.StageRepository@{Stage.StageRepository}!change\_window@{change\_window}}
+\index{change\_window@{change\_window}!Stage.StageRepository@{Stage.StageRepository}}
+\doxysubsubsection{\texorpdfstring{change\_window()}{change\_window()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_repository_a2d1dfb638b1f748fd72fe93de63f44da} 
+Stage.\+Stage\+Repository.\+change\+\_\+window (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{Window\+Type}]{window}{}\end{DoxyParamCaption})}
+
+
+
+Изменяет текущее окно пользователя 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+\_\+id} & Идентификатор пользователя Telegram @type user\+\_\+id\+: str \\
+\hline
+{\em window} & Новый тип окна @type window\+: Window\+Type\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Результат выполнения запроса 
+\end{DoxyReturn}
+\Hypertarget{class_stage_1_1_stage_repository_a28a1569c97696eb844923803517f7030}\index{Stage.StageRepository@{Stage.StageRepository}!get\_event@{get\_event}}
+\index{get\_event@{get\_event}!Stage.StageRepository@{Stage.StageRepository}}
+\doxysubsubsection{\texorpdfstring{get\_event()}{get\_event()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_repository_a28a1569c97696eb844923803517f7030} 
+ int Stage.\+Stage\+Repository.\+get\+\_\+event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Получает ID активного события пользователя 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+\_\+id} & Идентификатор пользователя Telegram @type user\+\_\+id\+: str\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ID события или None если не установлено @rtype\+: int \texorpdfstring{$\vert$}{|} None 
+\end{DoxyReturn}
+\Hypertarget{class_stage_1_1_stage_repository_a73b58ce724ba90307c2baf249bf1336c}\index{Stage.StageRepository@{Stage.StageRepository}!get\_notice@{get\_notice}}
+\index{get\_notice@{get\_notice}!Stage.StageRepository@{Stage.StageRepository}}
+\doxysubsubsection{\texorpdfstring{get\_notice()}{get\_notice()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_repository_a73b58ce724ba90307c2baf249bf1336c} 
+ int Stage.\+Stage\+Repository.\+get\+\_\+notice (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Получает ID активного напоминания пользователя 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+\_\+id} & Идентификатор пользователя Telegram @type user\+\_\+id\+: str\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ID напоминания или None если не установлено @rtype\+: int \texorpdfstring{$\vert$}{|} None 
+\end{DoxyReturn}
+\Hypertarget{class_stage_1_1_stage_repository_a12d11ac6c8102f0191b196c076540936}\index{Stage.StageRepository@{Stage.StageRepository}!get\_stage@{get\_stage}}
+\index{get\_stage@{get\_stage}!Stage.StageRepository@{Stage.StageRepository}}
+\doxysubsubsection{\texorpdfstring{get\_stage()}{get\_stage()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_repository_a12d11ac6c8102f0191b196c076540936} 
+ Stage\+Type Stage.\+Stage\+Repository.\+get\+\_\+stage (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Получает текущую стадию диалога пользователя 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+\_\+id} & Идентификатор пользователя Telegram @type user\+\_\+id\+: str\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Текущая стадия или Stage\+Type.\+NONE если не найдено @rtype\+: Stage\+Type 
+\end{DoxyReturn}
+\Hypertarget{class_stage_1_1_stage_repository_a1a64020add676a3376bf071d3a16c9e7}\index{Stage.StageRepository@{Stage.StageRepository}!get\_window@{get\_window}}
+\index{get\_window@{get\_window}!Stage.StageRepository@{Stage.StageRepository}}
+\doxysubsubsection{\texorpdfstring{get\_window()}{get\_window()}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_repository_a1a64020add676a3376bf071d3a16c9e7} 
+ Window\+Type Stage.\+Stage\+Repository.\+get\+\_\+window (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Получает текущее окно пользователя 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+\_\+id} & Идентификатор пользователя Telegram @type user\+\_\+id\+: str\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Текущее окно или Window\+Type.\+MAIN\+\_\+\+KEYBOARD если не найдено @rtype\+: Window\+Type 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_stage_1_1_stage_repository_ae9ef80eb3bdfddf42d6e7ad0827a93b3}\index{Stage.StageRepository@{Stage.StageRepository}!connector@{connector}}
+\index{connector@{connector}!Stage.StageRepository@{Stage.StageRepository}}
+\doxysubsubsection{\texorpdfstring{connector}{connector}}
+{\footnotesize\ttfamily \label{class_stage_1_1_stage_repository_ae9ef80eb3bdfddf42d6e7ad0827a93b3} 
+Stage.\+Stage\+Repository.\+connector = connector}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/repository/implementation/\mbox{\hyperlink{repository_2implementation_2stage_8py}{Stage.\+py}}\end{DoxyCompactItemize}

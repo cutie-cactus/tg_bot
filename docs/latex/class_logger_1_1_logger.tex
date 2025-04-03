@@ -1,0 +1,141 @@
+\doxysection{Logger.\+Logger Class Reference}
+\hypertarget{class_logger_1_1_logger}{}\label{class_logger_1_1_logger}\index{Logger.Logger@{Logger.Logger}}
+
+
+Класс для настройки и управления логированием приложения.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_logger_1_1_logger_aa498ea0beb4b15756ece39a2c04af213}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\begin{DoxyCompactList}\small\item\em Инициализирует логгер с настройками из конфигурационного файла. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_logger_1_1_logger_a4d8dccc8c434a7a07095147f1c5e2a01}{debug}} (self, str message)
+\begin{DoxyCompactList}\small\item\em Записывает сообщение уровня DEBUG. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_logger_1_1_logger_a24075f65ef8886dbfe1dc336d4820d64}{info}} (self, str message)
+\begin{DoxyCompactList}\small\item\em Записывает сообщение уровня INFO. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_logger_1_1_logger_aa40c4d4c4123ddd4665554cd6518af05}{warning}} (self, str message)
+\begin{DoxyCompactList}\small\item\em Записывает сообщение уровня WARNING. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_logger_1_1_logger_a49629f3657b8f690be4738cc39e01654}{error}} (self, str message)
+\begin{DoxyCompactList}\small\item\em Записывает сообщение уровня ERROR. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_logger_1_1_logger_a1d555dfa1463b711d0bdf4968ca1f50c}{critical}} (self, str message)
+\begin{DoxyCompactList}\small\item\em Записывает сообщение уровня CRITICAL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_logger_1_1_logger_a8fd4cc9761ab91b6b690885c3f1d6397}{logger}} = logging.\+get\+Logger(\+\_\+\+\_\+name\+\_\+\+\_\+)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс для настройки и управления логированием приложения. 
+
+Обеспечивает запись логов как в файл (указанный в конфигурации), так и вывод в консоль. Поддерживает все стандартные уровни логирования. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_logger_1_1_logger_aa498ea0beb4b15756ece39a2c04af213}\index{Logger.Logger@{Logger.Logger}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Logger.Logger@{Logger.Logger}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{class_logger_1_1_logger_aa498ea0beb4b15756ece39a2c04af213} 
+Logger.\+Logger.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Инициализирует логгер с настройками из конфигурационного файла. 
+
+Создает\+:
+\begin{DoxyItemize}
+\item Файловый обработчик (File\+Handler) для записи в файл логов
+\item Консольный обработчик (Stream\+Handler) для вывода в stdout Оба обработчика используют формат\+: \textquotesingle{}\%(asctime)s -\/ \%(levelname)s -\/ \%(message)s\textquotesingle{} 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_logger_1_1_logger_a1d555dfa1463b711d0bdf4968ca1f50c}\index{Logger.Logger@{Logger.Logger}!critical@{critical}}
+\index{critical@{critical}!Logger.Logger@{Logger.Logger}}
+\doxysubsubsection{\texorpdfstring{critical()}{critical()}}
+{\footnotesize\ttfamily \label{class_logger_1_1_logger_a1d555dfa1463b711d0bdf4968ca1f50c} 
+Logger.\+Logger.\+critical (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{message}{}\end{DoxyParamCaption})}
+
+
+
+Записывает сообщение уровня CRITICAL. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Текст сообщения для логирования @type message\+: str \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_logger_1_1_logger_a4d8dccc8c434a7a07095147f1c5e2a01}\index{Logger.Logger@{Logger.Logger}!debug@{debug}}
+\index{debug@{debug}!Logger.Logger@{Logger.Logger}}
+\doxysubsubsection{\texorpdfstring{debug()}{debug()}}
+{\footnotesize\ttfamily \label{class_logger_1_1_logger_a4d8dccc8c434a7a07095147f1c5e2a01} 
+Logger.\+Logger.\+debug (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{message}{}\end{DoxyParamCaption})}
+
+
+
+Записывает сообщение уровня DEBUG. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Текст сообщения для логирования @type message\+: str \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_logger_1_1_logger_a49629f3657b8f690be4738cc39e01654}\index{Logger.Logger@{Logger.Logger}!error@{error}}
+\index{error@{error}!Logger.Logger@{Logger.Logger}}
+\doxysubsubsection{\texorpdfstring{error()}{error()}}
+{\footnotesize\ttfamily \label{class_logger_1_1_logger_a49629f3657b8f690be4738cc39e01654} 
+Logger.\+Logger.\+error (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{message}{}\end{DoxyParamCaption})}
+
+
+
+Записывает сообщение уровня ERROR. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Текст сообщения для логирования @type message\+: str \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_logger_1_1_logger_a24075f65ef8886dbfe1dc336d4820d64}\index{Logger.Logger@{Logger.Logger}!info@{info}}
+\index{info@{info}!Logger.Logger@{Logger.Logger}}
+\doxysubsubsection{\texorpdfstring{info()}{info()}}
+{\footnotesize\ttfamily \label{class_logger_1_1_logger_a24075f65ef8886dbfe1dc336d4820d64} 
+Logger.\+Logger.\+info (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{message}{}\end{DoxyParamCaption})}
+
+
+
+Записывает сообщение уровня INFO. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Текст сообщения для логирования @type message\+: str \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_logger_1_1_logger_aa40c4d4c4123ddd4665554cd6518af05}\index{Logger.Logger@{Logger.Logger}!warning@{warning}}
+\index{warning@{warning}!Logger.Logger@{Logger.Logger}}
+\doxysubsubsection{\texorpdfstring{warning()}{warning()}}
+{\footnotesize\ttfamily \label{class_logger_1_1_logger_aa40c4d4c4123ddd4665554cd6518af05} 
+Logger.\+Logger.\+warning (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{message}{}\end{DoxyParamCaption})}
+
+
+
+Записывает сообщение уровня WARNING. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Текст сообщения для логирования @type message\+: str \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_logger_1_1_logger_a8fd4cc9761ab91b6b690885c3f1d6397}\index{Logger.Logger@{Logger.Logger}!logger@{logger}}
+\index{logger@{logger}!Logger.Logger@{Logger.Logger}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily \label{class_logger_1_1_logger_a8fd4cc9761ab91b6b690885c3f1d6397} 
+Logger.\+Logger.\+logger = logging.\+get\+Logger(\+\_\+\+\_\+name\+\_\+\+\_\+)}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/logger/\mbox{\hyperlink{_logger_8py}{Logger.\+py}}\end{DoxyCompactItemize}

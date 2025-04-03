@@ -19,30 +19,66 @@ from telegram.ext import Application, CommandHandler, MessageHandler, CallbackCo
 from datetime import datetime, timedelta
 import re
 
+"""@var
+@brief Инициализация базовых компонентов системы
+@var connector - Подключение к PostgreSQL
+@var logger - Логгер системы
+"""
 connector = Connector.PostgresDBConnector()
 logger = Logger.Logger()
 
+"""@var
+@brief Репозитории и сервисы событий
+@var event_repository - Хранилище операций с событиями
+@var event_service - Бизнес-логика работы с событиями
+"""
 event_repository = eventStorage.EventRepository(connector)
 event_service = eventService.EventService(connector, event_repository, logger)
 
+"""@var
+@brief Репозитории и сервисы уведомлений
+@var notice_repository - Хранилище операций с уведомлениями
+@var notice_service - Бизнес-логика работы с уведомлениями
+"""
 notice_repository = noticeStorage.NoticeRepository(connector)
 notice_service = noticeService.NoticeService(connector, notice_repository, logger)
 
+"""@var
+@brief Репозитории и сервисы пользователей
+@var user_repository - Хранилище операций с пользователями
+@var user_service - Бизнес-логика работы с пользователями
+"""
 user_repository = userStorage.UserRepository(connector)
 user_service = userService.UserService(connector, user_repository, logger)
 
+"""@var
+@brief Репозитории и сервисы состояний
+@var stage_repository - Хранилище операций с состояниями
+@var stage_service - Бизнес-логика работы с состояниями
+"""
 stage_repository = stageStorage.StageRepository(connector)
 stage_service = stageService.StageService(connector, stage_repository, logger)
 
+"""@var
+@brief Клавиатуры интерфейса
+@var MAIN_KEYBOARD - Основное меню
+@var BACK_KEYBOARD - Кнопка возврата
+@var CHOOSE_KEYBOARD - Меню выбора события
+@var CANCEL_KEYBOARD - Кнопка отмены
+@var FIX_KEYBOARD - Кнопки для редактирования
+"""
 MAIN_KEYBOARD = ReplyKeyboardMarkup([["Get", "Add"], ["Info", "Choose", "Delete"]], resize_keyboard=True)
 BACK_KEYBOARD = ReplyKeyboardMarkup([["Back"]], resize_keyboard=True, one_time_keyboard=True)
 CHOOSE_KEYBOARD = ReplyKeyboardMarkup([["Get", "Fix"], ["Info", "Delete event"], ["Add", "Delete notice"], ["Back"]],
                                       resize_keyboard=True)
-
-                                      
 CANCEL_KEYBOARD = ReplyKeyboardMarkup([["Cancel"]], resize_keyboard=True, one_time_keyboard=True)
 FIX_KEYBOARD = ReplyKeyboardMarkup([["Cancel", "Next"]], resize_keyboard=True, one_time_keyboard=True)
 
+"""@var
+@brief Текстовые шаблоны
+@var INFO_CHOOSE_TEXT - Информация в режиме выбора события
+@var INFO_MAIN_TEXT - Информация в главном меню
+"""
 INFO_CHOOSE_TEXT = (
     "🔔 *Добро пожаловать!* 🔔\n\n"
     "Этот бот помогает вам управлять вашими событиями и уведомлениями.\n"
@@ -73,6 +109,11 @@ INFO_MAIN_TEXT = (
 
 
 def is_valid_date(date_str: str) -> bool:
+    """@var
+    @brief Валидатор формата даты
+    @param date_str[in] - Строка даты в формате ГГГГ-ММ-ДД
+    @return bool - Валидность даты
+    """
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date_str):
         return False
 
@@ -84,6 +125,11 @@ def is_valid_date(date_str: str) -> bool:
 
 
 def is_valid_time_zone(time_zone: str) -> bool:
+    """@var
+    @brief Валидатор часового пояса
+    @param time_zone[in] - Строка смещения UTC
+    @return bool - Валидность значения
+    """
     if not bool(re.match(r"^[+-]([0-9]|[0-9]{2})$", time_zone)):
         return False
 
@@ -91,6 +137,12 @@ def is_valid_time_zone(time_zone: str) -> bool:
 
 
 def is_valid_time(date_str: str, time_str: str) -> bool:
+    """@var
+    @brief Валидатор времени события
+    @param date_str[in] - Дата события
+    @param time_str[in] - Время события
+    @return bool - Валидность времени
+    """
     if not re.fullmatch(r"\d{2}:\d{2}", time_str):
         return False
 
@@ -108,6 +160,11 @@ def is_valid_time(date_str: str, time_str: str) -> bool:
 
 
 async def start(update: Update, context: CallbackContext) -> None:
+    """@var
+    @brief Обработчик команды /start
+    @param update[in] - Объект обновления Telegram
+    @param context[in] - Контекст выполнения
+    """
     keyboard = [["Старт"]]
     reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=True)
 
@@ -115,6 +172,12 @@ async def start(update: Update, context: CallbackContext) -> None:
 
 
 async def show_main_menu(update: Update, context: CallbackContext) -> None:
+    """@var
+    @brief Инициализация нового пользователя
+    @details Регистрирует пользователя и запрашивает часовой пояс
+    @var chat_id - Идентификатор чата
+    @var tg_id - Идентификатор пользователя Telegram
+    """
     stage_service.change_window(str(update.message.from_user.id), WindowType.MAIN_KEYBOARD)
 
     chat_id = update.message.chat.id
@@ -134,6 +197,10 @@ async def show_main_menu(update: Update, context: CallbackContext) -> None:
 
 
 async def back_to_main_menu(update: Update, context: CallbackContext) -> None:
+    """@var
+    @brief Возврат в главное меню
+    @details Сбрасывает привязанные события/уведомления
+    """
     stage_service.change_window(str(update.message.from_user.id), WindowType.MAIN_KEYBOARD)
     stage_service.change_notice(str(update.message.from_user.id), None)
     stage_service.change_event(str(update.message.from_user.id), None)
@@ -142,6 +209,13 @@ async def back_to_main_menu(update: Update, context: CallbackContext) -> None:
 
 
 async def next_to_fix_event(update: Update, context: CallbackContext) -> None:
+    """@var
+    @brief Навигация по этапам редактирования
+    @details Управляет контекстом редактирования через user_data
+    @var stage - Текущий этап редактирования
+    @var fix_date - Новая дата события
+    @var fix_time - Новое время события
+    """
     stage = stage_service.get_stage(str(update.message.from_user.id)).value
     if stage == 'waiting_for_fix_date':
         context.user_data["fix_date"] = None
@@ -191,10 +265,27 @@ async def next_to_fix_event(update: Update, context: CallbackContext) -> None:
 
 async def handle_actions(update: Update, context: CallbackContext) -> None:
     """Обрабатывает нажатие кнопок, учитывая, в каком меню находится пользователь."""
+    """@function
+    @brief Центральный роутер действий пользователя
+    @details Обрабатывает нажатия кнопок в зависимости от текущего активного меню
+    
+    @param update[in] - Объект обновления Telegram
+    @param context[in] - Контекст выполнения
+    @var text - Текст сообщения пользователя
+    @var menu - Текущее активное меню (MAIN_KEYBOARD/CHOOSE_KEYBOARD)
+    """
     text = update.message.text
     menu = stage_service.get_window(str(update.message.from_user.id)).name
     print(menu)
     if menu == "MAIN_KEYBOARD":
+        """@branch
+        @brief Обработка главного меню
+        @var Get - Запрос списка событий
+        @var Add - Инициализация создания события
+        @var Info - Показать справку
+        @var Delete - Удаление всех событий
+        @var Choose - Выбор конкретного события
+        """
         if text == "Get":
             await get_all_event(update, context)
             return
@@ -214,6 +305,14 @@ async def handle_actions(update: Update, context: CallbackContext) -> None:
         await update.message.reply_text("Обработка завершена. Возвращаюсь в главное меню.", reply_markup=MAIN_KEYBOARD)
 
     elif menu == "CHOOSE_KEYBOARD":
+        """@branch
+        @brief Обработка меню работы с событием
+        @var Get - Показать уведомления события
+        @var Fix - Редактирование события
+        @var Delete event - Удаление текущего события
+        @var Delete notice - Удаление уведомления
+        @var Add - Добавление уведомления
+        """
         if text == "Get":
             await get_all_notice(update, context)
             return
@@ -238,6 +337,13 @@ async def handle_actions(update: Update, context: CallbackContext) -> None:
 
 
 async def handle_cancel(update: Update, context: CallbackContext) -> None:
+    """@function
+    @brief Обработчик отмены действий
+    @details Возвращает в предыдущее меню и сбрасывает состояние
+    
+    @var stage - Текущий этап взаимодействия
+    @var previous_menu - Предыдущее активное меню
+    """
     stage = stage_service.get_stage(str(update.message.from_user.id))
     previous_menu = stage_service.get_window(str(update.message.from_user.id))
     if stage == "back":
@@ -250,12 +356,23 @@ async def handle_cancel(update: Update, context: CallbackContext) -> None:
 
 
 async def add_data(update: Update, context: CallbackContext) -> None:
+    """@function
+    @brief Инициализация процесса добавления события
+    @details Устанавливает состояние WAITING_FOR_DATE и запрашивает дату
+    
+    @throws Меняет состояние через stage_service
+    """
     stage_service.change_stage(str(update.message.from_user.id), StageType.WAITING_FOR_DATE)
     await update.message.reply_text("Введите дату события (в формате ГГГГ-ММ-ДД) или нажмите 'Отмена':",
                                     reply_markup=CANCEL_KEYBOARD)
 
 
 def prepare_list_event(user_id: int):
+    """@var
+    @brief Форматирует список событий для вывода
+    @param user_id[in] - Идентификатор пользователя
+    @return str - Отформатированный текст со списком
+    """
     events = event_service.get_all(str(user_id))
 
     if not events:
@@ -275,6 +392,11 @@ def prepare_list_event(user_id: int):
 
 
 def prepare_one_event(event_id: int, user_id: int):
+    """@var
+    @brief Форматирует детали одного события
+    @param event_id[in] - Идентификатор события
+    @return str - Отформатированный текст с деталями
+    """
     selected_event = event_service.get(event_id,
                                        str(user_id))
 
@@ -290,6 +412,17 @@ def prepare_one_event(event_id: int, user_id: int):
 
 
 def prepare_list_notice(event_id: int, user_id: int):
+    """@function
+    @brief Формирует текстовое представление события и его уведомлений
+    @param event_id[in] - ID целевого события
+    @param user_id[in] - ID пользователя для проверки прав доступа
+    @return tuple (текст для отображения, флаг наличия уведомлений)
+    
+    @var selected_event - Объект события из event_service
+    @var notices - Список уведомлений события
+    @var notice_text - Буфер для формирования ответа
+    @var flag - Индикатор наличия уведомлений (True/False)
+    """
     selected_event = event_service.get(event_id,
                                        str(user_id))
 
@@ -320,6 +453,11 @@ def prepare_list_notice(event_id: int, user_id: int):
 
 
 async def get_all_event(update: Update, context: CallbackContext) -> None:
+    """@function
+    @brief Обработчик команды получения списка событий
+    @var events_text - Форматированный список событий
+    @var context.user_data["menu"] - Текущее меню пользователя
+    """
     context.user_data["menu"] = context.user_data.get("menu", "main")
     events_text = prepare_list_event(update.message.from_user.id)
 
@@ -331,13 +469,29 @@ async def get_all_event(update: Update, context: CallbackContext) -> None:
 
 
 async def get_info_main(update: Update, context: CallbackContext) -> None:
+    """@function
+    @brief Отображение информации главного меню
+    @details Выводит форматированное сообщение с инструкциями для основного интерфейса
+    @var INFO_MAIN_TEXT - Текстовый шаблон с markdown-разметкой
+    """
     await update.message.reply_text(INFO_MAIN_TEXT, reply_markup=MAIN_KEYBOARD, parse_mode='Markdown')
 
 
 async def get_info_choose(update: Update, context: CallbackContext) -> None:
+    """@function
+    @brief Отображение информации меню работы с событием
+    @details Выводит специализированную справку для режима редактирования
+    @var INFO_CHOOSE_TEXT - Текст с описанием доступных команд
+    """
     await update.message.reply_text(INFO_CHOOSE_TEXT, reply_markup=CHOOSE_KEYBOARD, parse_mode='Markdown')
 
 async def choose_event(update: Update, context: CallbackContext) -> None:
+    """@function 
+    @brief Обработчик выбора конкретного события
+    @var events_text - Форматированный список событий
+    @var context.user_data["state"] - Новое состояние диалога
+    @throws Переводит в состояние WAITING_FOR_EVENT через stage_service
+    """
     context.user_data["menu"] = context.user_data.get("menu", "main")
     events_text = prepare_list_event(update.message.from_user.id)
 
@@ -356,6 +510,17 @@ async def choose_event(update: Update, context: CallbackContext) -> None:
 
 
 def prepare_list_notice(event_id: int, user_id: int):
+    """@function
+    @brief Формирует детализированный отчет о событии и уведомлениях
+    @param event_id[in] - ID анализируемого события
+    @param user_id[in] - Идентификатор пользователя для проверки прав
+    @return tuple (текстовый отчет, флаг наличия уведомлений)
+    
+    @var selected_event - Объект события из event_service
+    @var notices - Список связанных уведомлений
+    @var notice_text - Буфер для накопления вывода
+    @var flag - Индикатор наличия данных (True - есть уведомления)
+    """
     selected_event = event_service.get(event_id,
                                        str(user_id))
     notice_text, _ = prepare_list_notice(context.user_data.get("selected_event").event_id,
@@ -389,6 +554,11 @@ def prepare_list_notice(event_id: int, user_id: int):
 
 
 async def get_all_event(update: Update, context: CallbackContext) -> None:
+    """@function
+    @brief Получение и отображение списка всех событий
+    @var events_text - Отформатированный список событий
+    @throws При отсутствии событий выводит соответствующее уведомление
+    """
     events_text = prepare_list_event(update.message.from_user.id)
 
     if not events_text:
@@ -399,14 +569,31 @@ async def get_all_event(update: Update, context: CallbackContext) -> None:
 
 
 async def get_info_main(update: Update, context: CallbackContext) -> None:
+    """@function
+    @brief Обработчик выбора события для детальной работы
+    @details Инициирует состояние WAITING_FOR_EVENT для последующего ввода номера
+    @var events_text - Список доступных событий
+    @throws При отсутствии событий прерывает операцию
+    """
     await update.message.reply_text(INFO_MAIN_TEXT, reply_markup=MAIN_KEYBOARD, parse_mode='Markdown')
 
 
 async def get_info_choose(update: Update, context: CallbackContext) -> None:
+    """@function
+    @brief Отображение уведомлений выбранного события
+    @var selected_event - Текущее событие из stage_service
+    @var notice_text - Форматированная информация о напоминаниях
+    """
     await update.message.reply_text(INFO_CHOOSE_TEXT, reply_markup=CHOOSE_KEYBOARD, parse_mode='Markdown')
 
 
 async def choose_event(update: Update, context: CallbackContext) -> None:
+    """@function
+    @brief Инициализация удаления всех событий
+    @details Запрашивает подтверждение перед выполнением
+    @var events_text - Список событий для визуализации
+    @throws Переводит в состояние WAITING_FOR_DELETE_ALL
+    """
     events_text = prepare_list_event(update.message.from_user.id)
 
     if not events_text:
@@ -422,6 +609,14 @@ async def choose_event(update: Update, context: CallbackContext) -> None:
 
 
 async def get_all_notice(update: Update, context: CallbackContext) -> None:
+    """@function
+    @brief Отображение всех уведомлений выбранного события
+    @details Получает привязанное событие и формирует список его уведомлений
+    
+    @var selected_event - Текущее выбранное событие из stage_service
+    @var notice_text - Форматированная строка с информацией о событии и уведомлениях
+    @var events_text - Неиспользуемая переменная (возможная ошибка в коде)
+    """
     selected_event = stage_service.get_event(str(update.message.from_user.id))
     notice_text, _ = prepare_list_notice(selected_event,
                                          update.message.from_user.id)
@@ -432,6 +627,13 @@ async def get_all_notice(update: Update, context: CallbackContext) -> None:
     await update.message.reply_text(events_text, reply_markup=MAIN_KEYBOARD, parse_mode='Markdown')
 
 async def delete_all_data(update: Update, context: CallbackContext) -> None:
+    """@function
+    @brief Инициирует процесс удаления всех событий
+    @details Показывает список событий и запрашивает подтверждение удаления
+    
+    @var events_text - Отформатированный список всех событий пользователя
+    @throws EventNotFoundException если события отсутствуют
+    """
     events_text = prepare_list_event(update.message.from_user.id)
 
     if not events_text:
@@ -447,6 +649,12 @@ async def delete_all_data(update: Update, context: CallbackContext) -> None:
 
 
 async def delete_event(update: Update, context: CallbackContext) -> None:
+    """@function
+    @brief Удаление конкретного события
+    @var selected_event - Выбранное событие из stage_service
+    @var event_text - Форматированная информация о событии
+    @throws Переводит в состояние WAITING_FOR_DELETE_EVENT
+    """
     selected_event = stage_service.get_event(str(update.message.from_user.id))
 
     event_text = prepare_one_event(selected_event,
@@ -467,6 +675,14 @@ async def delete_event(update: Update, context: CallbackContext) -> None:
 
 
 async def delete_notice(update: Update, context: CallbackContext) -> None:
+    """@function
+    @brief Удаление уведомления события
+    @details Получает список уведомлений и инициирует процесс удаления
+    
+    @var selected_event - Текущее событие из stage_service
+    @var notice_text - Форматированная информация об уведомлениях
+    @var flag - Флаг наличия уведомлений (True - есть данные)
+    """
     selected_event = stage_service.get_event(str(update.message.from_user.id))
 
     notice_text, flag = prepare_list_notice(selected_event,
@@ -485,12 +701,27 @@ async def delete_notice(update: Update, context: CallbackContext) -> None:
 
 
 async def add_notice(update: Update, context: CallbackContext) -> None:
+    """@function
+    @brief Инициализация добавления уведомления
+    @details Устанавливает состояние ожидания выбора даты напоминания
+    
+    @var StageType.WAITING_FOR_DELETE_NOTICE_CHOOSE - Состояние выбора даты
+    """
     stage_service.change_stage(str(update.message.from_user.id), StageType.WAITING_FOR_DELETE_NOTICE_CHOOSE)
     await update.message.reply_text("Введите дату напоминания (в формате ГГГГ-ММ-ДД) или нажмите 'Отмена':",
                                     reply_markup=CANCEL_KEYBOARD)
 
 
 async def fix_event(update: Update, context: CallbackContext) -> None:
+    """@function
+    @brief Редактирование события
+    @details Показывает текущие данные события и запускает процесс редактирования
+    
+    @var WindowType.CHOOSE_KEYBOARD - Меню действий с событием
+    @var selected_event - Выбранное событие из stage_service
+    @var event_text - Форматированное описание события
+    @var StageType.WAITING_FOR_FIX_DATE - Состояние ожидания новой даты
+    """
     stage_service.change_window(str(update.message.from_user.id), WindowType.CHOOSE_KEYBOARD)
     selected_event = stage_service.get_event(str(update.message.from_user.id))
 
@@ -512,6 +743,16 @@ async def fix_event(update: Update, context: CallbackContext) -> None:
 
 
 async def handle_user_input(update: Update, context: CallbackContext) -> None:
+    """@var
+    @brief Центральный обработчик ввода пользователя
+    @details Анализирует состояние через stage_service
+    @var text - Текст сообщения пользователя
+    @var state - Текущее состояние из stage_service
+    @var context.user_data - Хранилище временных данных
+    @var selected_event - Выбранное событие
+    @var delay - Задержка для уведомления
+    """
+
     text = update.message.text
     state = stage_service.get_stage(str(update.message.from_user.id)).value
     print(state)

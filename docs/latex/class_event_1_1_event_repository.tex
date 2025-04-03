@@ -1,0 +1,94 @@
+\doxysection{Event.\+Event\+Repository Class Reference}
+\hypertarget{class_event_1_1_event_repository}{}\label{class_event_1_1_event_repository}\index{Event.EventRepository@{Event.EventRepository}}
+Inheritance diagram for Event.\+Event\+Repository\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_event_1_1_event_repository}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_event_1_1_event_repository_ab5dfc47c328750cfeeba773b547b60f2}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, Connector.\+Postgres\+DBConnector \mbox{\hyperlink{class_event_1_1_event_repository_a282b3687c93acc8cd7fe58c5f122f01a}{connector}})
+\item 
+int \mbox{\hyperlink{class_event_1_1_event_repository_a07824c8fa534fb8e1a7784265a9ae60b}{add}} (self, event\+DTO.\+Add\+Event\+Request add\+\_\+event\+\_\+request)
+\item 
+\mbox{\hyperlink{class_event_1_1_event_repository_a763e4d8e73fe778088ed6de2f9b95442}{change}} (self, event\+DTO.\+Change\+Event\+Request change\+\_\+event\+\_\+request)
+\item 
+\mbox{\hyperlink{class_event_1_1_event_repository_a15088cb4371e43e65a0e8379c267c956}{delete}} (self, str user\+\_\+id, int event\+\_\+id)
+\item 
+\mbox{\hyperlink{class_event_1_1_event_repository_aef9acc0e1cf5d821c38e310dcc84c665}{delete\+\_\+all}} (self, str user\+\_\+id)
+\item 
+list\mbox{[}event\+Model.\+Event\mbox{]} \mbox{\hyperlink{class_event_1_1_event_repository_a0c680f154d7caa8704e2c8b6efc7aa0a}{get\+\_\+all}} (self, str user\+\_\+id)
+\item 
+event\+Model.\+Event \mbox{\hyperlink{class_event_1_1_event_repository_a508b203fd86135c6dff2fb024310d333}{get}} (self, int event\+\_\+id, str user\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_event_1_1_event_repository_a282b3687c93acc8cd7fe58c5f122f01a}{connector}} = connector
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_event_1_1_event_repository_ab5dfc47c328750cfeeba773b547b60f2}\index{Event.EventRepository@{Event.EventRepository}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Event.EventRepository@{Event.EventRepository}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_repository_ab5dfc47c328750cfeeba773b547b60f2} 
+Event.\+Event\+Repository.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{Connector.\+Postgres\+DBConnector}]{connector}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_event_1_1_event_repository_a07824c8fa534fb8e1a7784265a9ae60b}\index{Event.EventRepository@{Event.EventRepository}!add@{add}}
+\index{add@{add}!Event.EventRepository@{Event.EventRepository}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_repository_a07824c8fa534fb8e1a7784265a9ae60b} 
+ int Event.\+Event\+Repository.\+add (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{event\+DTO.\+Add\+Event\+Request}]{add\+\_\+event\+\_\+request}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_event_1_1_event_repository_a763e4d8e73fe778088ed6de2f9b95442}\index{Event.EventRepository@{Event.EventRepository}!change@{change}}
+\index{change@{change}!Event.EventRepository@{Event.EventRepository}}
+\doxysubsubsection{\texorpdfstring{change()}{change()}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_repository_a763e4d8e73fe778088ed6de2f9b95442} 
+Event.\+Event\+Repository.\+change (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{event\+DTO.\+Change\+Event\+Request}]{change\+\_\+event\+\_\+request}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_event_1_1_event_repository_a15088cb4371e43e65a0e8379c267c956}\index{Event.EventRepository@{Event.EventRepository}!delete@{delete}}
+\index{delete@{delete}!Event.EventRepository@{Event.EventRepository}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_repository_a15088cb4371e43e65a0e8379c267c956} 
+Event.\+Event\+Repository.\+delete (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{int}]{event\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Удаляет одно событие и увеличивает Event_count на 1.\end{DoxyVerb}
+ \Hypertarget{class_event_1_1_event_repository_aef9acc0e1cf5d821c38e310dcc84c665}\index{Event.EventRepository@{Event.EventRepository}!delete\_all@{delete\_all}}
+\index{delete\_all@{delete\_all}!Event.EventRepository@{Event.EventRepository}}
+\doxysubsubsection{\texorpdfstring{delete\_all()}{delete\_all()}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_repository_aef9acc0e1cf5d821c38e310dcc84c665} 
+Event.\+Event\+Repository.\+delete\+\_\+all (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Удаляет все события пользователя и увеличивает Event_count на количество удаленных событий.\end{DoxyVerb}
+ \Hypertarget{class_event_1_1_event_repository_a508b203fd86135c6dff2fb024310d333}\index{Event.EventRepository@{Event.EventRepository}!get@{get}}
+\index{get@{get}!Event.EventRepository@{Event.EventRepository}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_repository_a508b203fd86135c6dff2fb024310d333} 
+ event\+Model.\+Event Event.\+Event\+Repository.\+get (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{event\+\_\+id}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_event_1_1_event_repository_a0c680f154d7caa8704e2c8b6efc7aa0a}\index{Event.EventRepository@{Event.EventRepository}!get\_all@{get\_all}}
+\index{get\_all@{get\_all}!Event.EventRepository@{Event.EventRepository}}
+\doxysubsubsection{\texorpdfstring{get\_all()}{get\_all()}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_repository_a0c680f154d7caa8704e2c8b6efc7aa0a} 
+ list\mbox{[}event\+Model.\+Event\mbox{]} Event.\+Event\+Repository.\+get\+\_\+all (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_event_1_1_event_repository_a282b3687c93acc8cd7fe58c5f122f01a}\index{Event.EventRepository@{Event.EventRepository}!connector@{connector}}
+\index{connector@{connector}!Event.EventRepository@{Event.EventRepository}}
+\doxysubsubsection{\texorpdfstring{connector}{connector}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_repository_a282b3687c93acc8cd7fe58c5f122f01a} 
+Event.\+Event\+Repository.\+connector = connector}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/repository/implementation/\mbox{\hyperlink{repository_2implementation_2event_8py}{Event.\+py}}\end{DoxyCompactItemize}

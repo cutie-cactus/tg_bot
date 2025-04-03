@@ -1,0 +1,190 @@
+\doxysection{Event.\+Event\+Service Class Reference}
+\hypertarget{class_event_1_1_event_service}{}\label{class_event_1_1_event_service}\index{Event.EventService@{Event.EventService}}
+Inheritance diagram for Event.\+Event\+Service\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_event_1_1_event_service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_event_1_1_event_service_a49db5087c59bc73c8500f49fbaed39f5}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, Connector.\+Postgres\+DBConnector \mbox{\hyperlink{class_event_1_1_event_service_a926d38cf09e3f386e089e89b260f33a5}{connector}}, event\+Storage.\+Event\+RepositoryI \mbox{\hyperlink{class_event_1_1_event_service_ac5c1a8e4b611c1111dab8446ca14196a}{event\+\_\+storage}}, \mbox{\hyperlink{class_logger_1_1_logger}{Logger.\+Logger}} \mbox{\hyperlink{class_event_1_1_event_service_a793800e7a6eaf0c15d3da520f54f7efd}{logger}})
+\item 
+int \mbox{\hyperlink{class_event_1_1_event_service_acaa3e41e940746718a44d5ce5e924829}{add}} (self, event\+DTO.\+Add\+Event\+Request add\+\_\+event\+\_\+request)
+\item 
+\mbox{\hyperlink{class_event_1_1_event_service_a333e0b194e0853f271d1863e227126e4}{change}} (self, event\+DTO.\+Change\+Event\+Request change\+\_\+event\+\_\+request)
+\item 
+\mbox{\hyperlink{class_event_1_1_event_service_a2236eba73be816930ab6ff714df12cb1}{delete}} (self, str user\+\_\+id, int event\+\_\+id)
+\item 
+\mbox{\hyperlink{class_event_1_1_event_service_a165298aa500a3d610e176e61918d1339}{delete\+\_\+all}} (self, str user\+\_\+id)
+\item 
+list\mbox{[}event\+Model.\+Event\mbox{]} \mbox{\hyperlink{class_event_1_1_event_service_a015f39761722b24e5bb13bc471ea6b10}{get\+\_\+all}} (self, str user\+\_\+id)
+\item 
+event\+Model.\+Event \mbox{\hyperlink{class_event_1_1_event_service_acef7469df3d22b7e07c86a5c5c207abd}{get}} (self, int event\+\_\+id, str user\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{class_event_1_1_event_service_a7d9dabaa34491aaaf0c47987a516b93d}{hash\+\_\+id}} (str string)
+\item 
+str \mbox{\hyperlink{class_event_1_1_event_service_a7d9dabaa34491aaaf0c47987a516b93d}{hash\+\_\+id}} (str string)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_event_1_1_event_service_a926d38cf09e3f386e089e89b260f33a5}{connector}} = connector
+\item 
+\mbox{\hyperlink{class_event_1_1_event_service_ac5c1a8e4b611c1111dab8446ca14196a}{event\+\_\+storage}} = event\+\_\+storage
+\item 
+\mbox{\hyperlink{class_event_1_1_event_service_a793800e7a6eaf0c15d3da520f54f7efd}{logger}} = logger
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}@brief Сервис для управления событиями
+
+Реализует бизнес-логику работы с событиями, включая:
+- Хеширование идентификаторов пользователей
+- Логирование операций
+- Обработку исключений
+@ingroup EventService
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_event_1_1_event_service_a49db5087c59bc73c8500f49fbaed39f5}\index{Event.EventService@{Event.EventService}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Event.EventService@{Event.EventService}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_service_a49db5087c59bc73c8500f49fbaed39f5} 
+Event.\+Event\+Service.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{Connector.\+Postgres\+DBConnector}]{connector}{, }\item[{event\+Storage.\+Event\+RepositoryI}]{event\+\_\+storage}{, }\item[{\mbox{\hyperlink{class_logger_1_1_logger}{Logger.\+Logger}}}]{logger}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Инициализация сервиса событий
+
+@param connector: Коннектор к PostgreSQL базе данных
+@param event_storage: Репозиторий для работы с хранилищем событий
+@param logger: Логгер для записи операций
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_event_1_1_event_service_acaa3e41e940746718a44d5ce5e924829}\index{Event.EventService@{Event.EventService}!add@{add}}
+\index{add@{add}!Event.EventService@{Event.EventService}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_service_acaa3e41e940746718a44d5ce5e924829} 
+ int Event.\+Event\+Service.\+add (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{event\+DTO.\+Add\+Event\+Request}]{add\+\_\+event\+\_\+request}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Добавление нового события
+
+@param add_event_request: DTO с данными для создания события
+@return ID созданного события
+@throws ValueError При некорректных входных данных
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_event_1_1_event_service_a333e0b194e0853f271d1863e227126e4}\index{Event.EventService@{Event.EventService}!change@{change}}
+\index{change@{change}!Event.EventService@{Event.EventService}}
+\doxysubsubsection{\texorpdfstring{change()}{change()}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_service_a333e0b194e0853f271d1863e227126e4} 
+Event.\+Event\+Service.\+change (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{event\+DTO.\+Change\+Event\+Request}]{change\+\_\+event\+\_\+request}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Изменение существующего события
+
+@param change_event_request: DTO с данными для обновления
+@throws ValueError При некорректных входных данных
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_event_1_1_event_service_a2236eba73be816930ab6ff714df12cb1}\index{Event.EventService@{Event.EventService}!delete@{delete}}
+\index{delete@{delete}!Event.EventService@{Event.EventService}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_service_a2236eba73be816930ab6ff714df12cb1} 
+Event.\+Event\+Service.\+delete (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{int}]{event\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Удаление конкретного события
+
+@param user_id: Идентификатор пользователя в оригинальном формате
+@param event_id: ID удаляемого события
+@throws ValueError При некорректных входных данных
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_event_1_1_event_service_a165298aa500a3d610e176e61918d1339}\index{Event.EventService@{Event.EventService}!delete\_all@{delete\_all}}
+\index{delete\_all@{delete\_all}!Event.EventService@{Event.EventService}}
+\doxysubsubsection{\texorpdfstring{delete\_all()}{delete\_all()}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_service_a165298aa500a3d610e176e61918d1339} 
+Event.\+Event\+Service.\+delete\+\_\+all (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Удаление всех событий пользователя
+
+@param user_id: Идентификатор пользователя в оригинальном формате
+@throws ValueError При некорректных входных данных
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_event_1_1_event_service_acef7469df3d22b7e07c86a5c5c207abd}\index{Event.EventService@{Event.EventService}!get@{get}}
+\index{get@{get}!Event.EventService@{Event.EventService}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_service_acef7469df3d22b7e07c86a5c5c207abd} 
+ event\+Model.\+Event Event.\+Event\+Service.\+get (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{event\+\_\+id}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получение конкретного события
+
+@param event_id: ID запрашиваемого события
+@param user_id: Идентификатор пользователя в оригинальном формате
+@return Объект события
+@throws ValueError При некорректных входных данных
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_event_1_1_event_service_a015f39761722b24e5bb13bc471ea6b10}\index{Event.EventService@{Event.EventService}!get\_all@{get\_all}}
+\index{get\_all@{get\_all}!Event.EventService@{Event.EventService}}
+\doxysubsubsection{\texorpdfstring{get\_all()}{get\_all()}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_service_a015f39761722b24e5bb13bc471ea6b10} 
+ list\mbox{[}event\+Model.\+Event\mbox{]} Event.\+Event\+Service.\+get\+\_\+all (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получение всех событий пользователя
+
+@param user_id: Идентификатор пользователя в оригинальном формате
+@return Список объектов событий
+@throws ValueError При некорректных входных данных
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_event_1_1_event_service_a7d9dabaa34491aaaf0c47987a516b93d}\index{Event.EventService@{Event.EventService}!hash\_id@{hash\_id}}
+\index{hash\_id@{hash\_id}!Event.EventService@{Event.EventService}}
+\doxysubsubsection{\texorpdfstring{hash\_id()}{hash\_id()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_service_a7d9dabaa34491aaaf0c47987a516b93d} 
+ str Event.\+Event\+Service.\+hash\+\_\+id (\begin{DoxyParamCaption}\item[{str}]{string}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}@brief Генерация хеша для идентификатора пользователя
+
+@param string: Исходный идентификатор пользователя
+@return SHA-256 хеш в виде hex-строки
+\end{DoxyVerb}
+ \Hypertarget{class_event_1_1_event_service_a7d9dabaa34491aaaf0c47987a516b93d}\index{Event.EventService@{Event.EventService}!hash\_id@{hash\_id}}
+\index{hash\_id@{hash\_id}!Event.EventService@{Event.EventService}}
+\doxysubsubsection{\texorpdfstring{hash\_id()}{hash\_id()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_service_a7d9dabaa34491aaaf0c47987a516b93d} 
+ str Event.\+Event\+Service.\+hash\+\_\+id (\begin{DoxyParamCaption}\item[{str}]{string}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_event_1_1_event_service_a926d38cf09e3f386e089e89b260f33a5}\index{Event.EventService@{Event.EventService}!connector@{connector}}
+\index{connector@{connector}!Event.EventService@{Event.EventService}}
+\doxysubsubsection{\texorpdfstring{connector}{connector}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_service_a926d38cf09e3f386e089e89b260f33a5} 
+Event.\+Event\+Service.\+connector = connector}
+
+\Hypertarget{class_event_1_1_event_service_ac5c1a8e4b611c1111dab8446ca14196a}\index{Event.EventService@{Event.EventService}!event\_storage@{event\_storage}}
+\index{event\_storage@{event\_storage}!Event.EventService@{Event.EventService}}
+\doxysubsubsection{\texorpdfstring{event\_storage}{event\_storage}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_service_ac5c1a8e4b611c1111dab8446ca14196a} 
+Event.\+Event\+Service.\+event\+\_\+storage = event\+\_\+storage}
+
+\Hypertarget{class_event_1_1_event_service_a793800e7a6eaf0c15d3da520f54f7efd}\index{Event.EventService@{Event.EventService}!logger@{logger}}
+\index{logger@{logger}!Event.EventService@{Event.EventService}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily \label{class_event_1_1_event_service_a793800e7a6eaf0c15d3da520f54f7efd} 
+Event.\+Event\+Service.\+logger = logger}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/service/implementation/\mbox{\hyperlink{service_2implementation_2event_8py}{Event.\+py}}\end{DoxyCompactItemize}

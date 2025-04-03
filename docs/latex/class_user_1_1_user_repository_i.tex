@@ -1,0 +1,85 @@
+\doxysection{User.\+User\+RepositoryI Class Reference}
+\hypertarget{class_user_1_1_user_repository_i}{}\label{class_user_1_1_user_repository_i}\index{User.UserRepositoryI@{User.UserRepositoryI}}
+Inheritance diagram for User.\+User\+RepositoryI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_user_1_1_user_repository_i}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_user_1_1_user_repository_i_aa88a4ca11246fae608ee1952be10dd1a}{add}} (self, str tg\+\_\+id, str chat\+\_\+id)
+\item 
+\mbox{\hyperlink{class_user_1_1_user_repository_i_a27a6b7d75b710851258950d9f30eff55}{change\+\_\+time\+\_\+zone}} (self, str tg\+\_\+id, int time\+\_\+zone)
+\item 
+int \mbox{\hyperlink{class_user_1_1_user_repository_i_ac5aafd35577c9d0fcdd323e395114914}{get\+\_\+event\+\_\+count}} (self, str tg\+\_\+id, str chat\+\_\+id)
+\item 
+int \mbox{\hyperlink{class_user_1_1_user_repository_i_a35142a8bde0a9868d54b44a9938a3b49}{get\+\_\+time\+\_\+zone}} (self, str tg\+\_\+id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}@brief Абстрактный интерфейс репозитория пользователей
+
+Определяет базовые операции для управления данными пользователей,
+включая временные зоны и счетчики событий.
+@ingroup RepositoryInterface
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_user_1_1_user_repository_i_aa88a4ca11246fae608ee1952be10dd1a}\index{User.UserRepositoryI@{User.UserRepositoryI}!add@{add}}
+\index{add@{add}!User.UserRepositoryI@{User.UserRepositoryI}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_repository_i_aa88a4ca11246fae608ee1952be10dd1a} 
+User.\+User\+Repository\+I.\+add (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{tg\+\_\+id}{, }\item[{str}]{chat\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Создание новой записи пользователя
+
+@param tg_id: Уникальный идентификатор пользователя в Telegram
+@param chat_id: Идентификатор чата для привязки
+@throws AlreadyExistsError если пользователь уже зарегистрирован
+\end{DoxyVerb}
+ \Hypertarget{class_user_1_1_user_repository_i_a27a6b7d75b710851258950d9f30eff55}\index{User.UserRepositoryI@{User.UserRepositoryI}!change\_time\_zone@{change\_time\_zone}}
+\index{change\_time\_zone@{change\_time\_zone}!User.UserRepositoryI@{User.UserRepositoryI}}
+\doxysubsubsection{\texorpdfstring{change\_time\_zone()}{change\_time\_zone()}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_repository_i_a27a6b7d75b710851258950d9f30eff55} 
+User.\+User\+Repository\+I.\+change\+\_\+time\+\_\+zone (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{tg\+\_\+id}{, }\item[{int}]{time\+\_\+zone}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Обновление временной зоны пользователя
+
+@param tg_id: Уникальный идентификатор пользователя в Telegram
+@param time_zone: Новое значение временной зоны (UTC offset в часах)
+@throws NotFoundError если пользователь не найден
+\end{DoxyVerb}
+ \Hypertarget{class_user_1_1_user_repository_i_ac5aafd35577c9d0fcdd323e395114914}\index{User.UserRepositoryI@{User.UserRepositoryI}!get\_event\_count@{get\_event\_count}}
+\index{get\_event\_count@{get\_event\_count}!User.UserRepositoryI@{User.UserRepositoryI}}
+\doxysubsubsection{\texorpdfstring{get\_event\_count()}{get\_event\_count()}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_repository_i_ac5aafd35577c9d0fcdd323e395114914} 
+ int User.\+User\+Repository\+I.\+get\+\_\+event\+\_\+count (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{tg\+\_\+id}{, }\item[{str}]{chat\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получение количества событий пользователя
+
+@param tg_id: Уникальный идентификатор пользователя в Telegram
+@param chat_id: Идентификатор чата для фильтрации
+@return Количество связанных событий
+@throws NotFoundError если пользователь или чат не найдены
+\end{DoxyVerb}
+ \Hypertarget{class_user_1_1_user_repository_i_a35142a8bde0a9868d54b44a9938a3b49}\index{User.UserRepositoryI@{User.UserRepositoryI}!get\_time\_zone@{get\_time\_zone}}
+\index{get\_time\_zone@{get\_time\_zone}!User.UserRepositoryI@{User.UserRepositoryI}}
+\doxysubsubsection{\texorpdfstring{get\_time\_zone()}{get\_time\_zone()}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_repository_i_a35142a8bde0a9868d54b44a9938a3b49} 
+ int User.\+User\+Repository\+I.\+get\+\_\+time\+\_\+zone (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{tg\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получение временной зоны пользователя
+
+@param tg_id: Уникальный идентификатор пользователя в Telegram
+@return Текущая временная зона (UTC offset в часах)
+@throws NotFoundError если пользователь не найден
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/repository/interface/\mbox{\hyperlink{repository_2interface_2_user_8py}{User.\+py}}\end{DoxyCompactItemize}

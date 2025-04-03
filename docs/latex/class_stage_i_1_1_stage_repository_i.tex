@@ -1,0 +1,155 @@
+\doxysection{Stage\+I.\+Stage\+RepositoryI Class Reference}
+\hypertarget{class_stage_i_1_1_stage_repository_i}{}\label{class_stage_i_1_1_stage_repository_i}\index{StageI.StageRepositoryI@{StageI.StageRepositoryI}}
+Inheritance diagram for Stage\+I.\+Stage\+RepositoryI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_stage_i_1_1_stage_repository_i}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_stage_i_1_1_stage_repository_i_ad408e84b8bc9353471722a7011a90c75}{add}} (self, str user\+\_\+id, Window\+Type window, Stage\+Type stage)
+\item 
+\mbox{\hyperlink{class_stage_i_1_1_stage_repository_i_add4112241c8fb4331151820cf001640d}{change\+\_\+window}} (self, str user\+\_\+id, Window\+Type window)
+\item 
+\mbox{\hyperlink{class_stage_i_1_1_stage_repository_i_ab1a3f9300a496a936f2f798a34e91e29}{change\+\_\+stage}} (self, str user\+\_\+id, Stage\+Type stage)
+\item 
+\mbox{\hyperlink{class_stage_i_1_1_stage_repository_i_a901a7cdf417cb0dbf62c79ad814c0162}{change\+\_\+event}} (self, str user\+\_\+id, int event\+\_\+id)
+\item 
+\mbox{\hyperlink{class_stage_i_1_1_stage_repository_i_a765910d814eef05aa5a52bf670bea45e}{change\+\_\+notice}} (self, str user\+\_\+id, int notice\+\_\+id)
+\item 
+Stage\+Type \mbox{\hyperlink{class_stage_i_1_1_stage_repository_i_a7f721da1821013d104ddb2b0714e6e0c}{get\+\_\+stage}} (self, str user\+\_\+id)
+\item 
+Window\+Type \mbox{\hyperlink{class_stage_i_1_1_stage_repository_i_ab96c3d527f4e93529bde81790f9c73a0}{get\+\_\+window}} (self, str user\+\_\+id)
+\item 
+int \mbox{\hyperlink{class_stage_i_1_1_stage_repository_i_ac888cd5eb8a416789489a3f1b47df41e}{get\+\_\+event}} (self, str user\+\_\+id)
+\item 
+int \mbox{\hyperlink{class_stage_i_1_1_stage_repository_i_ae83231a39c4b7db8971084dcdb6fa4fe}{get\+\_\+notice}} (self, str user\+\_\+id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}@brief Абстрактный интерфейс репозитория управления состоянием пользователя
+
+Определяет методы для работы с текущим этапом, окном, 
+привязанными событиями и уведомлениями пользователя.
+@ingroup RepositoryInterface
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_stage_i_1_1_stage_repository_i_ad408e84b8bc9353471722a7011a90c75}\index{StageI.StageRepositoryI@{StageI.StageRepositoryI}!add@{add}}
+\index{add@{add}!StageI.StageRepositoryI@{StageI.StageRepositoryI}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_repository_i_ad408e84b8bc9353471722a7011a90c75} 
+Stage\+I.\+Stage\+Repository\+I.\+add (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{Window\+Type}]{window}{, }\item[{Stage\+Type}]{stage}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Создание новой записи состояния пользователя
+
+@param user_id: Уникальный идентификатор пользователя
+@param window: Тип окна для инициализации
+@param stage: Тип этапа для инициализации
+@throws AlreadyExistsError если запись для пользователя уже существует
+\end{DoxyVerb}
+ \Hypertarget{class_stage_i_1_1_stage_repository_i_a901a7cdf417cb0dbf62c79ad814c0162}\index{StageI.StageRepositoryI@{StageI.StageRepositoryI}!change\_event@{change\_event}}
+\index{change\_event@{change\_event}!StageI.StageRepositoryI@{StageI.StageRepositoryI}}
+\doxysubsubsection{\texorpdfstring{change\_event()}{change\_event()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_repository_i_a901a7cdf417cb0dbf62c79ad814c0162} 
+Stage\+I.\+Stage\+Repository\+I.\+change\+\_\+event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{int}]{event\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Привязка события к пользователю
+
+@param user_id: Уникальный идентификатор пользователя
+@param event_id: Идентификатор связанного события
+@throws NotFoundError если пользователь или событие не найдены
+\end{DoxyVerb}
+ \Hypertarget{class_stage_i_1_1_stage_repository_i_a765910d814eef05aa5a52bf670bea45e}\index{StageI.StageRepositoryI@{StageI.StageRepositoryI}!change\_notice@{change\_notice}}
+\index{change\_notice@{change\_notice}!StageI.StageRepositoryI@{StageI.StageRepositoryI}}
+\doxysubsubsection{\texorpdfstring{change\_notice()}{change\_notice()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_repository_i_a765910d814eef05aa5a52bf670bea45e} 
+Stage\+I.\+Stage\+Repository\+I.\+change\+\_\+notice (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{int}]{notice\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Привязка уведомления к пользователю
+
+@param user_id: Уникальный идентификатор пользователя
+@param notice_id: Идентификатор связанного уведомления
+@throws NotFoundError если пользователь или уведомление не найдены
+\end{DoxyVerb}
+ \Hypertarget{class_stage_i_1_1_stage_repository_i_ab1a3f9300a496a936f2f798a34e91e29}\index{StageI.StageRepositoryI@{StageI.StageRepositoryI}!change\_stage@{change\_stage}}
+\index{change\_stage@{change\_stage}!StageI.StageRepositoryI@{StageI.StageRepositoryI}}
+\doxysubsubsection{\texorpdfstring{change\_stage()}{change\_stage()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_repository_i_ab1a3f9300a496a936f2f798a34e91e29} 
+Stage\+I.\+Stage\+Repository\+I.\+change\+\_\+stage (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{Stage\+Type}]{stage}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Изменение типа этапа пользователя
+
+@param user_id: Уникальный идентификатор пользователя
+@param stage: Новый тип этапа
+@throws NotFoundError если пользователь не найден
+\end{DoxyVerb}
+ \Hypertarget{class_stage_i_1_1_stage_repository_i_add4112241c8fb4331151820cf001640d}\index{StageI.StageRepositoryI@{StageI.StageRepositoryI}!change\_window@{change\_window}}
+\index{change\_window@{change\_window}!StageI.StageRepositoryI@{StageI.StageRepositoryI}}
+\doxysubsubsection{\texorpdfstring{change\_window()}{change\_window()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_repository_i_add4112241c8fb4331151820cf001640d} 
+Stage\+I.\+Stage\+Repository\+I.\+change\+\_\+window (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{Window\+Type}]{window}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Изменение типа окна пользователя
+
+@param user_id: Уникальный идентификатор пользователя
+@param window: Новый тип окна
+@throws NotFoundError если пользователь не найден
+\end{DoxyVerb}
+ \Hypertarget{class_stage_i_1_1_stage_repository_i_ac888cd5eb8a416789489a3f1b47df41e}\index{StageI.StageRepositoryI@{StageI.StageRepositoryI}!get\_event@{get\_event}}
+\index{get\_event@{get\_event}!StageI.StageRepositoryI@{StageI.StageRepositoryI}}
+\doxysubsubsection{\texorpdfstring{get\_event()}{get\_event()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_repository_i_ac888cd5eb8a416789489a3f1b47df41e} 
+ int Stage\+I.\+Stage\+Repository\+I.\+get\+\_\+event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получение привязанного события
+
+@param user_id: Уникальный идентификатор пользователя
+@return ID события или -1 если не привязано
+@throws NotFoundError если пользователь не найден
+\end{DoxyVerb}
+ \Hypertarget{class_stage_i_1_1_stage_repository_i_ae83231a39c4b7db8971084dcdb6fa4fe}\index{StageI.StageRepositoryI@{StageI.StageRepositoryI}!get\_notice@{get\_notice}}
+\index{get\_notice@{get\_notice}!StageI.StageRepositoryI@{StageI.StageRepositoryI}}
+\doxysubsubsection{\texorpdfstring{get\_notice()}{get\_notice()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_repository_i_ae83231a39c4b7db8971084dcdb6fa4fe} 
+ int Stage\+I.\+Stage\+Repository\+I.\+get\+\_\+notice (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получение привязанного уведомления
+
+@param user_id: Уникальный идентификатор пользователя
+@return ID уведомления или -1 если не привязано
+@throws NotFoundError если пользователь не найден
+\end{DoxyVerb}
+ \Hypertarget{class_stage_i_1_1_stage_repository_i_a7f721da1821013d104ddb2b0714e6e0c}\index{StageI.StageRepositoryI@{StageI.StageRepositoryI}!get\_stage@{get\_stage}}
+\index{get\_stage@{get\_stage}!StageI.StageRepositoryI@{StageI.StageRepositoryI}}
+\doxysubsubsection{\texorpdfstring{get\_stage()}{get\_stage()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_repository_i_a7f721da1821013d104ddb2b0714e6e0c} 
+ Stage\+Type Stage\+I.\+Stage\+Repository\+I.\+get\+\_\+stage (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получение текущего этапа пользователя
+
+@param user_id: Уникальный идентификатор пользователя
+@return Текущий тип этапа
+@throws NotFoundError если запись не найдена
+\end{DoxyVerb}
+ \Hypertarget{class_stage_i_1_1_stage_repository_i_ab96c3d527f4e93529bde81790f9c73a0}\index{StageI.StageRepositoryI@{StageI.StageRepositoryI}!get\_window@{get\_window}}
+\index{get\_window@{get\_window}!StageI.StageRepositoryI@{StageI.StageRepositoryI}}
+\doxysubsubsection{\texorpdfstring{get\_window()}{get\_window()}}
+{\footnotesize\ttfamily \label{class_stage_i_1_1_stage_repository_i_ab96c3d527f4e93529bde81790f9c73a0} 
+ Window\+Type Stage\+I.\+Stage\+Repository\+I.\+get\+\_\+window (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получение текущего окна пользователя
+
+@param user_id: Уникальный идентификатор пользователя
+@return Текущий тип окна
+@throws NotFoundError если запись не найдена
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/repository/interface/\mbox{\hyperlink{repository_2interface_2_stage_i_8py}{Stage\+I.\+py}}\end{DoxyCompactItemize}

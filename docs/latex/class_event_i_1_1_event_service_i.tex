@@ -1,0 +1,102 @@
+\doxysection{Event\+I.\+Event\+ServiceI Class Reference}
+\hypertarget{class_event_i_1_1_event_service_i}{}\label{class_event_i_1_1_event_service_i}\index{EventI.EventServiceI@{EventI.EventServiceI}}
+Inheritance diagram for Event\+I.\+Event\+ServiceI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_event_i_1_1_event_service_i}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_event_i_1_1_event_service_i_aa9b46889c0acebaa80deae65ceeaacab}{add}} (self, event\+DTO.\+Add\+Event\+Request add\+\_\+event\+\_\+request)
+\item 
+\mbox{\hyperlink{class_event_i_1_1_event_service_i_a83d4f3d901c5e5e7b8ab66a9992289b8}{change}} (self, event\+DTO.\+Change\+Event\+Request change\+\_\+event\+\_\+request)
+\item 
+\mbox{\hyperlink{class_event_i_1_1_event_service_i_a208df0412abd863c5906f01ea30a2f9a}{delete}} (self, str user\+\_\+id, int event\+\_\+id)
+\item 
+\mbox{\hyperlink{class_event_i_1_1_event_service_i_aaf8a820869b7b40b13d026d7ddcb12f0}{delete\+\_\+all}} (self, str user\+\_\+id)
+\item 
+list\mbox{[}event\+Model.\+Event\mbox{]} \mbox{\hyperlink{class_event_i_1_1_event_service_i_a5f61e01c4b004a3c7c1460dcb778f32a}{get\+\_\+all}} (self, str user\+\_\+id)
+\item 
+event\+Model.\+Event \mbox{\hyperlink{class_event_i_1_1_event_service_i_ae134855bd458cd6d16aa214875b5b771}{get}} (self, int event\+\_\+id, str user\+\_\+id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}@interface
+@brief Абстрактный интерфейс сервиса для работы с событиями
+@details Определяет базовые методы для управления событиями (добавление, изменение, удаление, получение)
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_event_i_1_1_event_service_i_aa9b46889c0acebaa80deae65ceeaacab}\index{EventI.EventServiceI@{EventI.EventServiceI}!add@{add}}
+\index{add@{add}!EventI.EventServiceI@{EventI.EventServiceI}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{class_event_i_1_1_event_service_i_aa9b46889c0acebaa80deae65ceeaacab} 
+ int Event\+I.\+Event\+Service\+I.\+add (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{event\+DTO.\+Add\+Event\+Request}]{add\+\_\+event\+\_\+request}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Добавить новое событие
+@param add_event_request[in] - DTO объект с данными для создания события
+@return ID созданного события
+\end{DoxyVerb}
+ \Hypertarget{class_event_i_1_1_event_service_i_a83d4f3d901c5e5e7b8ab66a9992289b8}\index{EventI.EventServiceI@{EventI.EventServiceI}!change@{change}}
+\index{change@{change}!EventI.EventServiceI@{EventI.EventServiceI}}
+\doxysubsubsection{\texorpdfstring{change()}{change()}}
+{\footnotesize\ttfamily \label{class_event_i_1_1_event_service_i_a83d4f3d901c5e5e7b8ab66a9992289b8} 
+Event\+I.\+Event\+Service\+I.\+change (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{event\+DTO.\+Change\+Event\+Request}]{change\+\_\+event\+\_\+request}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Изменить существующее событие
+@param change_event_request[in] - DTO объект с данными для изменения события
+@throws EventNotFoundException если событие не найдено
+\end{DoxyVerb}
+ \Hypertarget{class_event_i_1_1_event_service_i_a208df0412abd863c5906f01ea30a2f9a}\index{EventI.EventServiceI@{EventI.EventServiceI}!delete@{delete}}
+\index{delete@{delete}!EventI.EventServiceI@{EventI.EventServiceI}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily \label{class_event_i_1_1_event_service_i_a208df0412abd863c5906f01ea30a2f9a} 
+Event\+I.\+Event\+Service\+I.\+delete (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{, }\item[{int}]{event\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Удалить конкретное событие
+@param user_id[in] - ID пользователя-владельца
+@param event_id[in] - ID удаляемого события
+@throws EventNotFoundException если событие не найдено
+@throws PermissionDeniedException если пользователь не владелец
+\end{DoxyVerb}
+ \Hypertarget{class_event_i_1_1_event_service_i_aaf8a820869b7b40b13d026d7ddcb12f0}\index{EventI.EventServiceI@{EventI.EventServiceI}!delete\_all@{delete\_all}}
+\index{delete\_all@{delete\_all}!EventI.EventServiceI@{EventI.EventServiceI}}
+\doxysubsubsection{\texorpdfstring{delete\_all()}{delete\_all()}}
+{\footnotesize\ttfamily \label{class_event_i_1_1_event_service_i_aaf8a820869b7b40b13d026d7ddcb12f0} 
+Event\+I.\+Event\+Service\+I.\+delete\+\_\+all (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Удалить все события пользователя
+@param user_id[in] - ID пользователя чьи события удаляем
+@throws EmptyRepositoryException если события отсутствуют
+\end{DoxyVerb}
+ \Hypertarget{class_event_i_1_1_event_service_i_ae134855bd458cd6d16aa214875b5b771}\index{EventI.EventServiceI@{EventI.EventServiceI}!get@{get}}
+\index{get@{get}!EventI.EventServiceI@{EventI.EventServiceI}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \label{class_event_i_1_1_event_service_i_ae134855bd458cd6d16aa214875b5b771} 
+ event\+Model.\+Event Event\+I.\+Event\+Service\+I.\+get (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{event\+\_\+id}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получить конкретное событие
+@param event_id[in] - ID запрашиваемого события
+@param user_id[in] - ID пользователя
+@return Объект Event
+@throws EventNotFoundException если событие не найдено
+\end{DoxyVerb}
+ \Hypertarget{class_event_i_1_1_event_service_i_a5f61e01c4b004a3c7c1460dcb778f32a}\index{EventI.EventServiceI@{EventI.EventServiceI}!get\_all@{get\_all}}
+\index{get\_all@{get\_all}!EventI.EventServiceI@{EventI.EventServiceI}}
+\doxysubsubsection{\texorpdfstring{get\_all()}{get\_all()}}
+{\footnotesize\ttfamily \label{class_event_i_1_1_event_service_i_a5f61e01c4b004a3c7c1460dcb778f32a} 
+ list\mbox{[}event\+Model.\+Event\mbox{]} Event\+I.\+Event\+Service\+I.\+get\+\_\+all (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получить все события пользователя
+@param user_id[in] - ID пользователя
+@return Список объектов Event или пустой список
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/service/interface/\mbox{\hyperlink{service_2interface_2_event_i_8py}{Event\+I.\+py}}\end{DoxyCompactItemize}

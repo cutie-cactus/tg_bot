@@ -1,0 +1,80 @@
+\doxysection{User\+I.\+User\+ServiceI Class Reference}
+\hypertarget{class_user_i_1_1_user_service_i}{}\label{class_user_i_1_1_user_service_i}\index{UserI.UserServiceI@{UserI.UserServiceI}}
+Inheritance diagram for User\+I.\+User\+ServiceI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_user_i_1_1_user_service_i}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_user_i_1_1_user_service_i_a6fbc2c45e2ff2f5f07b17db9f45f57de}{add}} (self, str tg\+\_\+id, str chat\+\_\+id)
+\item 
+\mbox{\hyperlink{class_user_i_1_1_user_service_i_a90c8e175674822ce1e3ad9dc89f99333}{change\+\_\+time\+\_\+zone}} (self, str tg\+\_\+id, int time\+\_\+zone)
+\item 
+int \mbox{\hyperlink{class_user_i_1_1_user_service_i_a1f0091535dd5abb8b331214b9b13212d}{get\+\_\+event\+\_\+count}} (self, str tg\+\_\+id, str chat\+\_\+id)
+\item 
+int \mbox{\hyperlink{class_user_i_1_1_user_service_i_a7c9c82daf3fa06abbecb05d42dd59d10}{get\+\_\+time\+\_\+zone}} (self, str tg\+\_\+id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}@interface
+@brief Абстрактный интерфейс сервиса для работы с пользователями
+@details Реализует базовые операции управления пользователями: создание, изменение временной зоны, получение статистики
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_user_i_1_1_user_service_i_a6fbc2c45e2ff2f5f07b17db9f45f57de}\index{UserI.UserServiceI@{UserI.UserServiceI}!add@{add}}
+\index{add@{add}!UserI.UserServiceI@{UserI.UserServiceI}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{class_user_i_1_1_user_service_i_a6fbc2c45e2ff2f5f07b17db9f45f57de} 
+User\+I.\+User\+Service\+I.\+add (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{tg\+\_\+id}{, }\item[{str}]{chat\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Зарегистрировать нового пользователя
+@param tg_id[in] - Уникальный идентификатор пользователя в Telegram
+@param chat_id[in] - Идентификатор чата для коммуникации
+@throws UserAlreadyExistsException если пользователь уже зарегистрирован
+\end{DoxyVerb}
+ \Hypertarget{class_user_i_1_1_user_service_i_a90c8e175674822ce1e3ad9dc89f99333}\index{UserI.UserServiceI@{UserI.UserServiceI}!change\_time\_zone@{change\_time\_zone}}
+\index{change\_time\_zone@{change\_time\_zone}!UserI.UserServiceI@{UserI.UserServiceI}}
+\doxysubsubsection{\texorpdfstring{change\_time\_zone()}{change\_time\_zone()}}
+{\footnotesize\ttfamily \label{class_user_i_1_1_user_service_i_a90c8e175674822ce1e3ad9dc89f99333} 
+User\+I.\+User\+Service\+I.\+change\+\_\+time\+\_\+zone (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{tg\+\_\+id}{, }\item[{int}]{time\+\_\+zone}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Обновить временную зону пользователя
+@param tg_id[in] - Идентификатор пользователя в Telegram
+@param time_zone[in] - Новая временная зона в формате UTC offset
+@throws UserNotFoundException если пользователь не найден
+@throws InvalidValueException если некорректное значение временной зоны
+\end{DoxyVerb}
+ \Hypertarget{class_user_i_1_1_user_service_i_a1f0091535dd5abb8b331214b9b13212d}\index{UserI.UserServiceI@{UserI.UserServiceI}!get\_event\_count@{get\_event\_count}}
+\index{get\_event\_count@{get\_event\_count}!UserI.UserServiceI@{UserI.UserServiceI}}
+\doxysubsubsection{\texorpdfstring{get\_event\_count()}{get\_event\_count()}}
+{\footnotesize\ttfamily \label{class_user_i_1_1_user_service_i_a1f0091535dd5abb8b331214b9b13212d} 
+ int User\+I.\+User\+Service\+I.\+get\+\_\+event\+\_\+count (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{tg\+\_\+id}{, }\item[{str}]{chat\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получить количество событий пользователя
+@param tg_id[in] - Идентификатор пользователя в Telegram
+@param chat_id[in] - Идентификатор чата для верификации
+@return Количество событий (0 если отсутствуют)
+@throws UserNotFoundException если пользователь не найден
+\end{DoxyVerb}
+ \Hypertarget{class_user_i_1_1_user_service_i_a7c9c82daf3fa06abbecb05d42dd59d10}\index{UserI.UserServiceI@{UserI.UserServiceI}!get\_time\_zone@{get\_time\_zone}}
+\index{get\_time\_zone@{get\_time\_zone}!UserI.UserServiceI@{UserI.UserServiceI}}
+\doxysubsubsection{\texorpdfstring{get\_time\_zone()}{get\_time\_zone()}}
+{\footnotesize\ttfamily \label{class_user_i_1_1_user_service_i_a7c9c82daf3fa06abbecb05d42dd59d10} 
+ int User\+I.\+User\+Service\+I.\+get\+\_\+time\+\_\+zone (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{tg\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получить текущую временную зону пользователя
+@param tg_id[in] - Идентификатор пользователя в Telegram
+@return Текущая временная зона в формате UTC offset
+@throws UserNotFoundException если пользователь не найден
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/service/interface/\mbox{\hyperlink{_user_i_8py}{User\+I.\+py}}\end{DoxyCompactItemize}

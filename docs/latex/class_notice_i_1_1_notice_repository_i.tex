@@ -1,0 +1,94 @@
+\doxysection{Notice\+I.\+Notice\+RepositoryI Class Reference}
+\hypertarget{class_notice_i_1_1_notice_repository_i}{}\label{class_notice_i_1_1_notice_repository_i}\index{NoticeI.NoticeRepositoryI@{NoticeI.NoticeRepositoryI}}
+Inheritance diagram for Notice\+I.\+Notice\+RepositoryI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_notice_i_1_1_notice_repository_i}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_notice_i_1_1_notice_repository_i_ae0557ab854fa5073671493ebb660b68d}{add}} (self, notice\+DTO.\+Add\+Notice\+Request add\+\_\+notice\+\_\+request)
+\item 
+notice\+Model.\+Notice \mbox{\hyperlink{class_notice_i_1_1_notice_repository_i_a3812f251ce173c91c4c708ab48db52a9}{get}} (self, int notice\+\_\+id)
+\item 
+list\mbox{[}notice\+Model.\+Notice\mbox{]} \mbox{\hyperlink{class_notice_i_1_1_notice_repository_i_a60dac7acf76a2565e347df41e0f1bbf1}{get\+\_\+all}} (self, int event\+\_\+id)
+\item 
+\mbox{\hyperlink{class_notice_i_1_1_notice_repository_i_a661972ad349b53534f02b01a1fe25238}{delete}} (self, int notice\+\_\+id, int event\+\_\+id)
+\item 
+bool \mbox{\hyperlink{class_notice_i_1_1_notice_repository_i_a4d7d24f4dce0a2614b8f61461d5689a9}{check\+\_\+exist}} (self, int notice\+\_\+id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}@brief Абстрактный интерфейс репозитория для работы с уведомлениями
+
+Определяет базовые операции для работы с хранилищем уведомлений.
+@ingroup RepositoryInterface
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_notice_i_1_1_notice_repository_i_ae0557ab854fa5073671493ebb660b68d}\index{NoticeI.NoticeRepositoryI@{NoticeI.NoticeRepositoryI}!add@{add}}
+\index{add@{add}!NoticeI.NoticeRepositoryI@{NoticeI.NoticeRepositoryI}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{class_notice_i_1_1_notice_repository_i_ae0557ab854fa5073671493ebb660b68d} 
+ int Notice\+I.\+Notice\+Repository\+I.\+add (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{notice\+DTO.\+Add\+Notice\+Request}]{add\+\_\+notice\+\_\+request}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Добавление нового уведомления
+ 
+@param add_notice_request: DTO объект с данными для создания уведомления
+@return ID созданного уведомления
+\end{DoxyVerb}
+ \Hypertarget{class_notice_i_1_1_notice_repository_i_a4d7d24f4dce0a2614b8f61461d5689a9}\index{NoticeI.NoticeRepositoryI@{NoticeI.NoticeRepositoryI}!check\_exist@{check\_exist}}
+\index{check\_exist@{check\_exist}!NoticeI.NoticeRepositoryI@{NoticeI.NoticeRepositoryI}}
+\doxysubsubsection{\texorpdfstring{check\_exist()}{check\_exist()}}
+{\footnotesize\ttfamily \label{class_notice_i_1_1_notice_repository_i_a4d7d24f4dce0a2614b8f61461d5689a9} 
+ bool Notice\+I.\+Notice\+Repository\+I.\+check\+\_\+exist (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{notice\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Проверка существования уведомления
+
+@param notice_id: Идентификатор проверяемого уведомления
+@return True если уведомление существует, иначе False
+\end{DoxyVerb}
+ \Hypertarget{class_notice_i_1_1_notice_repository_i_a661972ad349b53534f02b01a1fe25238}\index{NoticeI.NoticeRepositoryI@{NoticeI.NoticeRepositoryI}!delete@{delete}}
+\index{delete@{delete}!NoticeI.NoticeRepositoryI@{NoticeI.NoticeRepositoryI}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily \label{class_notice_i_1_1_notice_repository_i_a661972ad349b53534f02b01a1fe25238} 
+Notice\+I.\+Notice\+Repository\+I.\+delete (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{notice\+\_\+id}{, }\item[{int}]{event\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Удаление уведомления
+
+@param notice_id: Идентификатор удаляемого уведомления
+@param event_id: Идентификатор родительского события (для проверки принадлежности)
+@throws PermissionError если уведомление не принадлежит указанному событию
+\end{DoxyVerb}
+ \Hypertarget{class_notice_i_1_1_notice_repository_i_a3812f251ce173c91c4c708ab48db52a9}\index{NoticeI.NoticeRepositoryI@{NoticeI.NoticeRepositoryI}!get@{get}}
+\index{get@{get}!NoticeI.NoticeRepositoryI@{NoticeI.NoticeRepositoryI}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \label{class_notice_i_1_1_notice_repository_i_a3812f251ce173c91c4c708ab48db52a9} 
+ notice\+Model.\+Notice Notice\+I.\+Notice\+Repository\+I.\+get (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{notice\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получение уведомления по ID
+
+@param notice_id: Идентификатор запрашиваемого уведомления
+@return Объект уведомления из модели
+@throws NotFoundError если уведомление не найдено
+\end{DoxyVerb}
+ \Hypertarget{class_notice_i_1_1_notice_repository_i_a60dac7acf76a2565e347df41e0f1bbf1}\index{NoticeI.NoticeRepositoryI@{NoticeI.NoticeRepositoryI}!get\_all@{get\_all}}
+\index{get\_all@{get\_all}!NoticeI.NoticeRepositoryI@{NoticeI.NoticeRepositoryI}}
+\doxysubsubsection{\texorpdfstring{get\_all()}{get\_all()}}
+{\footnotesize\ttfamily \label{class_notice_i_1_1_notice_repository_i_a60dac7acf76a2565e347df41e0f1bbf1} 
+ list\mbox{[}notice\+Model.\+Notice\mbox{]} Notice\+I.\+Notice\+Repository\+I.\+get\+\_\+all (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{event\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получение всех уведомлений для события
+
+@param event_id: Идентификатор родительского события
+@return Список объектов уведомлений
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/repository/interface/\mbox{\hyperlink{repository_2interface_2_notice_i_8py}{Notice\+I.\+py}}\end{DoxyCompactItemize}

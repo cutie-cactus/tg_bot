@@ -1,0 +1,111 @@
+\doxysection{User.\+User\+Service Class Reference}
+\hypertarget{class_user_1_1_user_service}{}\label{class_user_1_1_user_service}\index{User.UserService@{User.UserService}}
+Inheritance diagram for User.\+User\+Service\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_user_1_1_user_service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_user_1_1_user_service_aa4fb284cd28ae86b7374a1e99dde2474}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, Connector.\+Postgres\+DBConnector \mbox{\hyperlink{class_user_1_1_user_service_ab212454aa1578f9eb0572bf67f12a938}{connector}}, user\+Repository.\+User\+RepositoryI \mbox{\hyperlink{class_user_1_1_user_service_add4bec323b124c0e952ae415268ac9ad}{user\+\_\+storage}}, \mbox{\hyperlink{class_logger_1_1_logger}{Logger.\+Logger}} \mbox{\hyperlink{class_user_1_1_user_service_a3155cab934d60c7f3ddf110739778525}{logger}})
+\item 
+\mbox{\hyperlink{class_user_1_1_user_service_a8434cedb3d162564d8d8218506b47f87}{add}} (self, str tg\+\_\+id, str chat\+\_\+id)
+\item 
+\mbox{\hyperlink{class_user_1_1_user_service_a0e3d6b98dfa7652229916bdaf692d046}{change\+\_\+time\+\_\+zone}} (self, str tg\+\_\+id, int time\+\_\+zone)
+\item 
+int \mbox{\hyperlink{class_user_1_1_user_service_ab7dee6e3d39d90dc2f2b4427d2f39322}{get\+\_\+event\+\_\+count}} (self, str tg\+\_\+id, str chat\+\_\+id)
+\item 
+int \mbox{\hyperlink{class_user_1_1_user_service_a6e7db0aca8c7841b9a2b3b9c0b411814}{get\+\_\+time\+\_\+zone}} (self, str tg\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{class_user_1_1_user_service_a97a0711171be903f8a6374b47fa24d56}{hash\+\_\+id}} (str string)
+\item 
+str \mbox{\hyperlink{class_user_1_1_user_service_a97a0711171be903f8a6374b47fa24d56}{hash\+\_\+id}} (str string)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_user_1_1_user_service_ab212454aa1578f9eb0572bf67f12a938}{connector}} = connector
+\item 
+\mbox{\hyperlink{class_user_1_1_user_service_add4bec323b124c0e952ae415268ac9ad}{user\+\_\+storage}} = user\+\_\+storage
+\item 
+\mbox{\hyperlink{class_user_1_1_user_service_a3155cab934d60c7f3ddf110739778525}{logger}} = logger
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_user_1_1_user_service_aa4fb284cd28ae86b7374a1e99dde2474}\index{User.UserService@{User.UserService}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!User.UserService@{User.UserService}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_service_aa4fb284cd28ae86b7374a1e99dde2474} 
+User.\+User\+Service.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{Connector.\+Postgres\+DBConnector}]{connector}{, }\item[{user\+Repository.\+User\+RepositoryI}]{user\+\_\+storage}{, }\item[{\mbox{\hyperlink{class_logger_1_1_logger}{Logger.\+Logger}}}]{logger}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_user_1_1_user_service_a8434cedb3d162564d8d8218506b47f87}\index{User.UserService@{User.UserService}!add@{add}}
+\index{add@{add}!User.UserService@{User.UserService}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_service_a8434cedb3d162564d8d8218506b47f87} 
+User.\+User\+Service.\+add (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{tg\+\_\+id}{, }\item[{str}]{chat\+\_\+id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_user_1_1_user_service_a0e3d6b98dfa7652229916bdaf692d046}\index{User.UserService@{User.UserService}!change\_time\_zone@{change\_time\_zone}}
+\index{change\_time\_zone@{change\_time\_zone}!User.UserService@{User.UserService}}
+\doxysubsubsection{\texorpdfstring{change\_time\_zone()}{change\_time\_zone()}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_service_a0e3d6b98dfa7652229916bdaf692d046} 
+User.\+User\+Service.\+change\+\_\+time\+\_\+zone (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{tg\+\_\+id}{, }\item[{int}]{time\+\_\+zone}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_user_1_1_user_service_ab7dee6e3d39d90dc2f2b4427d2f39322}\index{User.UserService@{User.UserService}!get\_event\_count@{get\_event\_count}}
+\index{get\_event\_count@{get\_event\_count}!User.UserService@{User.UserService}}
+\doxysubsubsection{\texorpdfstring{get\_event\_count()}{get\_event\_count()}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_service_ab7dee6e3d39d90dc2f2b4427d2f39322} 
+ int User.\+User\+Service.\+get\+\_\+event\+\_\+count (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{tg\+\_\+id}{, }\item[{str}]{chat\+\_\+id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_user_1_1_user_service_a6e7db0aca8c7841b9a2b3b9c0b411814}\index{User.UserService@{User.UserService}!get\_time\_zone@{get\_time\_zone}}
+\index{get\_time\_zone@{get\_time\_zone}!User.UserService@{User.UserService}}
+\doxysubsubsection{\texorpdfstring{get\_time\_zone()}{get\_time\_zone()}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_service_a6e7db0aca8c7841b9a2b3b9c0b411814} 
+ int User.\+User\+Service.\+get\+\_\+time\+\_\+zone (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{tg\+\_\+id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_user_1_1_user_service_a97a0711171be903f8a6374b47fa24d56}\index{User.UserService@{User.UserService}!hash\_id@{hash\_id}}
+\index{hash\_id@{hash\_id}!User.UserService@{User.UserService}}
+\doxysubsubsection{\texorpdfstring{hash\_id()}{hash\_id()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_service_a97a0711171be903f8a6374b47fa24d56} 
+ str User.\+User\+Service.\+hash\+\_\+id (\begin{DoxyParamCaption}\item[{str}]{string}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_user_1_1_user_service_a97a0711171be903f8a6374b47fa24d56}\index{User.UserService@{User.UserService}!hash\_id@{hash\_id}}
+\index{hash\_id@{hash\_id}!User.UserService@{User.UserService}}
+\doxysubsubsection{\texorpdfstring{hash\_id()}{hash\_id()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_service_a97a0711171be903f8a6374b47fa24d56} 
+ str User.\+User\+Service.\+hash\+\_\+id (\begin{DoxyParamCaption}\item[{str}]{string}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_user_1_1_user_service_ab212454aa1578f9eb0572bf67f12a938}\index{User.UserService@{User.UserService}!connector@{connector}}
+\index{connector@{connector}!User.UserService@{User.UserService}}
+\doxysubsubsection{\texorpdfstring{connector}{connector}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_service_ab212454aa1578f9eb0572bf67f12a938} 
+User.\+User\+Service.\+connector = connector}
+
+\Hypertarget{class_user_1_1_user_service_a3155cab934d60c7f3ddf110739778525}\index{User.UserService@{User.UserService}!logger@{logger}}
+\index{logger@{logger}!User.UserService@{User.UserService}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_service_a3155cab934d60c7f3ddf110739778525} 
+User.\+User\+Service.\+logger = logger}
+
+\Hypertarget{class_user_1_1_user_service_add4bec323b124c0e952ae415268ac9ad}\index{User.UserService@{User.UserService}!user\_storage@{user\_storage}}
+\index{user\_storage@{user\_storage}!User.UserService@{User.UserService}}
+\doxysubsubsection{\texorpdfstring{user\_storage}{user\_storage}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_service_add4bec323b124c0e952ae415268ac9ad} 
+User.\+User\+Service.\+user\+\_\+storage = user\+\_\+storage}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/service/implementation/\mbox{\hyperlink{service_2implementation_2_user_8py}{User.\+py}}\end{DoxyCompactItemize}

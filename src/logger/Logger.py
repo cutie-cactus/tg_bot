@@ -3,7 +3,22 @@ from dotenv import load_dotenv
 import os
 
 class Logger:
+    """!
+    @brief Класс для настройки и управления логированием приложения.
+
+    @details Обеспечивает запись логов как в файл (указанный в конфигурации), 
+    так и вывод в консоль. Поддерживает все стандартные уровни логирования.
+    """
     def __init__(self):
+        """!
+        @brief Инициализирует логгер с настройками из конфигурационного файла.
+
+        @details Создает:
+        - Файловый обработчик (FileHandler) для записи в файл логов
+        - Консольный обработчик (StreamHandler) для вывода в stdout
+        Оба обработчика используют формат:
+        '%(asctime)s - %(levelname)s - %(message)s'
+        """
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(logging.DEBUG)
 
@@ -20,16 +35,46 @@ class Logger:
         self.logger.addHandler(console_handler)
 
     def debug(self, message: str):
+        """!
+        @brief Записывает сообщение уровня DEBUG.
+
+        @param message: Текст сообщения для логирования
+        @type message: str
+        """
         self.logger.debug(message)
 
     def info(self, message: str):
+        """!
+        @brief Записывает сообщение уровня INFO.
+
+        @param message: Текст сообщения для логирования
+        @type message: str
+        """
         self.logger.info(message)
 
     def warning(self, message: str):
+        """!
+        @brief Записывает сообщение уровня WARNING.
+
+        @param message: Текст сообщения для логирования
+        @type message: str
+        """
         self.logger.warning(message)
 
     def error(self, message: str):
+        """!
+        @brief Записывает сообщение уровня ERROR.
+
+        @param message: Текст сообщения для логирования
+        @type message: str
+        """
         self.logger.error(message)
 
     def critical(self, message: str):
+        """!
+        @brief Записывает сообщение уровня CRITICAL.
+
+        @param message: Текст сообщения для логирования
+        @type message: str
+        """
         self.logger.critical(message)

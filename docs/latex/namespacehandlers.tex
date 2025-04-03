@@ -1,0 +1,583 @@
+\doxysection{handlers Namespace Reference}
+\hypertarget{namespacehandlers}{}\label{namespacehandlers}\index{handlers@{handlers}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{namespacehandlers_a679053b79b1842ac28062c68b45d4c1e}{is\+\_\+valid\+\_\+date}} (str date\+\_\+str)
+\item 
+bool \mbox{\hyperlink{namespacehandlers_a98ffb8feb2be3e32aaf12eec368a642f}{is\+\_\+valid\+\_\+time\+\_\+zone}} (str time\+\_\+zone)
+\item 
+bool \mbox{\hyperlink{namespacehandlers_adb6fbedee7c8297f46ed34825b3fb2b4}{is\+\_\+valid\+\_\+time}} (str date\+\_\+str, str time\+\_\+str)
+\item 
+None \mbox{\hyperlink{namespacehandlers_abd7534030b0ba4006175876f41ac20c8}{start}} (Update update, Callback\+Context context)
+\item 
+None \mbox{\hyperlink{namespacehandlers_af1d7b74405b722c2c9603bb43fdc6293}{show\+\_\+main\+\_\+menu}} (Update update, Callback\+Context context)
+\item 
+None \mbox{\hyperlink{namespacehandlers_a127a2fff068ba220a82a5327f823cd5d}{back\+\_\+to\+\_\+main\+\_\+menu}} (Update update, Callback\+Context context)
+\item 
+None \mbox{\hyperlink{namespacehandlers_a87f2f3a6b70e042e85540bb2e6b5b44e}{next\+\_\+to\+\_\+fix\+\_\+event}} (Update update, Callback\+Context context)
+\item 
+None \mbox{\hyperlink{namespacehandlers_acc53086ca9ee0a6d1c37a372cbb04302}{handle\+\_\+actions}} (Update update, Callback\+Context context)
+\item 
+None \mbox{\hyperlink{namespacehandlers_a136c9670a4ab12f9632ca6eb905fbd82}{handle\+\_\+cancel}} (Update update, Callback\+Context context)
+\item 
+None \mbox{\hyperlink{namespacehandlers_ae98b64e4d87b9115f5de8a760e9b396b}{add\+\_\+data}} (Update update, Callback\+Context context)
+\item 
+\mbox{\hyperlink{namespacehandlers_abc1799341d92fdb19e51d854190ace4b}{prepare\+\_\+list\+\_\+event}} (int user\+\_\+id)
+\item 
+\mbox{\hyperlink{namespacehandlers_afcea8a676f88041faddde49a0a1285de}{prepare\+\_\+one\+\_\+event}} (int event\+\_\+id, int user\+\_\+id)
+\item 
+\mbox{\hyperlink{namespacehandlers_ab7950df23ddf77290968b5ab1bc7bf74}{prepare\+\_\+list\+\_\+notice}} (int event\+\_\+id, int user\+\_\+id)
+\item 
+None \mbox{\hyperlink{namespacehandlers_a8323a64a4553d2666740c83f9a4b5be9}{get\+\_\+all\+\_\+event}} (Update update, Callback\+Context context)
+\item 
+None \mbox{\hyperlink{namespacehandlers_a42d1c4917beed0918e675458090c67d5}{get\+\_\+info\+\_\+main}} (Update update, Callback\+Context context)
+\item 
+None \mbox{\hyperlink{namespacehandlers_a62015397236978e3c6ddea44698df029}{get\+\_\+info\+\_\+choose}} (Update update, Callback\+Context context)
+\item 
+None \mbox{\hyperlink{namespacehandlers_aaebcc8fc5aa674796a13b68f1cb10cdc}{choose\+\_\+event}} (Update update, Callback\+Context context)
+\item 
+None \mbox{\hyperlink{namespacehandlers_aec088d32d5cb5d125fb29e9a7bf5d738}{get\+\_\+all\+\_\+notice}} (Update update, Callback\+Context context)
+\item 
+None \mbox{\hyperlink{namespacehandlers_a13df20eb56069b48e23ac793c5cab1b4}{delete\+\_\+all\+\_\+data}} (Update update, Callback\+Context context)
+\item 
+None \mbox{\hyperlink{namespacehandlers_a4784744caef8c9be127112bfc55d59eb}{delete\+\_\+event}} (Update update, Callback\+Context context)
+\item 
+None \mbox{\hyperlink{namespacehandlers_a7047404c83494098e0815dd093e4adb3}{delete\+\_\+notice}} (Update update, Callback\+Context context)
+\item 
+None \mbox{\hyperlink{namespacehandlers_a9df57e5ee836195fa95ba56b35d05530}{add\+\_\+notice}} (Update update, Callback\+Context context)
+\item 
+None \mbox{\hyperlink{namespacehandlers_ae3d56ad9cc204950200798aea9d50b9c}{fix\+\_\+event}} (Update update, Callback\+Context context)
+\item 
+None \mbox{\hyperlink{namespacehandlers_ae06a74495ac10eab8886a7c162c21bb3}{handle\+\_\+user\+\_\+input}} (Update update, Callback\+Context context)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}{connector}} = Connector.\+Postgres\+DBConnector()
+\item 
+\mbox{\hyperlink{namespacehandlers_af595557cad72fa928a92ee2c51f394ad}{logger}} = \mbox{\hyperlink{class_logger_1_1_logger}{Logger.\+Logger}}()
+\item 
+\mbox{\hyperlink{namespacehandlers_abe3152e47f387c9eb5db62cd93cc3175}{event\+\_\+repository}} = event\+Storage.\+Event\+Repository(\mbox{\hyperlink{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}{connector}})
+\item 
+\mbox{\hyperlink{namespacehandlers_a9ddfaac2d4e195a3baaa279e40a3a094}{event\+\_\+service}} = event\+Service.\+Event\+Service(\mbox{\hyperlink{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}{connector}}, \mbox{\hyperlink{namespacehandlers_abe3152e47f387c9eb5db62cd93cc3175}{event\+\_\+repository}}, \mbox{\hyperlink{namespacehandlers_af595557cad72fa928a92ee2c51f394ad}{logger}})
+\item 
+\mbox{\hyperlink{namespacehandlers_a7867ce81c3cbf6f16d9263cad114c79a}{notice\+\_\+repository}} = notice\+Storage.\+Notice\+Repository(\mbox{\hyperlink{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}{connector}})
+\item 
+\mbox{\hyperlink{namespacehandlers_a50b4e3b8c1e9f5f7e8b8eb8ec672964c}{notice\+\_\+service}} = notice\+Service.\+Notice\+Service(\mbox{\hyperlink{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}{connector}}, \mbox{\hyperlink{namespacehandlers_a7867ce81c3cbf6f16d9263cad114c79a}{notice\+\_\+repository}}, \mbox{\hyperlink{namespacehandlers_af595557cad72fa928a92ee2c51f394ad}{logger}})
+\item 
+\mbox{\hyperlink{namespacehandlers_aa209b00175aa284c956ff391d1f1263b}{user\+\_\+repository}} = user\+Storage.\+User\+Repository(\mbox{\hyperlink{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}{connector}})
+\item 
+\mbox{\hyperlink{namespacehandlers_a4e9e314a0946a0d5c8e6d2cac791ddeb}{user\+\_\+service}} = user\+Service.\+User\+Service(\mbox{\hyperlink{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}{connector}}, \mbox{\hyperlink{namespacehandlers_aa209b00175aa284c956ff391d1f1263b}{user\+\_\+repository}}, \mbox{\hyperlink{namespacehandlers_af595557cad72fa928a92ee2c51f394ad}{logger}})
+\item 
+\mbox{\hyperlink{namespacehandlers_af35291007f7b33275697862475e9c889}{stage\+\_\+repository}} = stage\+Storage.\+Stage\+Repository(\mbox{\hyperlink{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}{connector}})
+\item 
+\mbox{\hyperlink{namespacehandlers_a09febc95529ea4d21bc53dbc4e6913fb}{stage\+\_\+service}} = stage\+Service.\+Stage\+Service(\mbox{\hyperlink{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}{connector}}, \mbox{\hyperlink{namespacehandlers_af35291007f7b33275697862475e9c889}{stage\+\_\+repository}}, \mbox{\hyperlink{namespacehandlers_af595557cad72fa928a92ee2c51f394ad}{logger}})
+\item 
+\mbox{\hyperlink{namespacehandlers_a341a2ead9eaef8ae02d89e341dd9d928}{MAIN\+\_\+\+KEYBOARD}} = Reply\+Keyboard\+Markup(\mbox{[}\mbox{[}"{}Get"{}, "{}Add"{}\mbox{]}, \mbox{[}"{}Info"{}, "{}Choose"{}, "{}Delete"{}\mbox{]}\mbox{]}, resize\+\_\+keyboard=True)
+\item 
+\mbox{\hyperlink{namespacehandlers_a07e415850a83e9b6a6be4a3198c3b19b}{BACK\+\_\+\+KEYBOARD}} = Reply\+Keyboard\+Markup(\mbox{[}\mbox{[}"{}Back"{}\mbox{]}\mbox{]}, resize\+\_\+keyboard=True, one\+\_\+time\+\_\+keyboard=True)
+\item 
+\mbox{\hyperlink{namespacehandlers_aca0d4bb48309b60a27253e604dfd5a16}{CHOOSE\+\_\+\+KEYBOARD}}
+\item 
+\mbox{\hyperlink{namespacehandlers_a96f56910e602f5491b95bdf0a3b3e196}{CANCEL\+\_\+\+KEYBOARD}} = Reply\+Keyboard\+Markup(\mbox{[}\mbox{[}"{}Cancel"{}\mbox{]}\mbox{]}, resize\+\_\+keyboard=True, one\+\_\+time\+\_\+keyboard=True)
+\item 
+\mbox{\hyperlink{namespacehandlers_a856f32e3a123c61251e07fe3c3463972}{FIX\+\_\+\+KEYBOARD}} = Reply\+Keyboard\+Markup(\mbox{[}\mbox{[}"{}Cancel"{}, "{}Next"{}\mbox{]}\mbox{]}, resize\+\_\+keyboard=True, one\+\_\+time\+\_\+keyboard=True)
+\item 
+tuple \mbox{\hyperlink{namespacehandlers_a1a6c05c377b454d7163afcc5ba941293}{INFO\+\_\+\+CHOOSE\+\_\+\+TEXT}}
+\item 
+tuple \mbox{\hyperlink{namespacehandlers_a5cece2b559cc344e99b37a58a425e45b}{INFO\+\_\+\+MAIN\+\_\+\+TEXT}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacehandlers_ae98b64e4d87b9115f5de8a760e9b396b}\index{handlers@{handlers}!add\_data@{add\_data}}
+\index{add\_data@{add\_data}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{add\_data()}{add\_data()}}
+{\footnotesize\ttfamily \label{namespacehandlers_ae98b64e4d87b9115f5de8a760e9b396b} 
+ None handlers.\+add\+\_\+data (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@function
+@brief Инициализация процесса добавления события
+@details Устанавливает состояние WAITING_FOR_DATE и запрашивает дату
+
+@throws Меняет состояние через stage_service
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_a9df57e5ee836195fa95ba56b35d05530}\index{handlers@{handlers}!add\_notice@{add\_notice}}
+\index{add\_notice@{add\_notice}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{add\_notice()}{add\_notice()}}
+{\footnotesize\ttfamily \label{namespacehandlers_a9df57e5ee836195fa95ba56b35d05530} 
+ None handlers.\+add\+\_\+notice (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@function
+@brief Инициализация добавления уведомления
+@details Устанавливает состояние ожидания выбора даты напоминания
+
+@var StageType.WAITING_FOR_DELETE_NOTICE_CHOOSE - Состояние выбора даты
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_a127a2fff068ba220a82a5327f823cd5d}\index{handlers@{handlers}!back\_to\_main\_menu@{back\_to\_main\_menu}}
+\index{back\_to\_main\_menu@{back\_to\_main\_menu}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{back\_to\_main\_menu()}{back\_to\_main\_menu()}}
+{\footnotesize\ttfamily \label{namespacehandlers_a127a2fff068ba220a82a5327f823cd5d} 
+ None handlers.\+back\+\_\+to\+\_\+main\+\_\+menu (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@var
+@brief Возврат в главное меню
+@details Сбрасывает привязанные события/уведомления
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_aaebcc8fc5aa674796a13b68f1cb10cdc}\index{handlers@{handlers}!choose\_event@{choose\_event}}
+\index{choose\_event@{choose\_event}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{choose\_event()}{choose\_event()}}
+{\footnotesize\ttfamily \label{namespacehandlers_aaebcc8fc5aa674796a13b68f1cb10cdc} 
+None handlers.\+choose\+\_\+event (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@function 
+@brief Обработчик выбора конкретного события
+@var events_text - Форматированный список событий
+@var context.user_data["state"] - Новое состояние диалога
+@throws Переводит в состояние WAITING_FOR_EVENT через stage_service
+\end{DoxyVerb}
+
+
+\begin{DoxyVerb}@function
+@brief Инициализация удаления всех событий
+@details Запрашивает подтверждение перед выполнением
+@var events_text - Список событий для визуализации
+@throws Переводит в состояние WAITING_FOR_DELETE_ALL
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_a13df20eb56069b48e23ac793c5cab1b4}\index{handlers@{handlers}!delete\_all\_data@{delete\_all\_data}}
+\index{delete\_all\_data@{delete\_all\_data}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{delete\_all\_data()}{delete\_all\_data()}}
+{\footnotesize\ttfamily \label{namespacehandlers_a13df20eb56069b48e23ac793c5cab1b4} 
+ None handlers.\+delete\+\_\+all\+\_\+data (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@function
+@brief Инициирует процесс удаления всех событий
+@details Показывает список событий и запрашивает подтверждение удаления
+
+@var events_text - Отформатированный список всех событий пользователя
+@throws EventNotFoundException если события отсутствуют
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_a4784744caef8c9be127112bfc55d59eb}\index{handlers@{handlers}!delete\_event@{delete\_event}}
+\index{delete\_event@{delete\_event}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{delete\_event()}{delete\_event()}}
+{\footnotesize\ttfamily \label{namespacehandlers_a4784744caef8c9be127112bfc55d59eb} 
+ None handlers.\+delete\+\_\+event (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@function
+@brief Удаление конкретного события
+@var selected_event - Выбранное событие из stage_service
+@var event_text - Форматированная информация о событии
+@throws Переводит в состояние WAITING_FOR_DELETE_EVENT
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_a7047404c83494098e0815dd093e4adb3}\index{handlers@{handlers}!delete\_notice@{delete\_notice}}
+\index{delete\_notice@{delete\_notice}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{delete\_notice()}{delete\_notice()}}
+{\footnotesize\ttfamily \label{namespacehandlers_a7047404c83494098e0815dd093e4adb3} 
+ None handlers.\+delete\+\_\+notice (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@function
+@brief Удаление уведомления события
+@details Получает список уведомлений и инициирует процесс удаления
+
+@var selected_event - Текущее событие из stage_service
+@var notice_text - Форматированная информация об уведомлениях
+@var flag - Флаг наличия уведомлений (True - есть данные)
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_ae3d56ad9cc204950200798aea9d50b9c}\index{handlers@{handlers}!fix\_event@{fix\_event}}
+\index{fix\_event@{fix\_event}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{fix\_event()}{fix\_event()}}
+{\footnotesize\ttfamily \label{namespacehandlers_ae3d56ad9cc204950200798aea9d50b9c} 
+ None handlers.\+fix\+\_\+event (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@function
+@brief Редактирование события
+@details Показывает текущие данные события и запускает процесс редактирования
+
+@var WindowType.CHOOSE_KEYBOARD - Меню действий с событием
+@var selected_event - Выбранное событие из stage_service
+@var event_text - Форматированное описание события
+@var StageType.WAITING_FOR_FIX_DATE - Состояние ожидания новой даты
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_a8323a64a4553d2666740c83f9a4b5be9}\index{handlers@{handlers}!get\_all\_event@{get\_all\_event}}
+\index{get\_all\_event@{get\_all\_event}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{get\_all\_event()}{get\_all\_event()}}
+{\footnotesize\ttfamily \label{namespacehandlers_a8323a64a4553d2666740c83f9a4b5be9} 
+None handlers.\+get\+\_\+all\+\_\+event (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@function
+@brief Обработчик команды получения списка событий
+@var events_text - Форматированный список событий
+@var context.user_data["menu"] - Текущее меню пользователя
+\end{DoxyVerb}
+
+
+\begin{DoxyVerb}@function
+@brief Получение и отображение списка всех событий
+@var events_text - Отформатированный список событий
+@throws При отсутствии событий выводит соответствующее уведомление
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_aec088d32d5cb5d125fb29e9a7bf5d738}\index{handlers@{handlers}!get\_all\_notice@{get\_all\_notice}}
+\index{get\_all\_notice@{get\_all\_notice}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{get\_all\_notice()}{get\_all\_notice()}}
+{\footnotesize\ttfamily \label{namespacehandlers_aec088d32d5cb5d125fb29e9a7bf5d738} 
+ None handlers.\+get\+\_\+all\+\_\+notice (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@function
+@brief Отображение всех уведомлений выбранного события
+@details Получает привязанное событие и формирует список его уведомлений
+
+@var selected_event - Текущее выбранное событие из stage_service
+@var notice_text - Форматированная строка с информацией о событии и уведомлениях
+@var events_text - Неиспользуемая переменная (возможная ошибка в коде)
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_a62015397236978e3c6ddea44698df029}\index{handlers@{handlers}!get\_info\_choose@{get\_info\_choose}}
+\index{get\_info\_choose@{get\_info\_choose}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{get\_info\_choose()}{get\_info\_choose()}}
+{\footnotesize\ttfamily \label{namespacehandlers_a62015397236978e3c6ddea44698df029} 
+None handlers.\+get\+\_\+info\+\_\+choose (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@function
+@brief Отображение информации меню работы с событием
+@details Выводит специализированную справку для режима редактирования
+@var INFO_CHOOSE_TEXT - Текст с описанием доступных команд
+\end{DoxyVerb}
+
+
+\begin{DoxyVerb}@function
+@brief Отображение уведомлений выбранного события
+@var selected_event - Текущее событие из stage_service
+@var notice_text - Форматированная информация о напоминаниях
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_a42d1c4917beed0918e675458090c67d5}\index{handlers@{handlers}!get\_info\_main@{get\_info\_main}}
+\index{get\_info\_main@{get\_info\_main}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{get\_info\_main()}{get\_info\_main()}}
+{\footnotesize\ttfamily \label{namespacehandlers_a42d1c4917beed0918e675458090c67d5} 
+None handlers.\+get\+\_\+info\+\_\+main (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@function
+@brief Отображение информации главного меню
+@details Выводит форматированное сообщение с инструкциями для основного интерфейса
+@var INFO_MAIN_TEXT - Текстовый шаблон с markdown-разметкой
+\end{DoxyVerb}
+
+
+\begin{DoxyVerb}@function
+@brief Обработчик выбора события для детальной работы
+@details Инициирует состояние WAITING_FOR_EVENT для последующего ввода номера
+@var events_text - Список доступных событий
+@throws При отсутствии событий прерывает операцию
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_acc53086ca9ee0a6d1c37a372cbb04302}\index{handlers@{handlers}!handle\_actions@{handle\_actions}}
+\index{handle\_actions@{handle\_actions}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{handle\_actions()}{handle\_actions()}}
+{\footnotesize\ttfamily \label{namespacehandlers_acc53086ca9ee0a6d1c37a372cbb04302} 
+ None handlers.\+handle\+\_\+actions (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Обрабатывает нажатие кнопок, учитывая, в каком меню находится пользователь.\end{DoxyVerb}
+
+
+\begin{DoxyVerb}@function
+@brief Центральный роутер действий пользователя
+@details Обрабатывает нажатия кнопок в зависимости от текущего активного меню
+
+@param update[in] - Объект обновления Telegram
+@param context[in] - Контекст выполнения
+@var text - Текст сообщения пользователя
+@var menu - Текущее активное меню (MAIN_KEYBOARD/CHOOSE_KEYBOARD)
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_a136c9670a4ab12f9632ca6eb905fbd82}\index{handlers@{handlers}!handle\_cancel@{handle\_cancel}}
+\index{handle\_cancel@{handle\_cancel}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{handle\_cancel()}{handle\_cancel()}}
+{\footnotesize\ttfamily \label{namespacehandlers_a136c9670a4ab12f9632ca6eb905fbd82} 
+ None handlers.\+handle\+\_\+cancel (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@function
+@brief Обработчик отмены действий
+@details Возвращает в предыдущее меню и сбрасывает состояние
+
+@var stage - Текущий этап взаимодействия
+@var previous_menu - Предыдущее активное меню
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_ae06a74495ac10eab8886a7c162c21bb3}\index{handlers@{handlers}!handle\_user\_input@{handle\_user\_input}}
+\index{handle\_user\_input@{handle\_user\_input}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{handle\_user\_input()}{handle\_user\_input()}}
+{\footnotesize\ttfamily \label{namespacehandlers_ae06a74495ac10eab8886a7c162c21bb3} 
+ None handlers.\+handle\+\_\+user\+\_\+input (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@var
+@brief Центральный обработчик ввода пользователя
+@details Анализирует состояние через stage_service
+@var text - Текст сообщения пользователя
+@var state - Текущее состояние из stage_service
+@var context.user_data - Хранилище временных данных
+@var selected_event - Выбранное событие
+@var delay - Задержка для уведомления
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_a679053b79b1842ac28062c68b45d4c1e}\index{handlers@{handlers}!is\_valid\_date@{is\_valid\_date}}
+\index{is\_valid\_date@{is\_valid\_date}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{is\_valid\_date()}{is\_valid\_date()}}
+{\footnotesize\ttfamily \label{namespacehandlers_a679053b79b1842ac28062c68b45d4c1e} 
+ bool handlers.\+is\+\_\+valid\+\_\+date (\begin{DoxyParamCaption}\item[{str}]{date\+\_\+str}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@var
+@brief Валидатор формата даты
+@param date_str[in] - Строка даты в формате ГГГГ-ММ-ДД
+@return bool - Валидность даты
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_adb6fbedee7c8297f46ed34825b3fb2b4}\index{handlers@{handlers}!is\_valid\_time@{is\_valid\_time}}
+\index{is\_valid\_time@{is\_valid\_time}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{is\_valid\_time()}{is\_valid\_time()}}
+{\footnotesize\ttfamily \label{namespacehandlers_adb6fbedee7c8297f46ed34825b3fb2b4} 
+ bool handlers.\+is\+\_\+valid\+\_\+time (\begin{DoxyParamCaption}\item[{str}]{date\+\_\+str}{, }\item[{str}]{time\+\_\+str}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@var
+@brief Валидатор времени события
+@param date_str[in] - Дата события
+@param time_str[in] - Время события
+@return bool - Валидность времени
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_a98ffb8feb2be3e32aaf12eec368a642f}\index{handlers@{handlers}!is\_valid\_time\_zone@{is\_valid\_time\_zone}}
+\index{is\_valid\_time\_zone@{is\_valid\_time\_zone}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{is\_valid\_time\_zone()}{is\_valid\_time\_zone()}}
+{\footnotesize\ttfamily \label{namespacehandlers_a98ffb8feb2be3e32aaf12eec368a642f} 
+ bool handlers.\+is\+\_\+valid\+\_\+time\+\_\+zone (\begin{DoxyParamCaption}\item[{str}]{time\+\_\+zone}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@var
+@brief Валидатор часового пояса
+@param time_zone[in] - Строка смещения UTC
+@return bool - Валидность значения
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_a87f2f3a6b70e042e85540bb2e6b5b44e}\index{handlers@{handlers}!next\_to\_fix\_event@{next\_to\_fix\_event}}
+\index{next\_to\_fix\_event@{next\_to\_fix\_event}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{next\_to\_fix\_event()}{next\_to\_fix\_event()}}
+{\footnotesize\ttfamily \label{namespacehandlers_a87f2f3a6b70e042e85540bb2e6b5b44e} 
+ None handlers.\+next\+\_\+to\+\_\+fix\+\_\+event (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@var
+@brief Навигация по этапам редактирования
+@details Управляет контекстом редактирования через user_data
+@var stage - Текущий этап редактирования
+@var fix_date - Новая дата события
+@var fix_time - Новое время события
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_abc1799341d92fdb19e51d854190ace4b}\index{handlers@{handlers}!prepare\_list\_event@{prepare\_list\_event}}
+\index{prepare\_list\_event@{prepare\_list\_event}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{prepare\_list\_event()}{prepare\_list\_event()}}
+{\footnotesize\ttfamily \label{namespacehandlers_abc1799341d92fdb19e51d854190ace4b} 
+handlers.\+prepare\+\_\+list\+\_\+event (\begin{DoxyParamCaption}\item[{int}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@var
+@brief Форматирует список событий для вывода
+@param user_id[in] - Идентификатор пользователя
+@return str - Отформатированный текст со списком
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_ab7950df23ddf77290968b5ab1bc7bf74}\index{handlers@{handlers}!prepare\_list\_notice@{prepare\_list\_notice}}
+\index{prepare\_list\_notice@{prepare\_list\_notice}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{prepare\_list\_notice()}{prepare\_list\_notice()}}
+{\footnotesize\ttfamily \label{namespacehandlers_ab7950df23ddf77290968b5ab1bc7bf74} 
+handlers.\+prepare\+\_\+list\+\_\+notice (\begin{DoxyParamCaption}\item[{int}]{event\+\_\+id}{, }\item[{int}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@function
+@brief Формирует текстовое представление события и его уведомлений
+@param event_id[in] - ID целевого события
+@param user_id[in] - ID пользователя для проверки прав доступа
+@return tuple (текст для отображения, флаг наличия уведомлений)
+
+@var selected_event - Объект события из event_service
+@var notices - Список уведомлений события
+@var notice_text - Буфер для формирования ответа
+@var flag - Индикатор наличия уведомлений (True/False)
+\end{DoxyVerb}
+
+
+\begin{DoxyVerb}@function
+@brief Формирует детализированный отчет о событии и уведомлениях
+@param event_id[in] - ID анализируемого события
+@param user_id[in] - Идентификатор пользователя для проверки прав
+@return tuple (текстовый отчет, флаг наличия уведомлений)
+
+@var selected_event - Объект события из event_service
+@var notices - Список связанных уведомлений
+@var notice_text - Буфер для накопления вывода
+@var flag - Индикатор наличия данных (True - есть уведомления)
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_afcea8a676f88041faddde49a0a1285de}\index{handlers@{handlers}!prepare\_one\_event@{prepare\_one\_event}}
+\index{prepare\_one\_event@{prepare\_one\_event}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{prepare\_one\_event()}{prepare\_one\_event()}}
+{\footnotesize\ttfamily \label{namespacehandlers_afcea8a676f88041faddde49a0a1285de} 
+handlers.\+prepare\+\_\+one\+\_\+event (\begin{DoxyParamCaption}\item[{int}]{event\+\_\+id}{, }\item[{int}]{user\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@var
+@brief Форматирует детали одного события
+@param event_id[in] - Идентификатор события
+@return str - Отформатированный текст с деталями
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_af1d7b74405b722c2c9603bb43fdc6293}\index{handlers@{handlers}!show\_main\_menu@{show\_main\_menu}}
+\index{show\_main\_menu@{show\_main\_menu}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{show\_main\_menu()}{show\_main\_menu()}}
+{\footnotesize\ttfamily \label{namespacehandlers_af1d7b74405b722c2c9603bb43fdc6293} 
+ None handlers.\+show\+\_\+main\+\_\+menu (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@var
+@brief Инициализация нового пользователя
+@details Регистрирует пользователя и запрашивает часовой пояс
+@var chat_id - Идентификатор чата
+@var tg_id - Идентификатор пользователя Telegram
+\end{DoxyVerb}
+ \Hypertarget{namespacehandlers_abd7534030b0ba4006175876f41ac20c8}\index{handlers@{handlers}!start@{start}}
+\index{start@{start}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily \label{namespacehandlers_abd7534030b0ba4006175876f41ac20c8} 
+ None handlers.\+start (\begin{DoxyParamCaption}\item[{Update}]{update}{, }\item[{Callback\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@var
+@brief Обработчик команды /start
+@param update[in] - Объект обновления Telegram
+@param context[in] - Контекст выполнения
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacehandlers_a07e415850a83e9b6a6be4a3198c3b19b}\index{handlers@{handlers}!BACK\_KEYBOARD@{BACK\_KEYBOARD}}
+\index{BACK\_KEYBOARD@{BACK\_KEYBOARD}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{BACK\_KEYBOARD}{BACK\_KEYBOARD}}
+{\footnotesize\ttfamily \label{namespacehandlers_a07e415850a83e9b6a6be4a3198c3b19b} 
+handlers.\+BACK\+\_\+\+KEYBOARD = Reply\+Keyboard\+Markup(\mbox{[}\mbox{[}"{}Back"{}\mbox{]}\mbox{]}, resize\+\_\+keyboard=True, one\+\_\+time\+\_\+keyboard=True)}
+
+\Hypertarget{namespacehandlers_a96f56910e602f5491b95bdf0a3b3e196}\index{handlers@{handlers}!CANCEL\_KEYBOARD@{CANCEL\_KEYBOARD}}
+\index{CANCEL\_KEYBOARD@{CANCEL\_KEYBOARD}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{CANCEL\_KEYBOARD}{CANCEL\_KEYBOARD}}
+{\footnotesize\ttfamily \label{namespacehandlers_a96f56910e602f5491b95bdf0a3b3e196} 
+handlers.\+CANCEL\+\_\+\+KEYBOARD = Reply\+Keyboard\+Markup(\mbox{[}\mbox{[}"{}Cancel"{}\mbox{]}\mbox{]}, resize\+\_\+keyboard=True, one\+\_\+time\+\_\+keyboard=True)}
+
+\Hypertarget{namespacehandlers_aca0d4bb48309b60a27253e604dfd5a16}\index{handlers@{handlers}!CHOOSE\_KEYBOARD@{CHOOSE\_KEYBOARD}}
+\index{CHOOSE\_KEYBOARD@{CHOOSE\_KEYBOARD}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{CHOOSE\_KEYBOARD}{CHOOSE\_KEYBOARD}}
+{\footnotesize\ttfamily \label{namespacehandlers_aca0d4bb48309b60a27253e604dfd5a16} 
+handlers.\+CHOOSE\+\_\+\+KEYBOARD}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ ReplyKeyboardMarkup([[\textcolor{stringliteral}{"{}Get"{}},\ \textcolor{stringliteral}{"{}Fix"{}}],\ [\textcolor{stringliteral}{"{}Info"{}},\ \textcolor{stringliteral}{"{}Delete\ event"{}}],\ [\textcolor{stringliteral}{"{}Add"{}},\ \textcolor{stringliteral}{"{}Delete\ notice"{}}],\ [\textcolor{stringliteral}{"{}Back"{}}]],}
+\DoxyCodeLine{00002\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ resize\_keyboard=\textcolor{keyword}{True})}
+
+\end{DoxyCode}
+\Hypertarget{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}\index{handlers@{handlers}!connector@{connector}}
+\index{connector@{connector}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{connector}{connector}}
+{\footnotesize\ttfamily \label{namespacehandlers_a0b6f49ff14300baea60e485cb2237125} 
+handlers.\+connector = Connector.\+Postgres\+DBConnector()}
+
+\Hypertarget{namespacehandlers_abe3152e47f387c9eb5db62cd93cc3175}\index{handlers@{handlers}!event\_repository@{event\_repository}}
+\index{event\_repository@{event\_repository}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{event\_repository}{event\_repository}}
+{\footnotesize\ttfamily \label{namespacehandlers_abe3152e47f387c9eb5db62cd93cc3175} 
+handlers.\+event\+\_\+repository = event\+Storage.\+Event\+Repository(\mbox{\hyperlink{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}{connector}})}
+
+\Hypertarget{namespacehandlers_a9ddfaac2d4e195a3baaa279e40a3a094}\index{handlers@{handlers}!event\_service@{event\_service}}
+\index{event\_service@{event\_service}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{event\_service}{event\_service}}
+{\footnotesize\ttfamily \label{namespacehandlers_a9ddfaac2d4e195a3baaa279e40a3a094} 
+handlers.\+event\+\_\+service = event\+Service.\+Event\+Service(\mbox{\hyperlink{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}{connector}}, \mbox{\hyperlink{namespacehandlers_abe3152e47f387c9eb5db62cd93cc3175}{event\+\_\+repository}}, \mbox{\hyperlink{namespacehandlers_af595557cad72fa928a92ee2c51f394ad}{logger}})}
+
+\Hypertarget{namespacehandlers_a856f32e3a123c61251e07fe3c3463972}\index{handlers@{handlers}!FIX\_KEYBOARD@{FIX\_KEYBOARD}}
+\index{FIX\_KEYBOARD@{FIX\_KEYBOARD}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{FIX\_KEYBOARD}{FIX\_KEYBOARD}}
+{\footnotesize\ttfamily \label{namespacehandlers_a856f32e3a123c61251e07fe3c3463972} 
+handlers.\+FIX\+\_\+\+KEYBOARD = Reply\+Keyboard\+Markup(\mbox{[}\mbox{[}"{}Cancel"{}, "{}Next"{}\mbox{]}\mbox{]}, resize\+\_\+keyboard=True, one\+\_\+time\+\_\+keyboard=True)}
+
+\Hypertarget{namespacehandlers_a1a6c05c377b454d7163afcc5ba941293}\index{handlers@{handlers}!INFO\_CHOOSE\_TEXT@{INFO\_CHOOSE\_TEXT}}
+\index{INFO\_CHOOSE\_TEXT@{INFO\_CHOOSE\_TEXT}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{INFO\_CHOOSE\_TEXT}{INFO\_CHOOSE\_TEXT}}
+{\footnotesize\ttfamily \label{namespacehandlers_a1a6c05c377b454d7163afcc5ba941293} 
+tuple handlers.\+INFO\+\_\+\+CHOOSE\+\_\+\+TEXT}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ (}
+\DoxyCodeLine{00002\ \ \ \ \ \textcolor{stringliteral}{"{}🔔\ *Добро\ пожаловать!*\ 🔔\(\backslash\)n\(\backslash\)n"{}}}
+\DoxyCodeLine{00003\ \ \ \ \ \textcolor{stringliteral}{"{}Этот\ бот\ помогает\ вам\ управлять\ вашими\ событиями\ и\ уведомлениями.\(\backslash\)n"{}}}
+\DoxyCodeLine{00004\ \ \ \ \ \textcolor{stringliteral}{"{}Сейчас\ вы\ находитель\ в\ меню\ события.\(\backslash\)n\(\backslash\)n"{}}}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{stringliteral}{"{}*Доступные\ команды:*\(\backslash\)n"{}}}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{stringliteral}{"{}*Get*\ –\ получить\ информацию\ о\ событии\ и\ его\ напоминаниях\(\backslash\)n"{}}}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{stringliteral}{"{}*Fix*\ –\ изменить\ выбранное\ событие\(\backslash\)n"{}}}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{stringliteral}{"{}*Info*\ –\ информация\ о\ боте\(\backslash\)n"{}}}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{stringliteral}{"{}*Delete\ event*\ –\ удалить\ выбранное\ событие\(\backslash\)n"{}}}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{stringliteral}{"{}*Add*\ –\ добавить\ новое\ напоминание\ у\ события\(\backslash\)n"{}}}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{stringliteral}{"{}*Delete\ notice*\ –\ удалить\ напоминание\ у\ события\(\backslash\)n"{}}}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{stringliteral}{"{}*Back*\ –\ вернуться\ в\ главное\ меню\(\backslash\)n\(\backslash\)n"{}}}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{stringliteral}{"{}Если\ у\ вас\ есть\ вопросы,\ напишите\ в\ поддержку:\ *@Sksjdjcj*"{}}}
+\DoxyCodeLine{00014\ )}
+
+\end{DoxyCode}
+\Hypertarget{namespacehandlers_a5cece2b559cc344e99b37a58a425e45b}\index{handlers@{handlers}!INFO\_MAIN\_TEXT@{INFO\_MAIN\_TEXT}}
+\index{INFO\_MAIN\_TEXT@{INFO\_MAIN\_TEXT}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{INFO\_MAIN\_TEXT}{INFO\_MAIN\_TEXT}}
+{\footnotesize\ttfamily \label{namespacehandlers_a5cece2b559cc344e99b37a58a425e45b} 
+tuple handlers.\+INFO\+\_\+\+MAIN\+\_\+\+TEXT}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ (}
+\DoxyCodeLine{00002\ \ \ \ \ \textcolor{stringliteral}{"{}🔔\ *Добро\ пожаловать!*\ 🔔\(\backslash\)n\(\backslash\)n"{}}}
+\DoxyCodeLine{00003\ \ \ \ \ \textcolor{stringliteral}{"{}Этот\ бот\ помогает\ вам\ управлять\ вашими\ событиями\ и\ уведомлениями.\(\backslash\)n"{}}}
+\DoxyCodeLine{00004\ \ \ \ \ \textcolor{stringliteral}{"{}Сейчас\ вы\ находитель\ в\ главном\ меню.\(\backslash\)n\(\backslash\)n"{}}}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{stringliteral}{"{}*Доступные\ команды:*\(\backslash\)n"{}}}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{stringliteral}{"{}*Get*\ –\ получить\ список\ ваших\ событий\(\backslash\)n"{}}}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{stringliteral}{"{}*Add*\ –\ добавить\ новое\ событие\(\backslash\)n"{}}}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{stringliteral}{"{}*Info*\ –\ информация\ о\ боте\(\backslash\)n"{}}}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{stringliteral}{"{}*Choose*\ –\ выбрать\ конкретное\ событие,\ для\ дальнейшей\ работы\ с\ ним\(\backslash\)n"{}}}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{stringliteral}{"{}*Delete*\ –\ удалить\ все\ ваши\ события\(\backslash\)n\(\backslash\)n"{}}}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{stringliteral}{"{}Если\ у\ вас\ есть\ вопросы,\ напишите\ в\ поддержку:\ *@Sksjdjcj*"{}}}
+\DoxyCodeLine{00012\ )}
+
+\end{DoxyCode}
+\Hypertarget{namespacehandlers_af595557cad72fa928a92ee2c51f394ad}\index{handlers@{handlers}!logger@{logger}}
+\index{logger@{logger}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily \label{namespacehandlers_af595557cad72fa928a92ee2c51f394ad} 
+handlers.\+logger = \mbox{\hyperlink{class_logger_1_1_logger}{Logger.\+Logger}}()}
+
+\Hypertarget{namespacehandlers_a341a2ead9eaef8ae02d89e341dd9d928}\index{handlers@{handlers}!MAIN\_KEYBOARD@{MAIN\_KEYBOARD}}
+\index{MAIN\_KEYBOARD@{MAIN\_KEYBOARD}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{MAIN\_KEYBOARD}{MAIN\_KEYBOARD}}
+{\footnotesize\ttfamily \label{namespacehandlers_a341a2ead9eaef8ae02d89e341dd9d928} 
+handlers.\+MAIN\+\_\+\+KEYBOARD = Reply\+Keyboard\+Markup(\mbox{[}\mbox{[}"{}Get"{}, "{}Add"{}\mbox{]}, \mbox{[}"{}Info"{}, "{}Choose"{}, "{}Delete"{}\mbox{]}\mbox{]}, resize\+\_\+keyboard=True)}
+
+\Hypertarget{namespacehandlers_a7867ce81c3cbf6f16d9263cad114c79a}\index{handlers@{handlers}!notice\_repository@{notice\_repository}}
+\index{notice\_repository@{notice\_repository}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{notice\_repository}{notice\_repository}}
+{\footnotesize\ttfamily \label{namespacehandlers_a7867ce81c3cbf6f16d9263cad114c79a} 
+handlers.\+notice\+\_\+repository = notice\+Storage.\+Notice\+Repository(\mbox{\hyperlink{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}{connector}})}
+
+\Hypertarget{namespacehandlers_a50b4e3b8c1e9f5f7e8b8eb8ec672964c}\index{handlers@{handlers}!notice\_service@{notice\_service}}
+\index{notice\_service@{notice\_service}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{notice\_service}{notice\_service}}
+{\footnotesize\ttfamily \label{namespacehandlers_a50b4e3b8c1e9f5f7e8b8eb8ec672964c} 
+handlers.\+notice\+\_\+service = notice\+Service.\+Notice\+Service(\mbox{\hyperlink{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}{connector}}, \mbox{\hyperlink{namespacehandlers_a7867ce81c3cbf6f16d9263cad114c79a}{notice\+\_\+repository}}, \mbox{\hyperlink{namespacehandlers_af595557cad72fa928a92ee2c51f394ad}{logger}})}
+
+\Hypertarget{namespacehandlers_af35291007f7b33275697862475e9c889}\index{handlers@{handlers}!stage\_repository@{stage\_repository}}
+\index{stage\_repository@{stage\_repository}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{stage\_repository}{stage\_repository}}
+{\footnotesize\ttfamily \label{namespacehandlers_af35291007f7b33275697862475e9c889} 
+handlers.\+stage\+\_\+repository = stage\+Storage.\+Stage\+Repository(\mbox{\hyperlink{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}{connector}})}
+
+\Hypertarget{namespacehandlers_a09febc95529ea4d21bc53dbc4e6913fb}\index{handlers@{handlers}!stage\_service@{stage\_service}}
+\index{stage\_service@{stage\_service}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{stage\_service}{stage\_service}}
+{\footnotesize\ttfamily \label{namespacehandlers_a09febc95529ea4d21bc53dbc4e6913fb} 
+handlers.\+stage\+\_\+service = stage\+Service.\+Stage\+Service(\mbox{\hyperlink{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}{connector}}, \mbox{\hyperlink{namespacehandlers_af35291007f7b33275697862475e9c889}{stage\+\_\+repository}}, \mbox{\hyperlink{namespacehandlers_af595557cad72fa928a92ee2c51f394ad}{logger}})}
+
+\Hypertarget{namespacehandlers_aa209b00175aa284c956ff391d1f1263b}\index{handlers@{handlers}!user\_repository@{user\_repository}}
+\index{user\_repository@{user\_repository}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{user\_repository}{user\_repository}}
+{\footnotesize\ttfamily \label{namespacehandlers_aa209b00175aa284c956ff391d1f1263b} 
+handlers.\+user\+\_\+repository = user\+Storage.\+User\+Repository(\mbox{\hyperlink{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}{connector}})}
+
+\Hypertarget{namespacehandlers_a4e9e314a0946a0d5c8e6d2cac791ddeb}\index{handlers@{handlers}!user\_service@{user\_service}}
+\index{user\_service@{user\_service}!handlers@{handlers}}
+\doxysubsubsection{\texorpdfstring{user\_service}{user\_service}}
+{\footnotesize\ttfamily \label{namespacehandlers_a4e9e314a0946a0d5c8e6d2cac791ddeb} 
+handlers.\+user\+\_\+service = user\+Service.\+User\+Service(\mbox{\hyperlink{namespacehandlers_a0b6f49ff14300baea60e485cb2237125}{connector}}, \mbox{\hyperlink{namespacehandlers_aa209b00175aa284c956ff391d1f1263b}{user\+\_\+repository}}, \mbox{\hyperlink{namespacehandlers_af595557cad72fa928a92ee2c51f394ad}{logger}})}
+

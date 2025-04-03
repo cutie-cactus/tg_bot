@@ -1,0 +1,141 @@
+\doxysection{PGConnector.\+Postgres\+DBConnector Class Reference}
+\hypertarget{class_p_g_connector_1_1_postgres_d_b_connector}{}\label{class_p_g_connector_1_1_postgres_d_b_connector}\index{PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}}
+
+
+Класс для работы с Postgre\+SQL базой данных.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_p_g_connector_1_1_postgres_d_b_connector_a51d303c1f689c0bd959f7d8a7d54d2de}{connect}} (self)
+\begin{DoxyCompactList}\small\item\em Устанавливает соединение с базой данных. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_p_g_connector_1_1_postgres_d_b_connector_a7acf80b08e47b343355314362f5ac3cf}{close}} (self)
+\begin{DoxyCompactList}\small\item\em Закрывает соединение с базой данных. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_p_g_connector_1_1_postgres_d_b_connector_ae2c5de49969cdc58a8e3bb093e90a208}{execute\+\_\+query}} (self, str query, Optional\mbox{[}List\mbox{[}Any\mbox{]}\mbox{]} params=None, bool fetch=False)
+\begin{DoxyCompactList}\small\item\em Выполняет SQL-\/запрос к базе данных. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_p_g_connector_1_1_postgres_d_b_connector_ad700c572fa5bd4ba7f207e1b07504194}{database}} = os.\+getenv("{}database"{})
+\begin{DoxyCompactList}\small\item\em Инициализация коннектора. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_p_g_connector_1_1_postgres_d_b_connector_afc1bf8ac96271dc1b7bfeb79f114839a}{user}} = os.\+getenv("{}user"{})
+\item 
+\mbox{\hyperlink{class_p_g_connector_1_1_postgres_d_b_connector_a5e33cb2ac9f821f8cbe3363246511587}{password}} = os.\+getenv("{}password"{})
+\item 
+\mbox{\hyperlink{class_p_g_connector_1_1_postgres_d_b_connector_ab2a140eb58e515daa7bc0a416ca5d476}{host}} = os.\+getenv("{}host"{})
+\item 
+\mbox{\hyperlink{class_p_g_connector_1_1_postgres_d_b_connector_a952709f81f2d0d14d9f0b79b1f536892}{port}} = os.\+getenv("{}port"{})
+\item 
+\mbox{\hyperlink{class_p_g_connector_1_1_postgres_d_b_connector_a797bc3ace3eeabcff8c461611daad09c}{connection}} = None
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс для работы с Postgre\+SQL базой данных. 
+
+Обеспечивает подключение к БД, выполнение запросов и управление соединением. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_p_g_connector_1_1_postgres_d_b_connector_a7acf80b08e47b343355314362f5ac3cf}\index{PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}!close@{close}}
+\index{close@{close}!PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily \label{class_p_g_connector_1_1_postgres_d_b_connector_a7acf80b08e47b343355314362f5ac3cf} 
+PGConnector.\+Postgres\+DBConnector.\+close (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Закрывает соединение с базой данных. 
+
+\Hypertarget{class_p_g_connector_1_1_postgres_d_b_connector_a51d303c1f689c0bd959f7d8a7d54d2de}\index{PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}!connect@{connect}}
+\index{connect@{connect}!PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily \label{class_p_g_connector_1_1_postgres_d_b_connector_a51d303c1f689c0bd959f7d8a7d54d2de} 
+PGConnector.\+Postgres\+DBConnector.\+connect (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Устанавливает соединение с базой данных. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Connection\+DBException} & Если не удалось подключиться к БД \\
+\hline
+{\em Exception} & Другие ошибки подключения \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_p_g_connector_1_1_postgres_d_b_connector_ae2c5de49969cdc58a8e3bb093e90a208}\index{PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}!execute\_query@{execute\_query}}
+\index{execute\_query@{execute\_query}!PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}}
+\doxysubsubsection{\texorpdfstring{execute\_query()}{execute\_query()}}
+{\footnotesize\ttfamily \label{class_p_g_connector_1_1_postgres_d_b_connector_ae2c5de49969cdc58a8e3bb093e90a208} 
+PGConnector.\+Postgres\+DBConnector.\+execute\+\_\+query (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{query}{, }\item[{Optional\mbox{[}List\mbox{[}Any\mbox{]}\mbox{]} }]{params}{ = {\ttfamily None}, }\item[{bool }]{fetch}{ = {\ttfamily False}}\end{DoxyParamCaption})}
+
+
+
+Выполняет SQL-\/запрос к базе данных. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & SQL-\/запрос @type query\+: str \\
+\hline
+{\em params} & Параметры запроса @type params\+: Optional\mbox{[}List\mbox{[}Any\mbox{]}\mbox{]} \\
+\hline
+{\em fetch} & Флаг необходимости возврата результатов @type fetch\+: bool\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Результаты запроса (только если fetch=True) @rtype\+: List\mbox{[}dict\mbox{]} \texorpdfstring{$\vert$}{|} None
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Not\+Correct\+Request\+Exception} & При ошибке выполнения запроса \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_p_g_connector_1_1_postgres_d_b_connector_a797bc3ace3eeabcff8c461611daad09c}\index{PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}!connection@{connection}}
+\index{connection@{connection}!PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}}
+\doxysubsubsection{\texorpdfstring{connection}{connection}}
+{\footnotesize\ttfamily \label{class_p_g_connector_1_1_postgres_d_b_connector_a797bc3ace3eeabcff8c461611daad09c} 
+PGConnector.\+Postgres\+DBConnector.\+connection = None}
+
+\Hypertarget{class_p_g_connector_1_1_postgres_d_b_connector_ad700c572fa5bd4ba7f207e1b07504194}\index{PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}!database@{database}}
+\index{database@{database}!PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}}
+\doxysubsubsection{\texorpdfstring{database}{database}}
+{\footnotesize\ttfamily \label{class_p_g_connector_1_1_postgres_d_b_connector_ad700c572fa5bd4ba7f207e1b07504194} 
+PGConnector.\+Postgres\+DBConnector.\+database = os.\+getenv("{}database"{})}
+
+
+
+Инициализация коннектора. 
+
+Загружает параметры подключения из .env файла. \Hypertarget{class_p_g_connector_1_1_postgres_d_b_connector_ab2a140eb58e515daa7bc0a416ca5d476}\index{PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}!host@{host}}
+\index{host@{host}!PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}}
+\doxysubsubsection{\texorpdfstring{host}{host}}
+{\footnotesize\ttfamily \label{class_p_g_connector_1_1_postgres_d_b_connector_ab2a140eb58e515daa7bc0a416ca5d476} 
+PGConnector.\+Postgres\+DBConnector.\+host = os.\+getenv("{}host"{})}
+
+\Hypertarget{class_p_g_connector_1_1_postgres_d_b_connector_a5e33cb2ac9f821f8cbe3363246511587}\index{PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}!password@{password}}
+\index{password@{password}!PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}}
+\doxysubsubsection{\texorpdfstring{password}{password}}
+{\footnotesize\ttfamily \label{class_p_g_connector_1_1_postgres_d_b_connector_a5e33cb2ac9f821f8cbe3363246511587} 
+PGConnector.\+Postgres\+DBConnector.\+password = os.\+getenv("{}password"{})}
+
+\Hypertarget{class_p_g_connector_1_1_postgres_d_b_connector_a952709f81f2d0d14d9f0b79b1f536892}\index{PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}!port@{port}}
+\index{port@{port}!PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}}
+\doxysubsubsection{\texorpdfstring{port}{port}}
+{\footnotesize\ttfamily \label{class_p_g_connector_1_1_postgres_d_b_connector_a952709f81f2d0d14d9f0b79b1f536892} 
+PGConnector.\+Postgres\+DBConnector.\+port = os.\+getenv("{}port"{})}
+
+\Hypertarget{class_p_g_connector_1_1_postgres_d_b_connector_afc1bf8ac96271dc1b7bfeb79f114839a}\index{PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}!user@{user}}
+\index{user@{user}!PGConnector.PostgresDBConnector@{PGConnector.PostgresDBConnector}}
+\doxysubsubsection{\texorpdfstring{user}{user}}
+{\footnotesize\ttfamily \label{class_p_g_connector_1_1_postgres_d_b_connector_afc1bf8ac96271dc1b7bfeb79f114839a} 
+PGConnector.\+Postgres\+DBConnector.\+user = os.\+getenv("{}user"{})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/repository/connector/\mbox{\hyperlink{_p_g_connector_8py}{PGConnector.\+py}}\end{DoxyCompactItemize}

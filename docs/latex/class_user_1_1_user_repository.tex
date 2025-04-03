@@ -1,0 +1,151 @@
+\doxysection{User.\+User\+Repository Class Reference}
+\hypertarget{class_user_1_1_user_repository}{}\label{class_user_1_1_user_repository}\index{User.UserRepository@{User.UserRepository}}
+
+
+Репозиторий для управления пользователями в системе  
+
+
+Inheritance diagram for User.\+User\+Repository\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_user_1_1_user_repository}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_user_1_1_user_repository_a2f7eb0cda8a33c3e8fb87acc101b243a}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, Connector.\+Postgres\+DBConnector \mbox{\hyperlink{class_user_1_1_user_repository_aef75dfe5495c26080a3795b2ef0f3a28}{connector}})
+\begin{DoxyCompactList}\small\item\em Инициализирует репозиторий пользователей \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_user_1_1_user_repository_ae4f6b6fb66b59068d78b9599aedf344d}{add}} (self, str tg\+\_\+id, str chat\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Добавляет нового пользователя \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_user_1_1_user_repository_a97d44aa0607fb0e56f1932be44a9326f}{change\+\_\+time\+\_\+zone}} (self, str tg\+\_\+id, int time\+\_\+zone)
+\begin{DoxyCompactList}\small\item\em Изменяет часовой пояс пользователя \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_user_1_1_user_repository_a7034961d12621661fe173e36317f9c8d}{get\+\_\+event\+\_\+count}} (self, str tg\+\_\+id, str chat\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Получает количество доступных событий пользователя \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_user_1_1_user_repository_a64b539f98d9d4d90a04c17e5e12ac1a2}{get\+\_\+time\+\_\+zone}} (self, str tg\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Получает часовой пояс пользователя \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_user_1_1_user_repository_aef75dfe5495c26080a3795b2ef0f3a28}{connector}} = connector
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Репозиторий для управления пользователями в системе 
+
+Обеспечивает работу с основными данными пользователей\+:
+\begin{DoxyItemize}
+\item Регистрация новых пользователей
+\item Управление часовым поясом
+\item Получение количества доступных событий 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_user_1_1_user_repository_a2f7eb0cda8a33c3e8fb87acc101b243a}\index{User.UserRepository@{User.UserRepository}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!User.UserRepository@{User.UserRepository}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_repository_a2f7eb0cda8a33c3e8fb87acc101b243a} 
+User.\+User\+Repository.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{Connector.\+Postgres\+DBConnector}]{connector}{}\end{DoxyParamCaption})}
+
+
+
+Инициализирует репозиторий пользователей 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connector} & Коннектор к Postgre\+SQL @type connector\+: Connector.\+Postgres\+DBConnector \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_user_1_1_user_repository_ae4f6b6fb66b59068d78b9599aedf344d}\index{User.UserRepository@{User.UserRepository}!add@{add}}
+\index{add@{add}!User.UserRepository@{User.UserRepository}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_repository_ae4f6b6fb66b59068d78b9599aedf344d} 
+User.\+User\+Repository.\+add (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{tg\+\_\+id}{, }\item[{str}]{chat\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Добавляет нового пользователя 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tg\+\_\+id} & Идентификатор пользователя в Telegram @type tg\+\_\+id\+: str \\
+\hline
+{\em chat\+\_\+id} & Идентификатор чата в Telegram @type chat\+\_\+id\+: str\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Результат выполнения запроса 
+\end{DoxyReturn}
+\Hypertarget{class_user_1_1_user_repository_a97d44aa0607fb0e56f1932be44a9326f}\index{User.UserRepository@{User.UserRepository}!change\_time\_zone@{change\_time\_zone}}
+\index{change\_time\_zone@{change\_time\_zone}!User.UserRepository@{User.UserRepository}}
+\doxysubsubsection{\texorpdfstring{change\_time\_zone()}{change\_time\_zone()}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_repository_a97d44aa0607fb0e56f1932be44a9326f} 
+User.\+User\+Repository.\+change\+\_\+time\+\_\+zone (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{tg\+\_\+id}{, }\item[{int}]{time\+\_\+zone}{}\end{DoxyParamCaption})}
+
+
+
+Изменяет часовой пояс пользователя 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tg\+\_\+id} & Идентификатор пользователя в Telegram @type tg\+\_\+id\+: str \\
+\hline
+{\em time\+\_\+zone} & Новый часовой пояс (в часах относительно UTC) @type time\+\_\+zone\+: int \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_user_1_1_user_repository_a7034961d12621661fe173e36317f9c8d}\index{User.UserRepository@{User.UserRepository}!get\_event\_count@{get\_event\_count}}
+\index{get\_event\_count@{get\_event\_count}!User.UserRepository@{User.UserRepository}}
+\doxysubsubsection{\texorpdfstring{get\_event\_count()}{get\_event\_count()}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_repository_a7034961d12621661fe173e36317f9c8d} 
+ int User.\+User\+Repository.\+get\+\_\+event\+\_\+count (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{tg\+\_\+id}{, }\item[{str}]{chat\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Получает количество доступных событий пользователя 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tg\+\_\+id} & Идентификатор пользователя в Telegram @type tg\+\_\+id\+: str \\
+\hline
+{\em chat\+\_\+id} & Идентификатор чата в Telegram @type chat\+\_\+id\+: str\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Количество доступных событий @rtype\+: int 
+\end{DoxyReturn}
+\Hypertarget{class_user_1_1_user_repository_a64b539f98d9d4d90a04c17e5e12ac1a2}\index{User.UserRepository@{User.UserRepository}!get\_time\_zone@{get\_time\_zone}}
+\index{get\_time\_zone@{get\_time\_zone}!User.UserRepository@{User.UserRepository}}
+\doxysubsubsection{\texorpdfstring{get\_time\_zone()}{get\_time\_zone()}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_repository_a64b539f98d9d4d90a04c17e5e12ac1a2} 
+ int User.\+User\+Repository.\+get\+\_\+time\+\_\+zone (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{str}]{tg\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Получает часовой пояс пользователя 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tg\+\_\+id} & Идентификатор пользователя в Telegram @type tg\+\_\+id\+: str\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Часовой пояс (в часах относительно UTC) @rtype\+: int 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_user_1_1_user_repository_aef75dfe5495c26080a3795b2ef0f3a28}\index{User.UserRepository@{User.UserRepository}!connector@{connector}}
+\index{connector@{connector}!User.UserRepository@{User.UserRepository}}
+\doxysubsubsection{\texorpdfstring{connector}{connector}}
+{\footnotesize\ttfamily \label{class_user_1_1_user_repository_aef75dfe5495c26080a3795b2ef0f3a28} 
+User.\+User\+Repository.\+connector = connector}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/repository/implementation/\mbox{\hyperlink{repository_2implementation_2_user_8py}{User.\+py}}\end{DoxyCompactItemize}

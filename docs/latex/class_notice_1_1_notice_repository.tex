@@ -1,0 +1,84 @@
+\doxysection{Notice.\+Notice\+Repository Class Reference}
+\hypertarget{class_notice_1_1_notice_repository}{}\label{class_notice_1_1_notice_repository}\index{Notice.NoticeRepository@{Notice.NoticeRepository}}
+Inheritance diagram for Notice.\+Notice\+Repository\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_notice_1_1_notice_repository}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_notice_1_1_notice_repository_a189f74f98e07699f6010c801c89193f4}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, Connector.\+Postgres\+DBConnector \mbox{\hyperlink{class_notice_1_1_notice_repository_acd23ce84aa9faeed8570b4fedbec2453}{connector}})
+\item 
+int \mbox{\hyperlink{class_notice_1_1_notice_repository_a53896ad30d39f5f8acb5f8d9eb0e7736}{add}} (self, notice\+DTO.\+Add\+Notice\+Request add\+\_\+notice\+\_\+request)
+\item 
+notice\+Model.\+Notice \mbox{\hyperlink{class_notice_1_1_notice_repository_a463545d94a735c76c04fd6ce47566d4d}{get}} (self, int notice\+\_\+id)
+\item 
+list\mbox{[}notice\+Model.\+Notice\mbox{]} \mbox{\hyperlink{class_notice_1_1_notice_repository_adcd87a6e2c98bf492de7a34047a947d9}{get\+\_\+all}} (self, int event\+\_\+id)
+\item 
+\mbox{\hyperlink{class_notice_1_1_notice_repository_a0c21777106b26f84d668efb9f460d1b9}{delete}} (self, int notice\+\_\+id, int event\+\_\+id)
+\item 
+bool \mbox{\hyperlink{class_notice_1_1_notice_repository_a1c5cb83bc27609530ffb06af324b2c57}{check\+\_\+exist}} (self, int notice\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_notice_1_1_notice_repository_acd23ce84aa9faeed8570b4fedbec2453}{connector}} = connector
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_notice_1_1_notice_repository_a189f74f98e07699f6010c801c89193f4}\index{Notice.NoticeRepository@{Notice.NoticeRepository}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Notice.NoticeRepository@{Notice.NoticeRepository}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_repository_a189f74f98e07699f6010c801c89193f4} 
+Notice.\+Notice\+Repository.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{Connector.\+Postgres\+DBConnector}]{connector}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_notice_1_1_notice_repository_a53896ad30d39f5f8acb5f8d9eb0e7736}\index{Notice.NoticeRepository@{Notice.NoticeRepository}!add@{add}}
+\index{add@{add}!Notice.NoticeRepository@{Notice.NoticeRepository}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_repository_a53896ad30d39f5f8acb5f8d9eb0e7736} 
+ int Notice.\+Notice\+Repository.\+add (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{notice\+DTO.\+Add\+Notice\+Request}]{add\+\_\+notice\+\_\+request}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_notice_1_1_notice_repository_a1c5cb83bc27609530ffb06af324b2c57}\index{Notice.NoticeRepository@{Notice.NoticeRepository}!check\_exist@{check\_exist}}
+\index{check\_exist@{check\_exist}!Notice.NoticeRepository@{Notice.NoticeRepository}}
+\doxysubsubsection{\texorpdfstring{check\_exist()}{check\_exist()}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_repository_a1c5cb83bc27609530ffb06af324b2c57} 
+ bool Notice.\+Notice\+Repository.\+check\+\_\+exist (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{notice\+\_\+id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_notice_1_1_notice_repository_a0c21777106b26f84d668efb9f460d1b9}\index{Notice.NoticeRepository@{Notice.NoticeRepository}!delete@{delete}}
+\index{delete@{delete}!Notice.NoticeRepository@{Notice.NoticeRepository}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_repository_a0c21777106b26f84d668efb9f460d1b9} 
+Notice.\+Notice\+Repository.\+delete (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{notice\+\_\+id}{, }\item[{int}]{event\+\_\+id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_notice_1_1_notice_repository_a463545d94a735c76c04fd6ce47566d4d}\index{Notice.NoticeRepository@{Notice.NoticeRepository}!get@{get}}
+\index{get@{get}!Notice.NoticeRepository@{Notice.NoticeRepository}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_repository_a463545d94a735c76c04fd6ce47566d4d} 
+ notice\+Model.\+Notice Notice.\+Notice\+Repository.\+get (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{notice\+\_\+id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_notice_1_1_notice_repository_adcd87a6e2c98bf492de7a34047a947d9}\index{Notice.NoticeRepository@{Notice.NoticeRepository}!get\_all@{get\_all}}
+\index{get\_all@{get\_all}!Notice.NoticeRepository@{Notice.NoticeRepository}}
+\doxysubsubsection{\texorpdfstring{get\_all()}{get\_all()}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_repository_adcd87a6e2c98bf492de7a34047a947d9} 
+ list\mbox{[}notice\+Model.\+Notice\mbox{]} Notice.\+Notice\+Repository.\+get\+\_\+all (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{event\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_notice_1_1_notice_repository_acd23ce84aa9faeed8570b4fedbec2453}\index{Notice.NoticeRepository@{Notice.NoticeRepository}!connector@{connector}}
+\index{connector@{connector}!Notice.NoticeRepository@{Notice.NoticeRepository}}
+\doxysubsubsection{\texorpdfstring{connector}{connector}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_repository_acd23ce84aa9faeed8570b4fedbec2453} 
+Notice.\+Notice\+Repository.\+connector = connector}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/repository/implementation/\mbox{\hyperlink{repository_2implementation_2notice_8py}{Notice.\+py}}\end{DoxyCompactItemize}

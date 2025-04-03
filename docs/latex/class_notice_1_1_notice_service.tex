@@ -1,0 +1,176 @@
+\doxysection{Notice.\+Notice\+Service Class Reference}
+\hypertarget{class_notice_1_1_notice_service}{}\label{class_notice_1_1_notice_service}\index{Notice.NoticeService@{Notice.NoticeService}}
+Inheritance diagram for Notice.\+Notice\+Service\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_notice_1_1_notice_service}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_notice_1_1_notice_service_a00b21367f10839fd945677b50a12ebda}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, Connector.\+Postgres\+DBConnector \mbox{\hyperlink{class_notice_1_1_notice_service_a374cfaf18d72226941327a984d92e615}{connector}}, notice\+Storage.\+Notice\+RepositoryI \mbox{\hyperlink{class_notice_1_1_notice_service_ae78d845630351ca7b50781a4083862dc}{notice\+\_\+storage}}, \mbox{\hyperlink{class_logger_1_1_logger}{Logger.\+Logger}} \mbox{\hyperlink{class_notice_1_1_notice_service_a1046fc819c38655fe15971f13ddced73}{logger}})
+\item 
+int \mbox{\hyperlink{class_notice_1_1_notice_service_a03d795c7dd89eb6dea59f762fb934111}{add}} (self, notice\+DTO.\+Add\+Notice\+Request add\+\_\+notice\+\_\+request)
+\item 
+notice\+Model.\+Notice \mbox{\hyperlink{class_notice_1_1_notice_service_a7bf825238415cf32a2b092e48087b5ba}{get}} (self, int notice\+\_\+id)
+\item 
+list\mbox{[}notice\+Model.\+Notice\mbox{]} \mbox{\hyperlink{class_notice_1_1_notice_service_a5166cc3801d1da74cbad7920c2a8a196}{get\+\_\+all}} (self, int event\+\_\+id)
+\item 
+\mbox{\hyperlink{class_notice_1_1_notice_service_acf198e0e0495de1f10f12a5b44909f9a}{delete}} (self, int notice\+\_\+id, int event\+\_\+id)
+\item 
+bool \mbox{\hyperlink{class_notice_1_1_notice_service_a4b3422d207d7e68cd3e96c6f6de506bc}{check\+\_\+exist}} (self, int notice\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{class_notice_1_1_notice_service_a91c3595bf0a4b76e047de42789c14a97}{hash\+\_\+id}} (str string)
+\item 
+str \mbox{\hyperlink{class_notice_1_1_notice_service_a91c3595bf0a4b76e047de42789c14a97}{hash\+\_\+id}} (str string)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_notice_1_1_notice_service_a374cfaf18d72226941327a984d92e615}{connector}} = connector
+\item 
+\mbox{\hyperlink{class_notice_1_1_notice_service_ae78d845630351ca7b50781a4083862dc}{notice\+\_\+storage}} = notice\+\_\+storage
+\item 
+\mbox{\hyperlink{class_notice_1_1_notice_service_a1046fc819c38655fe15971f13ddced73}{logger}} = logger
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}@brief Сервис для управления напоминаниями
+
+Обеспечивает бизнес-логику работы с напоминаниями:
+- Валидацию данных
+- Логирование операций
+- Обработку ошибок
+@ingroup NoticeService
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_notice_1_1_notice_service_a00b21367f10839fd945677b50a12ebda}\index{Notice.NoticeService@{Notice.NoticeService}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Notice.NoticeService@{Notice.NoticeService}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_service_a00b21367f10839fd945677b50a12ebda} 
+Notice.\+Notice\+Service.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{Connector.\+Postgres\+DBConnector}]{connector}{, }\item[{notice\+Storage.\+Notice\+RepositoryI}]{notice\+\_\+storage}{, }\item[{\mbox{\hyperlink{class_logger_1_1_logger}{Logger.\+Logger}}}]{logger}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Инициализация сервиса напоминаний
+
+@param connector: Коннектор к PostgreSQL базе данных
+@param notice_storage: Репозиторий для работы с хранилищем напоминаний
+@param logger: Логгер для записи операций
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_notice_1_1_notice_service_a03d795c7dd89eb6dea59f762fb934111}\index{Notice.NoticeService@{Notice.NoticeService}!add@{add}}
+\index{add@{add}!Notice.NoticeService@{Notice.NoticeService}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_service_a03d795c7dd89eb6dea59f762fb934111} 
+ int Notice.\+Notice\+Service.\+add (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{notice\+DTO.\+Add\+Notice\+Request}]{add\+\_\+notice\+\_\+request}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Добавление нового напоминания
+
+@param add_notice_request: DTO с данными для создания напоминания
+@return ID созданного напоминания
+@throws ValueError При некорректных входных данных
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_notice_1_1_notice_service_a4b3422d207d7e68cd3e96c6f6de506bc}\index{Notice.NoticeService@{Notice.NoticeService}!check\_exist@{check\_exist}}
+\index{check\_exist@{check\_exist}!Notice.NoticeService@{Notice.NoticeService}}
+\doxysubsubsection{\texorpdfstring{check\_exist()}{check\_exist()}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_service_a4b3422d207d7e68cd3e96c6f6de506bc} 
+ bool Notice.\+Notice\+Service.\+check\+\_\+exist (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{notice\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Проверка существования напоминания
+
+@param notice_id: Идентификатор проверяемого напоминания
+@return True если напоминание существует, иначе False
+@throws ValueError При некорректном ID
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_notice_1_1_notice_service_acf198e0e0495de1f10f12a5b44909f9a}\index{Notice.NoticeService@{Notice.NoticeService}!delete@{delete}}
+\index{delete@{delete}!Notice.NoticeService@{Notice.NoticeService}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_service_acf198e0e0495de1f10f12a5b44909f9a} 
+Notice.\+Notice\+Service.\+delete (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{notice\+\_\+id}{, }\item[{int}]{event\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Удаление напоминания
+
+@param notice_id: Идентификатор удаляемого напоминания
+@param event_id: Идентификатор родительского события
+@throws ValueError При некорректных идентификаторах
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_notice_1_1_notice_service_a7bf825238415cf32a2b092e48087b5ba}\index{Notice.NoticeService@{Notice.NoticeService}!get@{get}}
+\index{get@{get}!Notice.NoticeService@{Notice.NoticeService}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_service_a7bf825238415cf32a2b092e48087b5ba} 
+ notice\+Model.\+Notice Notice.\+Notice\+Service.\+get (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{notice\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получение напоминания по ID
+
+@param notice_id: Идентификатор запрашиваемого напоминания
+@return Объект напоминания
+@throws ValueError При некорректном ID
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_notice_1_1_notice_service_a5166cc3801d1da74cbad7920c2a8a196}\index{Notice.NoticeService@{Notice.NoticeService}!get\_all@{get\_all}}
+\index{get\_all@{get\_all}!Notice.NoticeService@{Notice.NoticeService}}
+\doxysubsubsection{\texorpdfstring{get\_all()}{get\_all()}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_service_a5166cc3801d1da74cbad7920c2a8a196} 
+ list\mbox{[}notice\+Model.\+Notice\mbox{]} Notice.\+Notice\+Service.\+get\+\_\+all (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{int}]{event\+\_\+id}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Получение всех напоминаний события
+
+@param event_id: Идентификатор родительского события
+@return Список объектов напоминаний
+@throws ValueError При некорректном event_id
+@throws Exception При ошибках уровня хранилища
+\end{DoxyVerb}
+ \Hypertarget{class_notice_1_1_notice_service_a91c3595bf0a4b76e047de42789c14a97}\index{Notice.NoticeService@{Notice.NoticeService}!hash\_id@{hash\_id}}
+\index{hash\_id@{hash\_id}!Notice.NoticeService@{Notice.NoticeService}}
+\doxysubsubsection{\texorpdfstring{hash\_id()}{hash\_id()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_service_a91c3595bf0a4b76e047de42789c14a97} 
+ str Notice.\+Notice\+Service.\+hash\+\_\+id (\begin{DoxyParamCaption}\item[{str}]{string}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}@brief Генерация хеша строки
+
+@param string: Входная строка для хеширования
+@return SHA-256 хеш в виде hex-строки
+\end{DoxyVerb}
+ \Hypertarget{class_notice_1_1_notice_service_a91c3595bf0a4b76e047de42789c14a97}\index{Notice.NoticeService@{Notice.NoticeService}!hash\_id@{hash\_id}}
+\index{hash\_id@{hash\_id}!Notice.NoticeService@{Notice.NoticeService}}
+\doxysubsubsection{\texorpdfstring{hash\_id()}{hash\_id()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_service_a91c3595bf0a4b76e047de42789c14a97} 
+ str Notice.\+Notice\+Service.\+hash\+\_\+id (\begin{DoxyParamCaption}\item[{str}]{string}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_notice_1_1_notice_service_a374cfaf18d72226941327a984d92e615}\index{Notice.NoticeService@{Notice.NoticeService}!connector@{connector}}
+\index{connector@{connector}!Notice.NoticeService@{Notice.NoticeService}}
+\doxysubsubsection{\texorpdfstring{connector}{connector}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_service_a374cfaf18d72226941327a984d92e615} 
+Notice.\+Notice\+Service.\+connector = connector}
+
+\Hypertarget{class_notice_1_1_notice_service_a1046fc819c38655fe15971f13ddced73}\index{Notice.NoticeService@{Notice.NoticeService}!logger@{logger}}
+\index{logger@{logger}!Notice.NoticeService@{Notice.NoticeService}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_service_a1046fc819c38655fe15971f13ddced73} 
+Notice.\+Notice\+Service.\+logger = logger}
+
+\Hypertarget{class_notice_1_1_notice_service_ae78d845630351ca7b50781a4083862dc}\index{Notice.NoticeService@{Notice.NoticeService}!notice\_storage@{notice\_storage}}
+\index{notice\_storage@{notice\_storage}!Notice.NoticeService@{Notice.NoticeService}}
+\doxysubsubsection{\texorpdfstring{notice\_storage}{notice\_storage}}
+{\footnotesize\ttfamily \label{class_notice_1_1_notice_service_ae78d845630351ca7b50781a4083862dc} 
+Notice.\+Notice\+Service.\+notice\+\_\+storage = notice\+\_\+storage}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/cmug3/\+Desktop/tg\+\_\+bot/src/service/implementation/\mbox{\hyperlink{service_2implementation_2notice_8py}{Notice.\+py}}\end{DoxyCompactItemize}
