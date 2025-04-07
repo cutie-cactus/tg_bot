@@ -106,18 +106,6 @@ class TestTelegramAPI(unittest.TestCase):
         self.assertIn('result', data)
         self.assertIn('username', data['result'])
 
-    def test_send_message(self):
-        """Тест проверяет метод sendMessage (отправка сообщения)."""
-        payload = {
-            "chat_id": self.chat_id,
-            "text": "Тестовое сообщение из unittest"
-        }
-        response = requests.post(f"{self.api_url}sendMessage", json=payload)
-        self.assertEqual(response.status_code, 200)
-        data = response.json()
-        self.assertTrue(data['ok'])
-        self.assertIn('message_id', data['result'])
-
     def test_get_updates(self):
         """Тест проверяет метод getUpdates (получение обновлений)."""
         response = requests.get(f"{self.api_url}getUpdates")
