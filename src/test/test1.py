@@ -74,3 +74,6 @@ def test_is_valid_time():
     assert is_valid_time("2024-13-01", "12:00") is False, "Некорректная дата должна быть невалидной"
     assert is_valid_time(today, "25:00") is False, "Некорректное время не должно быть валидным"
     assert is_valid_time(today, "abcd") is False, "Строка не в формате HH:MM должна быть невалидной"
+
+
+#for test
