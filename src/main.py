@@ -7,7 +7,16 @@ def main():
     load_dotenv(dotenv_path="config/config.env")
     token = os.getenv("TELEGRAM_BOT_TOKEN")
 
-    app = Application.builder().token(token).build()
+    app = Application.builder() \
+        .token(token) \
+        .get_updates_read_timeout(60) \
+        .get_updates_write_timeout(60) \
+        .get_updates_connect_timeout(60) \
+        .get_updates_pool_timeout(60) \
+        .build()
+
+    # app = Application.builder().token(token).build()
+    
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.Regex("^Старт$"), show_main_menu))

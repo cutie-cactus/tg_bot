@@ -1,0 +1,61 @@
+name: Python CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check build
+        run: |
+          cd src
+          if python3 -m py_compile main.py; then
+            echo "Build successful: main.py works!"
+          else
+            echo "Build failed!"
+            exit 1s
+          fi
+
+  test:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tests
+        run: |
+          cd src
+          pytest test/test1.py
+
+  deploy:
+    needs: [build, test]
+    runs-on: self-hosted
+    if: |
+      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/deploy')
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to VM1
+        env:
+          CI_GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
+        run: |
+          ssh -o StrictHostKeyChecking=no andru@192.168.2.100 << 'EOF'
+          set -e
+          mkdir -p /home/andru/app
+          cd /home/andru/app
+
+          if [ ! -d .git ]; then
+            git clone https://$CI_GITHUB_TOKEN@github.com/cutie-cactus/tg_bot.git .
+          else
+            git pull origin main
+          fi
+          
+          pgrep -f 'python3 main.py' && pkill -f 'python3 main.py'
+          nohup python3 /home/andru/app/src/main.py > /home/andru/app/bot.log 2>&1 &
+          sleep 3
+          EOF
+
+      # (github.event_name == 'workflow_dispatch') &&
